@@ -24,5 +24,12 @@ namespace Mooshak2._0.Controllers
 
             return View(viewModel);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var viewModel = _service.DeleteAssignmentByID(id);
+
+            return View(viewModel);
+        }
     }
 }

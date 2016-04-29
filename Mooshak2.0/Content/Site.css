@@ -22,3 +22,16 @@ select,
 textarea {
     max-width: 280px;
 }
+
+div.indexPage
+{
+    height: 500px;
+    width: 700px;
+    background-image: url(/Image/muushak.png);
+    background-repeat:no-repeat;
+    background-position: center;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}

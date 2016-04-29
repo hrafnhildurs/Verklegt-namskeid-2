@@ -1,7 +1,21 @@
-﻿@model.Mooshak2._0.Models.ViewModels.AssignmentViewModel;
+﻿@model Mooshak2._0.Models.ViewModels.AssignmentViewModel
+
 @{
     ViewBag.Title = "Details";
 }
 
 <h2>Details</h2>
 
+<div>
+    <h4>Assignment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Assignment.assignmentTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Assignment.assignmentTitle)
+        </dd>
+    </dl>
+</div>

@@ -36,20 +36,32 @@ namespace Mooshak2._0.Services
             var projects = _db.Projects.Where(x => x.AssignmentID == assignmentID).
                 Select(x => new AssignmentProjectViewModel
                 {
-                    Title = x.Title
+                    projectTitle = x.projectTitle
+                }).ToList();
+
+            //get the description for the projects that are a part of this assignment
+            var description = _db.Projects.Where(x => x.AssignmentID == assignmentID).
+                Select(x => new AssignmentProjectViewModel
+                {
+                    projectDescription = x.projectDescription
                 }).ToList();
 
             //make new viewModel
             var viewModel = new AssignmentViewModel
             {
-                Title = assignment.Title,
-                Projects = projects
+                assignmentTitle = assignment.assignmentTitle,
+                Projects = projects,
+                projectDescription =  description
             };
 
             //return the viewModel
             return viewModel;
         }
 
-        
+        public AssignmentViewModel DeleteAssignmentByID(int id)
+        {
+            //TODO:
+            return null;
+        }
     }
 }
