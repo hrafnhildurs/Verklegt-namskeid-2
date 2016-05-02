@@ -22,10 +22,13 @@ namespace Mooshak2._0.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        //Entity class
+        /// <summary>
+        /// List of the entity classes
+        /// </summary>
         public DbSet<Assignment> Assignments { get; set; }
-        //Entity class
         public DbSet<AssignmentProject> Projects { get; set; }
+        public DbSet<Course> Courses { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
