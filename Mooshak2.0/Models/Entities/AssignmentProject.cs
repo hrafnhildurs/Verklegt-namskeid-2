@@ -22,18 +22,18 @@ namespace Mooshak2._0.Models.Entities
         /// <summary>
         /// The name of the project. Example: "Part1".
         /// </summary>
-        public string projectTitle { get; set; }
+        public string ProjectName { get; set; }
         
         /// <summary>
         /// Determines how much this project weights in the assignment.
         /// Example: if this project is 20% of the grade of the assignment,
         /// then this property contains the value 20.
         /// </summary>
-        public int projectWeight { get; set; }
+        public int Weight { get; set; }
 
         /// <summary>
         /// Description of what the project is about
         /// </summary>
-        public string projectDescription { get; set; }
+        public string Description { get; set; }
     }
 }

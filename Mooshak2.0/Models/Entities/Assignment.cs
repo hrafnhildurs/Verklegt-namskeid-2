@@ -11,12 +11,17 @@ namespace Mooshak2._0.Models.Entities
         /// <summary>
         /// A foreign key to the course
         /// </summary>
-        public int courseID { get; set; }
+        public int CourseID { get; set; }
 
         /// <summary>
         /// The name of the assignment. Example: "Assignment1".
         /// </summary>
-        public string assignmentTitle { get; set; }
+        public string AssignmentName { get; set; }
+
+        /// <summary>
+        /// The deadline of the assignment
+        /// </summary>
+        public string Deadline { get; set; }
 
     }
 }
