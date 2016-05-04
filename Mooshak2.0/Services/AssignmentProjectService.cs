@@ -54,8 +54,25 @@ namespace Mooshak2._0.Services
 
         }
 
-        /*  GetProjectByID
-            GetProjectInAssignment
+        public AssignmentProject GetProjectByID(int ID)
+        {
+            AssignmentProject result = (from project in _db.Projects
+                            where project.ID == ID
+                            select project).SingleOrDefault();
+
+            return result;
+        }
+
+        public AssignmentProject GetProjectsInAssignment(int AssignmentID)
+        {
+            var result = (from project in _db.Projects
+                                        where project.ID == AssignmentID
+                                        select project).ToList();
+
+            return result;
+        }
+        /*
+            GetProjectsInAssignment
             DeleteProjectByID
             SubmitByID
             ExportByID
