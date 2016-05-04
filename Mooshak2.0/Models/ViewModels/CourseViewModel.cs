@@ -7,5 +7,13 @@ namespace Mooshak2._0.Models.ViewModels
 {
     public class CourseViewModel
     {
+        public int CourseID { get; set; }
+        public int AssignmentID { get; set; }
+        public string CourseName { get; set; }
+        public string Semester { get; set; }
+        
+
+
+        public List<CourseViewModel> courses { get; set; }
     }
 }
