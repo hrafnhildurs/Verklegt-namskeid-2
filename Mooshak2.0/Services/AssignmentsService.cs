@@ -56,19 +56,13 @@ namespace Mooshak2._0.Services
                     projectTitle = x.ProjectName
                 }).ToList();
 
-            //get the description for the projects that are a part of this assignment
-            var description = _db.Projects.Where(x => x.AssignmentID == assignmentID).
-                Select(x => new AssignmentProjectViewModel
-                {
-                    projectDescription = x.Description
-                }).ToList();
 
             //make new viewModel
             var viewModel = new AssignmentViewModel
             {
-                assignmentTitle = assignment.AssignmentName,
-                Projects = projects,
-                projectDescription =  description
+                assignmentName = assignment.AssignmentName,
+                projects = projects,
+                //projectDescription =  description
             };
 
             //return the viewModel
@@ -80,5 +74,12 @@ namespace Mooshak2._0.Services
             //TODO:
             return null;
         }
+
+        public AssignmentProjectViewModel AddToDB()
+        {
+            //TODO:
+            return null;
+        }
+
     }
 }

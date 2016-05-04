@@ -33,5 +33,17 @@ namespace Mooshak2._0.Controllers
 
             return View(viewModel);
         }
+
+        public AssignmentProjectViewModel Create()
+        {
+            //TODO:
+            return null;
+        }
+
+        public AssignmentProjectViewModel Edit()
+        {
+            //TODO:
+            return null;
+        }
     }
 }
