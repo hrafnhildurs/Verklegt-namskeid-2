@@ -48,14 +48,23 @@ namespace Mooshak2._0.Services
         {
             if (model != null)
             {
-                AssignmentProjectViewModel newProject = new AssignmentProjectViewModel()
+                AssignmentProject newPr = new AssignmentProject
                 {
                     ProjectName = model.ProjectName,
+                    AssignmentID = model.AssignmentID,
                     Description = model.Description,
                     Weight = model.Weight
                 };
+                _db.Projects.Add(newPr);
 
-               // _db.Projects.Add(newProject);
+                AssignmentProjectViewModel newProject = new AssignmentProjectViewModel()
+                {
+                    ProjectName = model.ProjectName,
+                    AssignmentID = model.AssignmentID,
+                    Description = model.Description,
+                    Weight = model.Weight
+                };
+                //_db.Projects.Add(newProject);
                 _db.SaveChanges();
                 return newProject;
             }
