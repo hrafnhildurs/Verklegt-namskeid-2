@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Mooshak2._0.Models.Entities;
 
 namespace Mooshak2._0.Services
 {
@@ -15,6 +16,22 @@ namespace Mooshak2._0.Services
         {
             _db = new ApplicationDbContext();
         }
+
+        public List<AssignmentViewModel> GetAllAssignments()
+        {
+            List<Assignment> assignments = _db.Assignments.ToList();
+
+            List<AssignmentViewModel> result = new List<AssignmentViewModel>();
+
+            foreach (var tmp in assignments)
+            {
+                result.Add(new AssignmentViewModel() { assignmentTitle = tmp.AssignmentName });
+            }
+
+            return result;
+        }
+
+
         public List<AssignmentViewModel> GetAssignmentsInCourse(int courseID)
         {
             //TODO:
