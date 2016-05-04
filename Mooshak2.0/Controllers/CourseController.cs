@@ -19,12 +19,12 @@ namespace Mooshak2._0.Controllers
 
 
         // Returns a list of courses
-        public ActionResult Index()
-        {
+        //public ActionResult Index()
+        //{
             //athuga þetta
-            List<CourseViewModel> model = _service.GetAllCourses();
-            return View();
-        }
+            //List<CourseViewModel> model = _service.GetAllCourses();
+            //return View();
+        //}
 
         // Create a new course in mooshak (from RU database)
         public ActionResult Create()

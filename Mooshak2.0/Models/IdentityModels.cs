@@ -28,6 +28,7 @@ namespace Mooshak2._0.Models
         public DbSet<Assignment> Assignments { get; set; }
         public DbSet<AssignmentProject> Projects { get; set; }
         public DbSet<Course> Courses { get; set; }
+        // þarf ekki að vera subbmission hér líka?
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
