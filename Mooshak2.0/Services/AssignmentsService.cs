@@ -55,14 +55,11 @@ namespace Mooshak2._0.Services
                 {
                     projectTitle = x.ProjectName
                 }).ToList();
-
-
             //make new viewModel
             var viewModel = new AssignmentViewModel
             {
-                assignmentName = assignment.AssignmentName,
-                projects = projects,
-                //projectDescription =  description
+                assignmentTitle = assignment.AssignmentName,
+                Projects = projects,
             };
 
             //return the viewModel
