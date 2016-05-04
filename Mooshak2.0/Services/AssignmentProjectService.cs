@@ -18,10 +18,9 @@ namespace Mooshak2._0.Services
             _db = new ApplicationDbContext();
         }
 
-        [HttpGet]
-        public AssignmentProject AddToDB()
+        public AssignmentProjectViewModel AddToDB()
         {
-            AssignmentProject model = new AssignmentProject();
+            AssignmentProjectViewModel model = new AssignmentProjectViewModel();
             model.ProjectName = "";
             model.Weight = 0;
             model.Description = "";
@@ -30,12 +29,11 @@ namespace Mooshak2._0.Services
 
         }
 
-        [HttpPost]
-        public AssignmentProject AddToDB(AssignmentProject model)
+        public AssignmentProjectViewModel AddToDB(AssignmentProjectViewModel model)
         {
             if (ModelState.IsValid)
             {
-                AssignmentProject newProject = new AssignmentProject()
+                AssignmentProjectViewModel newProject = new AssignmentProjectViewModel()
                 {
                     ProjectName = model.ProjectName,
                     Description = model.Description,
@@ -54,16 +52,16 @@ namespace Mooshak2._0.Services
 
         }
 
-        public AssignmentProject GetProjectByID(int ID)
+        public AssignmentProjectViewModel GetProjectByID(int ID)
         {
-            AssignmentProject result = (from project in _db.Projects
+            AssignmentProjectViewModel result = (from project in _db.Projects
                             where project.ID == ID
                             select project).SingleOrDefault();
 
             return result;
         }
 
-        public AssignmentProject GetProjectsInAssignment(int AssignmentID)
+        public AssignmentProjectViewModel GetProjectsInAssignment(int AssignmentID)
         {
             var result = (from project in _db.Projects
                                         where project.ID == AssignmentID
