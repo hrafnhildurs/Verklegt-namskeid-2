@@ -7,10 +7,10 @@ namespace Mooshak2._0.Models.ViewModels
 {
     public class AssignmentViewModel
     {
-        public string assignmentName { get; set; }
-        public int assignmentID { get; set; }
-        public int courseID { get; set; }
+        public string AssignmentName { get; set; }
+        public int AssignmentID { get; set; }
+        public int CourseID { get; set; }
 
-        public List<AssignmentProjectViewModel> projects { get; set; }
+        public List<AssignmentProjectViewModel> Projects { get; set; }
     }
 }
