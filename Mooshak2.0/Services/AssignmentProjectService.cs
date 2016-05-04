@@ -18,6 +18,7 @@ namespace Mooshak2._0.Services
             _db = new ApplicationDbContext();
         }
 
+        [HttpGet]
         public AssignmentProjectViewModel AddToDB()
         {
             AssignmentProjectViewModel model = new AssignmentProjectViewModel();
