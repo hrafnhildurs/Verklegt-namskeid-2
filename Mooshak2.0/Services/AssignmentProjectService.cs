@@ -18,6 +18,11 @@ namespace Mooshak2._0.Services
             _db = new ApplicationDbContext();
         }
 
+        public AssignmentProject GetAllProjects()
+        {
+            return null;
+        }
+
         [HttpGet]
         public AssignmentProject AddToDB()
         {
