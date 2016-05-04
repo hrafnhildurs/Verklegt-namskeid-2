@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using Mooshak2._0.Models.Entities;
 using Mooshak2._0.Models;
@@ -18,6 +19,19 @@ namespace Mooshak2._0.Services
             _db = new ApplicationDbContext();
         }
 
+        public List<AssignmentProjectViewModel> GetAllProjects()
+        {
+            List<AssignmentProject> projects = _db.Projects.ToList();
+            List<AssignmentProjectViewModel> viewModel = new List<AssignmentProjectViewModel>();
+
+            foreach (var tmp in projects)
+            {
+                viewModel.Add(new AssignmentProjectViewModel() { ProjectName = tmp.ProjectName });
+            }
+
+            return viewModel;
+        }
+
         [HttpGet]
         public AssignmentProjectViewModel AddToDB()
         {
@@ -32,7 +46,7 @@ namespace Mooshak2._0.Services
 
         public AssignmentProjectViewModel AddToDB(AssignmentProjectViewModel model)
         {
-            if (ModelState.IsValid)
+            if (model != null)
             {
                 AssignmentProjectViewModel newProject = new AssignmentProjectViewModel()
                 {
@@ -41,7 +55,7 @@ namespace Mooshak2._0.Services
                     Weight = model.Weight
                 };
 
-                _db.Projects.Add(newProject);
+               // _db.Projects.Add(newProject);
                 _db.SaveChanges();
                 return newProject;
             }
@@ -55,20 +69,50 @@ namespace Mooshak2._0.Services
 
         public AssignmentProjectViewModel GetProjectByID(int ID)
         {
-            AssignmentProjectViewModel result = (from project in _db.Projects
-                            where project.ID == ID
-                            select project).SingleOrDefault();
+            //get the project
+            var project = _db.Projects.SingleOrDefault(x => x.ID == ID);
 
-            return result;
+            //if the project doesn't exist
+            if (project == null)
+            {
+                //TODO: kasta villu!
+            }
+
+  
+            var viewModel = new AssignmentProjectViewModel()
+            {
+                ProjectName = project.ProjectName,
+            };
+
+            //return the viewModel
+            return viewModel;
+
+            /*  AssignmentProjectViewModel result = (from project in _db.Projects
+                              where project.ID == ID
+                              select project).SingleOrDefault();
+
+              return result;
+              */
         }
 
-        public AssignmentProjectViewModel GetProjectsInAssignment(int AssignmentID)
+        public List<AssignmentProjectViewModel> GetProjectsInAssignment(int AssignmentID)
         {
+            //get the projects that are a part of this assignment
+            var projects = _db.Projects.Where(x => x.AssignmentID == AssignmentID).
+                Select(x => new AssignmentProjectViewModel
+                {
+                    ProjectName = x.ProjectName
+                }).ToList();
+
+            //return the viewModel
+            return projects;
+            /*
             var result = (from project in _db.Projects
-                                        where project.ID == AssignmentID
+                                        where project.I == AssignmentID
                                         select project).ToList();
 
             return result;
+            */
         }
         /*
             GetProjectsInAssignment

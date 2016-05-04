@@ -16,5 +16,6 @@ namespace Mooshak2._0.Models.ViewModels
         public int Weight { get; set; }
 
         public string Description { get; set; }
+
     }
 }

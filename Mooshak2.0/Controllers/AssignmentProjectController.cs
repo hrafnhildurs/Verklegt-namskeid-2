@@ -1,12 +1,8 @@
-﻿using System;
+﻿using Mooshak2._0.Models.ViewModels;
+using Mooshak2._0.Services;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Mooshak2._0.Models;
-using Mooshak2._0.Models.ViewModels;
-using Mooshak2._0.DAL;
-using Mooshak2._0.Services;
 
 namespace Mooshak2._0.Controllers
 {
@@ -20,7 +16,7 @@ namespace Mooshak2._0.Controllers
         {
             List<AssignmentProjectViewModel> model = _service.GetAllProjects();
 
-            return View(model);
+            return View();
         }
 
         [HttpGet]
