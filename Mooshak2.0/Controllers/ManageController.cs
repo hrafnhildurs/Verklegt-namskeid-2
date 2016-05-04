@@ -67,6 +67,7 @@ namespace Mooshak2._0.Controllers
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
+                FullName = User.Identity.GetUserName(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),

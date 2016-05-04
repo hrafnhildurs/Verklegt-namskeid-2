@@ -65,6 +65,11 @@ namespace Mooshak2._0.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Name")]
+        [DataType(DataType.Text)]
+        public string FullName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
