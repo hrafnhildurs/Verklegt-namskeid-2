@@ -17,6 +17,7 @@ namespace Mooshak2._0.Models
             // Add custom user claims here
             return userIdentity;
         }
+        public string FullName { get; set; }
     }
 
 
