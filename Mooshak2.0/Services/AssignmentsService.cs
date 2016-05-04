@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Mooshak2._0.Models.Entities;
+using System.Web.Mvc;
 
 namespace Mooshak2._0.Services
 {
@@ -25,7 +26,7 @@ namespace Mooshak2._0.Services
 
             foreach (var tmp in assignments)
             {
-                result.Add(new AssignmentViewModel() { assignmentTitle = tmp.AssignmentName });
+                result.Add(new AssignmentViewModel() { AssignmentName = tmp.AssignmentName });
             }
 
             return result;
@@ -53,15 +54,15 @@ namespace Mooshak2._0.Services
             var projects = _db.Projects.Where(x => x.AssignmentID == assignmentID).
                 Select(x => new AssignmentProjectViewModel
                 {
-                    projectTitle = x.ProjectName
+                    ProjectName = x.ProjectName
                 }).ToList();
 
 
             //make new viewModel
             var viewModel = new AssignmentViewModel
             {
-                assignmentName = assignment.AssignmentName,
-                projects = projects,
+                AssignmentName = assignment.AssignmentName,
+                Projects = projects,
                 //projectDescription =  description
             };
 
@@ -69,10 +70,23 @@ namespace Mooshak2._0.Services
             return viewModel;
         }
 
-        public AssignmentViewModel DeleteAssignmentByID(int id)
+        [HttpPost]
+        public AssignmentViewModel DeleteAssignmentByID(int? id)
         {
-            //TODO:
+            if(id.HasValue)
+            {
+                Assignment assignment = _db.Assignments.Where(x => x.ID == id.Value).SingleOrDefault();
+                if (assignment != null)
+                {
+                    _db.Assignments.Remove(assignment);
+                    _db.SaveChanges();
+
+                    return null;
+                }
+            }
+
             return null;
+
         }
 
         public AssignmentProjectViewModel AddToDB()
