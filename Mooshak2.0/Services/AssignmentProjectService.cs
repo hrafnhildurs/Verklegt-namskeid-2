@@ -19,19 +19,19 @@ namespace Mooshak2._0.Services
         }
 
         [HttpGet]
-        public ActionResult AddToDB()
+        public AssignmentProject AddToDB()
         {
             AssignmentProject model = new AssignmentProject();
             model.ProjectName = "";
             model.Weight = 0;
             model.Description = "";
 
-            return View(model);
+            return model;
 
         }
 
         [HttpPost]
-        public ActionResult AddToDB(AssignmentProject model)
+        public AssignmentProject AddToDB(AssignmentProject model)
         {
             if (ModelState.IsValid)
             {
@@ -44,13 +44,13 @@ namespace Mooshak2._0.Services
 
                 _db.Projects.Add(newProject);
                 _db.SaveChanges();
-                return RedirectToAction("Index");
+                return newProject;
             }
 
             model.ProjectName = "";
             model.Weight = 0;
             model.Description = "";
-            return View(model);
+            return model;
 
         }
 
