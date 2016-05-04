@@ -55,7 +55,6 @@ namespace Mooshak2._0.Services
                 {
                     projectTitle = x.ProjectName
                 }).ToList();
-
             //make new viewModel
             var viewModel = new AssignmentViewModel
             {
@@ -72,5 +71,12 @@ namespace Mooshak2._0.Services
             //TODO:
             return null;
         }
+
+        public AssignmentProjectViewModel AddToDB()
+        {
+            //TODO:
+            return null;
+        }
+
     }
 }

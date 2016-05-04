@@ -8,7 +8,6 @@ namespace Mooshak2._0.Models.ViewModels
     public class AssignmentViewModel
     {
         public string assignmentTitle { get; set; }
-
         public List<AssignmentProjectViewModel> Projects { get; set; }
     }
 }

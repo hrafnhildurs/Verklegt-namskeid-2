@@ -1,9 +1,6 @@
 ﻿using Mooshak2._0.Models.ViewModels;
 using Mooshak2._0.Services;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Mooshak2._0.Controllers
@@ -32,6 +29,18 @@ namespace Mooshak2._0.Controllers
             var viewModel = _service.DeleteAssignmentByID(id);
 
             return View(viewModel);
+        }
+
+        public AssignmentProjectViewModel Create()
+        {
+            //TODO:
+            return null;
+        }
+
+        public AssignmentProjectViewModel Edit()
+        {
+            //TODO:
+            return null;
         }
     }
 }

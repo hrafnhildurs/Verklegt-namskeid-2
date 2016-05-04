@@ -7,8 +7,10 @@ namespace Mooshak2._0.Models.ViewModels
 {
     public class AssignmentProjectViewModel
     {
-        public string projectTitle { get; set; }
+        public string ProjectName { get; set; }
 
-        public string projectDescription { get; set; }
+        public int Weight { get; set; }
+
+        public string Description { get; set; }
     }
 }
