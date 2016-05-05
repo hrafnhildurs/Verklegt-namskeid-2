@@ -45,7 +45,7 @@ namespace Mooshak2._0.Services
         }
 
         public AssignmentProjectViewModel AddToDB(AssignmentProjectViewModel model)
-        {
+        {/*
             if (model != null)
             {
                 AssignmentProject newPr = new AssignmentProject
@@ -55,7 +55,7 @@ namespace Mooshak2._0.Services
                     Description = model.Description,
                     Weight = model.Weight
                 };
-                _db.Projects.Add(newPr);
+                //_db.Projects.Add(newPr);
 
                 AssignmentProjectViewModel newProject = new AssignmentProjectViewModel()
                 {
@@ -73,7 +73,8 @@ namespace Mooshak2._0.Services
             model.Weight = 0;
             model.Description = "";
             return model;
-
+            */
+            return null;
         }
 
         public AssignmentProjectViewModel GetProjectByID(int ID)
