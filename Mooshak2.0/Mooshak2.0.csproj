@@ -292,11 +292,19 @@
     <Content Include="Views\Assignments\Details.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\User\CreateMultiple.cshtml" />
+    <Content Include="Views\User\Edit.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\AssignmentProject\" />
-    <Folder Include="Views\Course\" />
     <Folder Include="Views\Submission\" />
     <Folder Include="Views\User\" />
   </ItemGroup>

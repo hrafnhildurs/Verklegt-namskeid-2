@@ -67,30 +67,54 @@ namespace Mooshak2._0.Services
             //return the viewModel
             return viewModel;
         }
-
-        [HttpPost]
-        public AssignmentViewModel DeleteAssignmentByID(int? id)
+        //er ekki alveg viss hvað er að gerast hérna ... hverju á ég að returna ??
+        public void DeleteAssignmentByID(int? assignmentID)
         {
-            if(id.HasValue)
+            if(assignmentID.HasValue)
             {
-                Assignment assignment = _db.Assignments.Where(x => x.ID == id.Value).SingleOrDefault();
+                Assignment assignment = _db.Assignments.Where(x => x.ID == assignmentID.Value).SingleOrDefault();
                 if (assignment != null)
                 {
                     _db.Assignments.Remove(assignment);
                     _db.SaveChanges();
-
-                    return null;
                 }
             }
-
-            return null;
+            else
+            {
+                //kasta Villu
+            }
 
         }
 
-        public AssignmentProjectViewModel AddToDB()
+        public AssignmentViewModel AddToDB(int id)
         {
             //TODO:
             return null;
+        }
+
+        public AssignmentViewModel CreateAssignmentByID(int id)
+        {
+            //TODO:
+            return null;
+        }
+
+        public void EditAssignmentByID(int? id, AssignmentViewModel model)
+        {
+            if (id.HasValue)
+            {
+                Assignment assignment = _db.Assignments.Where(x => x.ID == id.Value).SingleOrDefault();
+                if (assignment != null)
+                {
+                    model.CourseID = assignment.CourseID;
+                    model.Deadline = assignment.Deadline;
+                    model.AssignmentName = assignment.AssignmentName;
+                    _db.SaveChanges();
+                }
+            }
+            else
+            {
+                //kasta villu!
+            }
         }
 
     }

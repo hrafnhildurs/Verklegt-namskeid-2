@@ -26,11 +26,19 @@ namespace Mooshak2._0.Controllers
             //return View();
         //}
 
+
+        public ActionResult Index()
+        {
+            ViewBag.test = "Raggi er bestur";
+            return View();
+        }
+
         // Create a new course in mooshak (from RU database)
         public ActionResult Create()
         {
             //TODO
-            return null;
+            ViewBag.test = "Raggi er bestur";
+            return View();
         }
 
         // Change a course that already exists in Mooshak
