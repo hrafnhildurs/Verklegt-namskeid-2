@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -52,7 +53,6 @@ namespace Mooshak2._0.Controllers
                 _userManager = value;
             }
         }
-
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -154,11 +154,26 @@ namespace Mooshak2._0.Controllers
             {
                 var user = new ApplicationUser { UserName = model.FullName, Email = model.Email };
                 user.FullName = model.FullName;
+               
                 var result = await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+                    ManageRoles addTo = new ManageRoles();
+                    if (model.isAdministrator == true)
+                    {
+                        addTo.AddUserToRole(user.Id, "Administrator");
+                    }
+                    if (model.isTeacher == true)
+                    {
+                        addTo.AddUserToRole(user.Id, "Teacher");
+                    }
+                    if (model.isStudent == true)
+                    {
+                        addTo.AddUserToRole(user.Id, "Student");
+                    }
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -341,9 +356,9 @@ namespace Mooshak2._0.Controllers
             base.Dispose(disposing);
         }
 
-        #region Helpers
-        // Used for XSRF protection when adding external logins
-        private const string XsrfKey = "XsrfId";
+    #region Helpers
+    // Used for XSRF protection when adding external logins
+    private const string XsrfKey = "XsrfId";
 
         private IAuthenticationManager AuthenticationManager
         {
@@ -366,6 +381,10 @@ namespace Mooshak2._0.Controllers
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
+            }
+            if (User.IsInRole("Administrator"))
+            {
+                return RedirectToAction("Index", "User");
             }
             return RedirectToAction("Index", "Home");
         }
