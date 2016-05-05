@@ -124,7 +124,6 @@ namespace Mooshak2._0.Services
             */
         }
         /*
-            GetProjectsInAssignment
             DeleteProjectByID
             SubmitByID
             ExportByID
