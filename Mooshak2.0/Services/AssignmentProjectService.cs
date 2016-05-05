@@ -12,7 +12,7 @@ namespace Mooshak2._0.Services
 {
     public class AssignmentProjectService
     {
-        //Instance of DbContext
+        //Instance of DBContext
         private ApplicationDbContext _db;
         public AssignmentProjectService()
         {
@@ -70,7 +70,7 @@ namespace Mooshak2._0.Services
                 //TODO: kasta villu!
             }
 
-  
+
             var viewModel = new AssignmentProjectViewModel()
             {
                 ProjectName = project.ProjectName,
