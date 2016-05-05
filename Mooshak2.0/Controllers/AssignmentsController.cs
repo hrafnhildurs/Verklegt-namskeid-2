@@ -24,12 +24,12 @@ namespace Mooshak2._0.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Delete(int id)
+        /*public ActionResult Delete(int id)
         {
-            var viewModel = _service.DeleteAssignmentByID(id);
+            //var viewModel = _service.DeleteAssignmentByID(id);
 
-            return View(viewModel);
-        }
+            //return View(viewModel);
+        }*/
 
         public ActionResult Create(int id)
         {
@@ -37,10 +37,10 @@ namespace Mooshak2._0.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Edit(int id)
+       /* public ActionResult Edit(int id)
         {
-            var viewModel = _service.EditAssignmentByID(id);
-            return View(viewModel);
-        }
+            //var viewModel = _service.EditAssignmentByID(id);
+            //return View(viewModel);
+        }*/
     }
 }
