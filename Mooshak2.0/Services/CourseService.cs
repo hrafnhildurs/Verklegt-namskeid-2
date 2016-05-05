@@ -27,6 +27,10 @@ namespace Mooshak2._0.Services
             return null;
         }
 
-        
+        //returns a list of all courses registered in the db for a given semester
+        public List<CourseViewModel> GetAllCourses(string semester)
+        {
+            return null;
+        }
     }
 }

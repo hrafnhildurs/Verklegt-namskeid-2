@@ -290,11 +290,14 @@
     <Content Include="Views\Assignments\Details.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\AssignmentProject\" />
-    <Folder Include="Views\Course\" />
     <Folder Include="Views\Submission\" />
   </ItemGroup>
   <ItemGroup>
