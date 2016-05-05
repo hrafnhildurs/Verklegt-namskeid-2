@@ -68,6 +68,7 @@ namespace Mooshak2._0.Controllers
             {
                 HasPassword = HasPassword(),
                 FullName = User.Identity.GetUserName(),
+                Email = await UserManager.GetEmailAsync(userId),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),

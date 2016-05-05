@@ -29,12 +29,12 @@ namespace Mooshak2._0.Models
         public DbSet<Assignment> Assignments { get; set; }
         public DbSet<AssignmentProject> Projects { get; set; }
         public DbSet<Course> Courses { get; set; }
-        // þarf ekki að vera subbmission hér líka?
+        public DbSet<Submission> Submissions { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-            Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
+            //Database.SetInitializer<ApplicationDbContext>(new DropCreateDatabaseIfModelChanges<ApplicationDbContext>());
         }
 
         public static ApplicationDbContext Create()
