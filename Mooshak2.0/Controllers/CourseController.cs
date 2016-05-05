@@ -1,51 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Web;
 using System.Web.Mvc;
+using Mooshak2._0.Models.ViewModels;
+using Mooshak2._0.Services;
 
 namespace Mooshak2._0.Controllers
 {
     public class CourseController : Controller
     {
-        //instance of the assignmentService
-        //private AssignmentsService _service = new AssignmentsService();
-        // GET: Assignments
-        //public ActionResult Index()
-        //{
-        //    List<AssignmentViewModel> model = _service.GetAllAssignments();
-        //    return View();
-        //}
-
-
-        // Returns a list of courses
-        //public ActionResult Index()
-        //{
-            //athuga þetta
-            //List<CourseViewModel> model = _service.GetAllCourses();
-            //return View();
-        //}
-
-
+        private CourseService _service = new CourseService();
+       
+        
         public ActionResult Index()
         {
-            ViewBag.test = "Raggi er bestur";
-            return View();
+            List<CourseViewModel> allCourses = _service.GetAllCourses();
+            return View(allCourses);
         }
 
         // Create a new course in mooshak (from RU database)
         public ActionResult Create()
         {
             //TODO
-            ViewBag.test = "Raggi er bestur";
             return View();
         }
 
         // Change a course that already exists in Mooshak
         public ActionResult Edit()
         {
-            //TODO
-            return null;
+            CourseViewModel course = new CourseViewModel();
+            course.CourseID = 1;
+            course.CourseName = "Forritun";
+            course.CourseNumber = "FFF-111";
+            course.Semester = "Spring 2016";
+
+            return View(course);
         }
 
         // Delete a course that already exists in Mooshak
@@ -55,11 +46,18 @@ namespace Mooshak2._0.Controllers
             return null;
         }
 
-        // Shows information course that already exists in Mooshak
+        // Shows information about a course that already exists in Mooshak
+        [HttpGet]
         public ActionResult Details()
         {
-            //TODO
-            return null;
+            //CourseViewModel course = _service.GetCourseByID(1);
+            CourseViewModel course = new CourseViewModel();
+            course.CourseID = 1;
+            course.CourseName = "Forritun";
+            course.CourseNumber = "FFF-111";
+            course.Semester = "Spring 2016";
+
+            return View(course);
         }
     }
 }
