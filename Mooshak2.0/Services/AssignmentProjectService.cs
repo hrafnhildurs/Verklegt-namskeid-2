@@ -12,7 +12,7 @@ namespace Mooshak2._0.Services
 {
     public class AssignmentProjectService
     {
-        //Instance of DbContext
+        //Instance of DBContext
         private ApplicationDbContext _db;
         public AssignmentProjectService()
         {
