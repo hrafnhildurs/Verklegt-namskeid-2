@@ -31,16 +31,16 @@ namespace Mooshak2._0.Controllers
             return View(viewModel);
         }
 
-        public AssignmentProjectViewModel Create()
+        public ActionResult Create(int id)
         {
-            //TODO:
-            return null;
+            var viewModel = _service.CreateAssignmentByID(id);
+            return View(viewModel);
         }
 
-        public AssignmentProjectViewModel Edit()
+        public ActionResult Edit(int id)
         {
-            //TODO:
-            return null;
+            var viewModel = _service.EditAssignmentByID(id);
+            return View(viewModel);
         }
     }
 }
