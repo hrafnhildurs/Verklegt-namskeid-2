@@ -378,18 +378,7 @@ namespace Mooshak2._0.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
-            if (User.IsInRole("Administrator"))
-            {
-                return RedirectToAction("Register", "Account");
-            }
-            if (User.IsInRole("Teacher"))
-            {
-                return RedirectToAction("Delete", "User");
-            }
-            if (User.IsInRole("Student"))
-            {
-                return RedirectToAction("Edit", "User");
-            }
+
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
