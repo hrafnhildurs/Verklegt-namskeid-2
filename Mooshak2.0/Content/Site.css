@@ -35,3 +35,10 @@ div.indexPage
     margin-right: auto;
     text-align: center;
 }
+
+table.userList
+{
+    border: 2pt solid black;
+    width: 800px;
+}
+

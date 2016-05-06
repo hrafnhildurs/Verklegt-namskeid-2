@@ -1,10 +1,66 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Mooshak2.0</title>
+        @{
+            ViewBag.Title = "Index";
+        }
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
 
-<h2>Index Hrafnhildur</h2>
+    </head>
+    <body>
+        <h2>User</h2>
 
-<!--Hér þarf að vera listi í töflu yfir alla notendur úr gagnagrunni. Leitarbox fyrir ofan. Fyrir neðan [create] [create multi]
-    vinstra megin er hægt að velja [user] eða [course]-->
+        <nav>
+            <button id="userBtn">User</button>
+            <button id="courseBtn">Course</button>
+        </nav>
+
+        <table class="userList">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>SSN</th>
+                    <th>RU-username</th>
+                    <th>Role</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jón Jónsson</td>
+                    <td>100688-2129</td>
+                    <td>jonjons15@ru.is</td>
+                    <td>Student</td>
+                </tr>
+            @*   @foreach (var user in User)
+               {
+                   Console.WriteLine(
+                    "<tr>"
+
+                        "<td>" + user.FullName + "</td>"
+
+                        "<td>" + user.SSN + "</td>"
+
+                        "<td>" + user.Username + "</td>"
+
+                        "<td>" + user.Role + "</td>"
+
+                    "</tr>"
+               } 
+                *@
+            </tbody>
+        </table>
+        <button id="createUserBtn">Create User</button>
+        <button id="createMultiBtn">Create Multiple Users</button>
+    </body>
+ </html>
+                   
+
+
+                                          <!--Hér þarf að vera listi í töflu yfir alla notendur úr gagnagrunni. Leitarbox fyrir ofan. Fyrir neðan [create] [create multi]
+               vinstra megin er hægt að velja [user] eða [course]-->
 
