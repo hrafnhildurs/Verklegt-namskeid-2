@@ -27,7 +27,7 @@ div.indexPage
 {
     height: 500px;
     width: 700px;
-    background-image: url(/Image/muushak.png);
+    background-image: url(/Content/Images/muushak.png);
     background-repeat:no-repeat;
     background-position: center;
     background-color: white;
@@ -58,4 +58,9 @@ tr:nth-child(even)
 th
 {
     border-bottom: 1px solid black;
+}
+.container
+{
+    margin: auto;
+
 }
