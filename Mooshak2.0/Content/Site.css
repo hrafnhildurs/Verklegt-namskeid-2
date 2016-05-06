@@ -35,3 +35,17 @@ div.indexPage
     margin-right: auto;
     text-align: center;
 }
+
+table.userList
+{
+    border: 2pt solid black;
+    width: 800px;
+}
+
+table.AssignmentTable{
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
