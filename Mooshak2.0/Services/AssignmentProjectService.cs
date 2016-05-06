@@ -109,11 +109,41 @@ namespace Mooshak2._0.Services
             }
         }
 
-            /*
-                SubmitByID
-                ExportByID
-            */
-
+        public void SubmitCode(Submission submission)
+        {
+            if (submission != null)
+            {
+                Submission newSub = new Submission
+                {
+                    Date = submission.Date,
+                    StudentID = submission.StudentID,
+                    ProjectID = submission.ProjectID,
+                    SubmittedCode = submission.SubmittedCode
+                };
+                _db.Submissions.Add(newSub);
+                _db.SaveChanges();
+            }
         }
+        public SubmissionViewModel ExportSubmissionByID(int? ID)
+        {
+            var submission = _db.Submissions.SingleOrDefault(x => x.ID == ID);
+
+            //if the project doesn't exist
+            if (submission == null)
+            {
+                //TODO: kasta villu!
+            }
+
+            var viewModel = new SubmissionViewModel()
+            {
+                Date = submission.Date,
+                StudentID = submission.StudentID,
+                ProjectID = submission.ProjectID,
+                SubmittedCode = submission.SubmittedCode
+            };
+
+            return viewModel;
+        }
+    }
 }
 
