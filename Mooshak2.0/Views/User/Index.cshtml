@@ -13,12 +13,20 @@
 
     </head>
     <body>
-        <h2>User</h2>
-
-        <nav>
+        <nav class="leftNav">
             <button id="userBtn">User</button>
             <button id="courseBtn">Course</button>
         </nav>
+
+        <div class="container">
+            <h3>User</h3>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">All Students</a></li>
+                <li><a href="#">Students</a></li>
+                <li><a href="#">Teachers</a></li>    <!-- hér þarf að sækja í gagnagrunn þau námskeið sem kennari er skráður fyrir-->
+                <li><a href="#">Administrators</a></li>
+            </ul>
+        </div>
 
         <table class="userList">
             <thead>

@@ -78,13 +78,6 @@ namespace Mooshak2._0.Services
 
             //return the viewModel
             return viewModel;
-
-            /*  AssignmentProjectViewModel result = (from project in _db.Projects
-                              where project.ID == ID
-                              select project).SingleOrDefault();
-
-              return result;
-              */
         }
 
         public List<AssignmentProjectViewModel> GetProjectsInAssignment(int AssignmentID)
@@ -98,19 +91,27 @@ namespace Mooshak2._0.Services
 
             //return the viewModel
             return projects;
-            /*
-            var result = (from project in _db.Projects
-                                        where project.I == AssignmentID
-                                        select project).ToList();
-
-            return result;
-            */
         }
-        /*
-            DeleteProjectByID
-            SubmitByID
-            ExportByID
-        */
 
-    }
+        public void DeleteProjectByID(int? ID)
+        {
+            //if ID exists
+            if (ID.HasValue)
+            {
+                //find the project and assign it to instance
+                AssignmentProject project = _db.Projects.Where(x => x.ID == ID).SingleOrDefault();
+                if (project != null)
+                {
+                    //delete it from the database
+                    _db.Projects.Remove(project);
+                    _db.SaveChanges();
+                }
+            }
+
+            /*
+                SubmitByID
+                ExportByID
+            */
+
+        }
 }
