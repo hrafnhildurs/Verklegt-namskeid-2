@@ -1,10 +1,67 @@
-﻿
-@{
-    ViewBag.Title = "Create";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Create User</title>
+</head>
+<body>
+    <fieldset>
+        <form action="#" method="get">
+            <label for="Name">Name:</label>
+            <input type="text" id="Name" />
+            <br />
+            <label for="SSN">SSN:</label>
+            <input type="text" id="SSN" />
+            <br />
+            <label for="RU-ID">RU-ID:</label>
+            <input type="text" id="RU-ID" />
+            <br />
+            <input type="submit" value="Search" />
+            <br />
+        </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>SSN</th>
+                        <th>RU-ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jon Jonsson</td>
+                        <td>230587-5549</td>
+                        <td>jonjons14@ru.is</td>
 
-<h2>Create - Kolla</h2>
+                        <!--Hér þarf að sækja í gagnagrunn til að byrta í töflunni-->
+
+                    </tr>
+                </tbody>
+            </table>
+            <br/>
+            <label for="Role">Role:</label>
+            <select id="Role">
+                <option value="teacher">Teacher</option>
+                <option value="student">Student</option>
+            </select>
+            <br/>
+
+            <label for="Course">Course:</label>
+            <select id="Course">
+                <option value="dataStructure">Data Structure</option>
+                <option value="programming">Programming</option>
+
+                <!-- Hér þarf að sækja þau násmkeið sem búið er að skrá úr gagnagrunni og byrta í dropdown lista-->
+
+            </select>
+            <br/>
+            <input type="button" value="Cancel" />
+            <input type="Submit" value="Create" />
+    </fieldset>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/content/site")
 
 
-<!--Hér á að vera POST form þar sem hægt er að búa til user(sjá prototypu)-->
+</body>
+</html>
 
