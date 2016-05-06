@@ -148,7 +148,7 @@ namespace Mooshak2._0.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -180,7 +180,7 @@ namespace Mooshak2._0.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);
             }
@@ -378,14 +378,11 @@ namespace Mooshak2._0.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
+
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);
-            }
-            if (User.IsInRole("Administrator"))
-            {
-                return RedirectToAction("Index", "User");
-            }
+            } 
             return RedirectToAction("Index", "Home");
         }
 

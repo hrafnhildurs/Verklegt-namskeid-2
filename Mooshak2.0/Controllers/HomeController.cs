@@ -24,6 +24,19 @@ namespace Mooshak2._0.Controllers
             {
                 manager.CreateRole("Teacher");
             }
+
+            if (User.IsInRole("Administrator"))
+            {
+                return RedirectToAction("Register", "Account");
+            }
+            if (User.IsInRole("Teacher"))
+            {
+                return RedirectToAction("Delete", "User");
+            }
+            if (User.IsInRole("Student"))
+            {
+                return RedirectToAction("Edit", "User");
+            }
             return View();
         }
 

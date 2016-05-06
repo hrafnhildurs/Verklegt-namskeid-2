@@ -11,11 +11,18 @@ namespace Mooshak2._0.Controllers
         // GET: User
         public ActionResult Index()
         {
-            if (User.IsInRole("Administrator"))
-            {
-                return View();
-            }
+            return View();
+        }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
+        public ActionResult Delete()
+        {
             return View();
         }
     }
+
 }
