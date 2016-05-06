@@ -16,7 +16,8 @@ namespace Mooshak2._0.Controllers
         
         public ActionResult Index()
         {
-            List<CourseViewModel> allCourses = _service.GetAllCourses();
+            //List<CourseViewModel> allCourses = _service.GetAllCourses();
+            var allCourses = _service.GetCourseByID(1);
             return View(allCourses);
         }
 
@@ -33,7 +34,7 @@ namespace Mooshak2._0.Controllers
             CourseViewModel course = new CourseViewModel();
             course.CourseID = 1;
             course.CourseName = "Forritun";
-            course.CourseNumber = "FFF-111";
+            course.CourseNumber = "T-111-Prog";
             course.Semester = "Spring 2016";
 
             return View(course);

@@ -12,6 +12,6 @@ namespace Mooshak2._0.Models.ViewModels
         public string CourseName { get; set; }
         public string Semester { get; set; }
         
-        public List<CourseViewModel> courses { get; set; }
+        //public List<CourseViewModel> courses { get; set; }
     }
 }

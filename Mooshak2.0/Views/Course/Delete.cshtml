@@ -3,5 +3,18 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Delete course</h2>
+
+<form>
+    <div class="form-group">
+        <label for="">Course number</label>
+        <input type="text" class="form-control" id="" value="@Model.CourseNumber">
+        <label for="">Course name</label>
+        <input type="text" class="form-control" id="" value="@Model.CourseName">
+        <label for="">Semester</label>
+        <input type="text" class="form-control" id="" value="@Model.Semester">
+    </div>
+    <input type="submit" value="Submit" class="btn btn-success">
+
+</form>
 

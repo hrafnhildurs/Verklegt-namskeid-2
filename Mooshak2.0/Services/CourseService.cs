@@ -47,7 +47,7 @@ namespace Mooshak2._0.Services
             return null;
         }
 
-        //returns a list of all courses registered in the db for a given semester
+        //returns a list of all courses registered in the db.
         public List<CourseViewModel> GetAllCourses()
         {
             List<Course> courses = _db.Courses.ToList();
