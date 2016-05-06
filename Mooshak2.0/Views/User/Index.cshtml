@@ -12,56 +12,74 @@
         @Scripts.Render("~/bundles/modernizr")
 
     </head>
-    <body>
-        <nav class="leftNav">
-            <button id="userBtn">User</button>
-            <button id="courseBtn">Course</button>
-        </nav>
+<body>
+    <nav class="leftNav">
+        <button id="userBtn">User</button>
+        <button id="courseBtn">Course</button>
+    </nav>
 
-        <div class="container">
-            <h3>User</h3>
-            <ul class="nav nav-tabs">
-                <li class="active"><a href="#">All Students</a></li>
-                <li><a href="#">Students</a></li>
-                <li><a href="#">Teachers</a></li>    <!-- hér þarf að sækja í gagnagrunn þau námskeið sem kennari er skráður fyrir-->
-                <li><a href="#">Administrators</a></li>
-            </ul>
+    <h3>User</h3>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#AllUsers">All Users</a></li>
+            <li><a data-toggle="tab" href="#Students">Students</a></li>
+            <li><a data-toggle="tab" href="#Teachers">Teachers</a></li>
+            <li><a data-toggle="tab" href="#Administrators">Administrators</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="AllStudents" class="tab-pane fade in active">
+                <br />
+                <p>Table that shows list of all Users</p>
+                <br />
+
+                <table class="UserTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>SSN</th>
+                            <th>RU-username</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jón Jónsson</td>
+                            <td>100688-2129</td>
+                            <td>jonjons15@ru.is</td>
+                            <td>Student</td>
+                        </tr>
+                        @*   @foreach (var user in User)
+                            {
+                                Console.WriteLine(
+                                 "<tr>"
+
+                                     "<td>" + user.FullName + "</td>"
+
+                                     "<td>" + user.SSN + "</td>"
+
+                                     "<td>" + user.Username + "</td>"
+
+                                     "<td>" + user.Role + "</td>"
+
+                                 "</tr>"
+                            }
+                        *@
+                    </tbody>
+                </table>
+            </div>
+            <div id="Students" class="tab-pane fade">
+                <p>Table that shows list of Students</p>
+            </div>
+            <div id="Teachers" class="tab-pane fade">
+                <p>Table that shows list of Teachers</p>
+            </div>
+            <div id="Administrators" class="tab-pane fade">
+                <p>Table that shows list of Administrators</p>
+            </div>
         </div>
+    </div>
 
-        <table class="userList">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>SSN</th>
-                    <th>RU-username</th>
-                    <th>Role</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Jón Jónsson</td>
-                    <td>100688-2129</td>
-                    <td>jonjons15@ru.is</td>
-                    <td>Student</td>
-                </tr>
-            @*   @foreach (var user in User)
-               {
-                   Console.WriteLine(
-                    "<tr>"
-
-                        "<td>" + user.FullName + "</td>"
-
-                        "<td>" + user.SSN + "</td>"
-
-                        "<td>" + user.Username + "</td>"
-
-                        "<td>" + user.Role + "</td>"
-
-                    "</tr>"
-               } 
-                *@
-            </tbody>
-        </table>
         <button id="createUserBtn">Create User</button>
         <button id="createMultiBtn">Create Multiple Users</button>
     </body>
