@@ -1,19 +1,62 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-   Assignments
+   <title>Assignments</title>
 </head>
 <body>
-    <h2>Assignments</h2>
-
+    <h3>Assignments</h3>
     <div class="container">
-        <h3>Assignments</h3>
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#">All courses</a></li>
-            <li><a href="#">Data structure</a></li>
-            <li><a href="#">Problem solving</a></li>    <!-- hér þarf að sækja í gagnagrunn þau námskeið sem kennari er skráður fyrir-->
-            <li><a href="#">Algorithms</a></li>
+            <li class="active"><a data-toggle="tab" href="#AllCourses">All courses</a></li>
+            <li><a data-toggle="tab" href="#DataStructure">Data structure</a></li>
+            <li><a data-toggle="tab" href="#ProblemSolving">Problem solving</a></li>
+            <li><a data-toggle="tab" href="#Algorithms">Algorithms</a></li>
         </ul>
+        <div class="tab-content">
+            <div id="AllCourses" class="tab-pane fade in active">
+                <br/>
+                <p>Table that shows assignments in all courses</p>
+                <br/>
+                <table class="AssignmentTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Deadline</th>
+                            <th>Submissions</th>
+                            <th>Course</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lab 10</td>
+                            <td>23:59 05.05.16</td> <!--Hér þarf að sækja upplýsingar í gagnagrunn til að byrta í töflunni-->
+                            <td>54</td>
+                            <td>Data Sructure</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+            <div id="DataStructure" class="tab-pane fade">
+                <p>Table that shows assignments in Data structure</p>
+            </div>
+            <div id="ProblemSolving" class="tab-pane fade">
+                <p>Table that shows assignments in Problem solving</p>
+            </div>
+            <div id="Algorithms" class="tab-pane fade">
+                <p>Table that shows assignments in Algorithms</p>
+            </div>
+        </div>
+
     </div>
+
+
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@Scripts.Render("~/content/site")
+    
+
 </body>
 </html>

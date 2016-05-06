@@ -42,3 +42,10 @@ table.userList
     width: 800px;
 }
 
+table.AssignmentTable{
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
