@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201605041156326_FullName.Designer.cs">
       <DependentUpon>201605041156326_FullName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605052306060_initial.cs" />
+    <Compile Include="Migrations\201605052306060_initial.Designer.cs">
+      <DependentUpon>201605052306060_initial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
@@ -306,7 +310,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\AssignmentProject\" />
     <Folder Include="Views\Submission\" />
-    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -322,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605041156326_FullName.resx">
       <DependentUpon>201605041156326_FullName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605052306060_initial.resx">
+      <DependentUpon>201605052306060_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
