@@ -5,8 +5,19 @@
 }
 
 <h2>Details</h2>
-@Model.CourseID
-@Model.CourseNumber
-@Model.CourseName
-@Model.Semester
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <th>Course number</th>
+        <th>Course name</th>
+        <th>Semester</th>
+    </tr>
+    </thead>
+    <tr>
+        <td>@Model.CourseNumber</td>
+        <td>@Model.CourseName</td>
+        <td>@Model.Semester</td>
+    </tr>
+</table>
 
+@Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary btn-large" })

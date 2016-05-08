@@ -1,19 +1,28 @@
-﻿
+﻿@model Mooshak2._0.Models.ViewModels.CourseViewModel
 @{
     ViewBag.Title = "Edit";
 }
 
 <h2>Edit course</h2>
-<form>
-    <div class="form-group">
-        <label for="">Course number</label>
-        <input type="text" class="form-control" id="" value="@Model.CourseNumber">
-        <label for="">Course name</label>
-        <input type="text" class="form-control" id="" value="@Model.CourseName">
-        <label for="">Semester</label>
-        <input type="text" class="form-control" id="" value="@Model.Semester">
-    </div>
-    <input type="submit" value="Submit" class="btn btn-success">
 
-</form>
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.HiddenFor(m => Model.CourseID)
+
+        <label for="">Course number</label>
+        @Html.TextBoxFor(m => Model.CourseNumber, new {@class = "form-control"})
+
+        <label for="">Course name</label>
+        @Html.TextBoxFor(m => Model.CourseName, new {@class = "form-control"})
+
+        <label for="">Semester</label>
+        @Html.TextBoxFor(m => Model.Semester, new {@class = "form-control"})
+        <!--<input type="text" class="form-control">-->
+    </div>
+    <input type="submit" value="Save" class="btn btn-success">
+
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary btn-large" })
+
+}
 

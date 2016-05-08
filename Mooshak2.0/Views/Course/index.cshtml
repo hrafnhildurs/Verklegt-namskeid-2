@@ -1,32 +1,34 @@
-﻿@model Mooshak2._0.Models.ViewModels.CourseViewModel
+﻿@model List<Mooshak2._0.Models.ViewModels.CourseViewModel>
 @{
     ViewBag.Title = "View";
 }
 
-@Model.CourseName
-<h2>View</h2>
-<table>
+<h2>List of all courses</h2>
+<table class="table table-bordered">
     <thead>
     <tr>
-        <th>Course ID</th>
+        <th>Course number</th>
         <th>Course name</th>
         <th>Semester</th>
+        <th> </th>
     </tr>
     </thead>
-    <tbody>
+    @foreach (var course in Model)
+    {
+        <tr>
+            <td>@course.CourseNumber</td>
+            <td>@course.CourseName</td>
+            <td>@course.Semester</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = course.CourseID}) |
+                @Html.ActionLink("Details", "Details", new {id = course.CourseID}) |
+                @Html.ActionLink("Delete", "Delete", new {id = course.CourseID})
+            </td>
+        </tr>
 
-    <tr>
-        <td>T-111-Prog</td>
-        <td>Forritun</td>
-        <td>Spring 2016</td>
-    </tr>
-    <tr>
-        <td>T-201-GSKI</td>
-        <td>Gagnaskipan</td>
-        <td>Spring 2016</td>
-    </tr>
-    <tr></tr>
-    <tr></tr>
-    </tbody>
+    }
+
 </table>
+
+@Html.ActionLink("Create a new course", "Create", null, new { @class = "btn btn-primary btn-large" })
 

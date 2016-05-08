@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Web;
 using System.Web.Mvc;
+using Mooshak2._0.Models.Entities;
 using Mooshak2._0.Models.ViewModels;
 using Mooshak2._0.Services;
 
@@ -13,50 +14,59 @@ namespace Mooshak2._0.Controllers
     {
         private CourseService _service = new CourseService();
        
-        
+        // creates a list of viewmodels (all courses)
         public ActionResult Index()
         {
-            //List<CourseViewModel> allCourses = _service.GetAllCourses();
-            var allCourses = _service.GetCourseByID(1);
+            List<CourseViewModel> allCourses = _service.GetAllCourses();
             return View(allCourses);
         }
 
-        // Create a new course in mooshak (from RU database)
+        // Create a new course in Mooshak
         public ActionResult Create()
         {
-            //TODO
             return View();
         }
 
-        // Change a course that already exists in Mooshak
-        public ActionResult Edit()
+        [HttpPost]
+        public ActionResult Create(CourseViewModel viewModel)
         {
-            CourseViewModel course = new CourseViewModel();
-            course.CourseID = 1;
-            course.CourseName = "Forritun";
-            course.CourseNumber = "T-111-Prog";
-            course.Semester = "Spring 2016";
+            _service.AddToDB(viewModel);
+
+            return RedirectToAction("index");
+
+        }
+
+        // Change a course that already exists in Mooshak
+        public ActionResult Edit(int id)
+        {
+            var course = _service.GetCourseByID(id);
 
             return View(course);
         }
 
-        // Delete a course that already exists in Mooshak
-        public ActionResult Delete()
+        // 
+        [HttpPost]
+        public ActionResult Edit(CourseViewModel course)
         {
-            //TODO
-            return null;
+            _service.EditCourseById(course);
+
+            return RedirectToAction("Index");
+        }
+
+        // Delete a course that already exists in Mooshak
+        public ActionResult Delete(int id)
+        {
+            _service.DeleteCourseByID(id);
+
+            return RedirectToAction("Index");
+            
         }
 
         // Shows information about a course that already exists in Mooshak
         [HttpGet]
-        public ActionResult Details()
+        public ActionResult Details(int id)
         {
-            //CourseViewModel course = _service.GetCourseByID(1);
-            CourseViewModel course = new CourseViewModel();
-            course.CourseID = 1;
-            course.CourseName = "Forritun";
-            course.CourseNumber = "FFF-111";
-            course.Semester = "Spring 2016";
+            CourseViewModel course = _service.GetCourseByID(id);
 
             return View(course);
         }

@@ -1,18 +1,24 @@
-﻿
+﻿@model Mooshak2._0.Models.ViewModels.CourseViewModel
 @{
     ViewBag.Title = "Create";
 }
-
-<h2>Create</h2>
-<form>
+<br>
+<br>
+<br>
+<h2>Create course</h2>
+@using (Html.BeginForm())
+{
     <div class="form-group">
         <label for="">Course number</label>
-        <input type="text" class="form-control" id="">
+        @Html.TextBoxFor(m => Model.CourseNumber, new { @class = "form-control" }) 
+     
         <label for="">Course name</label>
-        <input type="text" class="form-control" id="">
+        @Html.TextBoxFor(m => Model.CourseName, new { @class = "form-control" }) 
+       
         <label for="">Semester</label>
-        <input type="text" class="form-control" id="">
+        @Html.TextBoxFor(m => Model.Semester, new { @class = "form-control" }) 
+        <!--<input type="text" class="form-control">-->
     </div>
-    <input type="submit" value="Submit" class="btn btn-success">
+    <input type="submit" value="Save" class="btn btn-success">
 
-</form>
+}

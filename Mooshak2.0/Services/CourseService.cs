@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using Mooshak2._0.Models;
 using Mooshak2._0.Models.Entities;
+using System.Data.Entity.Validation;
 
 namespace Mooshak2._0.Services
 {
@@ -17,11 +18,20 @@ namespace Mooshak2._0.Services
             _db = new ApplicationDbContext();
         }
 
-        public CourseViewModel AddToDB()
+        // adds a course to the database
+        public void AddToDB(CourseViewModel viewModel)
         {
-            //TODO:
-            return null;
+            var model = new Course
+            {
+                CourseName = viewModel.CourseName,
+                CourseNumber = viewModel.CourseNumber,
+                Semester = viewModel.Semester
+            };
+            _db.Courses.Add(model);
+            _db.SaveChanges();
         }
+
+
 
         public CourseViewModel GetCourseByID(int courseId)
         {
@@ -33,21 +43,29 @@ namespace Mooshak2._0.Services
 
             var viewModel = new CourseViewModel
             {
+                CourseID =  course.ID,
                 CourseNumber = course.CourseNumber,
-                CourseName = course.CourseName
+                CourseName = course.CourseName,
+                Semester = course.Semester
+                
             };
 
             return viewModel;
         }
 
-
-        public CourseViewModel DeleteCourseByID(int courseId)
+        
+        public void DeleteCourseByID(int courseId)
         {
-            //TODO:
-            return null;
+            var course = _db.Courses.SingleOrDefault(x => x.ID == courseId);
+            if (course == null)
+            {
+                //TODO: kasta villu                                                                                    
+            }
+            _db.Courses.Remove(course);
+            _db.SaveChanges();
         }
 
-        //returns a list of all courses registered in the db.
+        // returns a list of all courses registered in the db.
         public List<CourseViewModel> GetAllCourses()
         {
             List<Course> courses = _db.Courses.ToList();
@@ -55,10 +73,53 @@ namespace Mooshak2._0.Services
 
             foreach (var tmp in courses)
             {
-                viewModel.Add(new CourseViewModel() { CourseName = tmp.CourseName });
+                viewModel.Add(new CourseViewModel()
+                {
+                    CourseID = tmp.ID,
+                    CourseNumber = tmp.CourseNumber,
+                    CourseName = tmp.CourseName,
+                    Semester = tmp.Semester
+
+                });
             }
 
             return viewModel;
+        }
+
+        public void EditCourseById(CourseViewModel viewModel)
+        {
+            var model = _db.Courses.Where(x => x.ID == viewModel.CourseID).SingleOrDefault();
+            if (model == null)
+            {
+                //TODO: kasta villu                                                                                    
+            }
+            
+            model.CourseName = viewModel.CourseName;
+            model.CourseNumber = viewModel.CourseNumber;
+            model.Semester = viewModel.Semester;
+
+
+            try
+            {
+                _db.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var error in ex.EntityValidationErrors)
+                {
+                    Console.WriteLine("====================");
+                    Console.WriteLine("Entity {0} in state {1} has validation errors:",
+                        error.Entry.Entity.GetType().Name, error.Entry.State);
+                    foreach (var ve in error.ValidationErrors)
+                    {
+                        Console.WriteLine("\tProperty: {0}, Error: {1}",
+                            ve.PropertyName, ve.ErrorMessage);
+                    }
+                    Console.WriteLine();
+                }
+                throw;
+            }
+
         }
     }
 }
