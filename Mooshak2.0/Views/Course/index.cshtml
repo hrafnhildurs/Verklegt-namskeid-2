@@ -22,13 +22,15 @@
             <td>
                 @Html.ActionLink("Edit", "Edit", new {id = course.CourseID}) |
                 @Html.ActionLink("Details", "Details", new {id = course.CourseID}) |
-                @Html.ActionLink("Delete", "Delete", new {id = course.CourseID}, new { onclick = "return confirm('Are you sure you want to delete this course?')" })
+                @Html.ActionLink("Delete", "Delete", new {id = course.CourseID}, 
+                new { onclick = "return confirm('Are you sure you want to delete this course?')" })
             </td>
         </tr>
 
     }
 
 </table>
-
-@Html.ActionLink("Create a new course", "Create", null, new { @class = "btn btn-primary btn-large" })
+    <button href="@Url.Action("Create")" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span> Create New
+    </button>
 
