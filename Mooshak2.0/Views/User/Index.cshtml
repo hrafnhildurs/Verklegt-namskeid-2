@@ -1,10 +1,92 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Mooshak2.0</title>
+        @{
+            ViewBag.Title = "Index";
+        }
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
 
-<h2>Index Hrafnhildur</h2>
+    </head>
+<body>
+    <nav class="leftNav">
+        <button id="userBtn">User</button>
+        <button id="courseBtn">Course</button>
+    </nav>
 
-<!--Hér þarf að vera listi í töflu yfir alla notendur úr gagnagrunni. Leitarbox fyrir ofan. Fyrir neðan [create] [create multi]
-    vinstra megin er hægt að velja [user] eða [course]-->
+    <h3>User</h3>
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#AllUsers">All Users</a></li>
+            <li><a data-toggle="tab" href="#Students">Students</a></li>
+            <li><a data-toggle="tab" href="#Teachers">Teachers</a></li>
+            <li><a data-toggle="tab" href="#Administrators">Administrators</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="AllStudents" class="tab-pane fade in active">
+                <br />
+                <p>Table that shows list of all Users</p>
+                <br />
+
+                <table class="UserTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>SSN</th>
+                            <th>RU-username</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Jón Jónsson</td>
+                            <td>100688-2129</td>
+                            <td>jonjons15@ru.is</td>
+                            <td>Student</td>
+                        </tr>
+                        @*   @foreach (var user in User)
+                            {
+                                Console.WriteLine(
+                                 "<tr>"
+
+                                     "<td>" + user.FullName + "</td>"
+
+                                     "<td>" + user.SSN + "</td>"
+
+                                     "<td>" + user.Username + "</td>"
+
+                                     "<td>" + user.Role + "</td>"
+
+                                 "</tr>"
+                            }
+                        *@
+                    </tbody>
+                </table>
+            </div>
+            <div id="Students" class="tab-pane fade">
+                <p>Table that shows list of Students</p>
+            </div>
+            <div id="Teachers" class="tab-pane fade">
+                <p>Table that shows list of Teachers</p>
+            </div>
+            <div id="Administrators" class="tab-pane fade">
+                <p>Table that shows list of Administrators</p>
+            </div>
+        </div>
+    </div>
+
+        <button id="createUserBtn">Create User</button>
+        <button id="createMultiBtn">Create Multiple Users</button>
+    </body>
+ </html>
+                   
+
+
+                                          <!--Hér þarf að vera listi í töflu yfir alla notendur úr gagnagrunni. Leitarbox fyrir ofan. Fyrir neðan [create] [create multi]
+               vinstra megin er hægt að velja [user] eða [course]-->
 
