@@ -69,7 +69,7 @@ namespace Mooshak2._0.Services
             return viewModel;
         }
 
-        public UserViewModel GetUserByID(string userSSN)
+        public UserViewModel GetUserBySSN(string userSSN)
         {
             ManageRoles man = new ManageRoles();
             var user = _db.Users.Where(x => x.SSN == userSSN).FirstOrDefault();
@@ -80,8 +80,8 @@ namespace Mooshak2._0.Services
                 {
                     FullName = user.FullName,
                     SSN = user.SSN,
-                    Email = user.Email
-                    //UserRole = man.GetUserRole(user.FullName)
+                    Email = user.Email,
+                    UserRole = man.GetUserRole(user.FullName)
                 };
 
                 return viewModel;
@@ -91,7 +91,7 @@ namespace Mooshak2._0.Services
 
         }
 
-        public void EditUserById(UserViewModel user)
+        public void EditUserBySSN(UserViewModel user)
         {
             var model = _db.Users.Where(x => x.SSN == user.SSN).FirstOrDefault();
             if (model == null)
@@ -125,7 +125,7 @@ namespace Mooshak2._0.Services
 
         }
 
-        public void DeleteUserByID(string userSSN)
+        public void DeleteUserBySSN(string userSSN)
         {
             var user = _db.Users.Where(x => x.SSN == userSSN).FirstOrDefault();
             if (user == null)

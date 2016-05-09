@@ -21,21 +21,21 @@ namespace Mooshak2._0.Controllers
 
         public ActionResult Edit(string userSSN)
         {
-                var user = _service.GetUserByID(userSSN);
+                var user = _service.GetUserBySSN(userSSN);
                 return View(user);
         }
 
         [HttpPost]
         public ActionResult Edit(UserViewModel user)
         {
-            _service.EditUserById(user);
+            _service.EditUserBySSN(user);
 
             return RedirectToAction("Index");
         }
 
         public ActionResult Delete(string userSSN)
         {
-            _service.DeleteUserByID(userSSN);
+            _service.DeleteUserBySSN(userSSN);
 
             return RedirectToAction("Index");
 
@@ -64,10 +64,10 @@ namespace Mooshak2._0.Controllers
             return View();
         }
 
-        public ActionResult Details()
+        public ActionResult Details(string userSSN)
         {
-
-            return View();
+           UserViewModel user = _service.GetUserBySSN(userSSN);
+            return View(user);
         }
 
         public ActionResult SortUsers(string role)
