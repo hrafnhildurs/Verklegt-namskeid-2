@@ -79,12 +79,17 @@ h2#Logo-text
     padding: 30px;
     padding-left: 100px;
 }
-hr {
-    top: 50px;
+#devider 
+{
+    top: 20px;
     display: block;
     height: 1px;
     border: 0;
     border-top: 1px solid #ccc;
-    margin: 1em 0;
+    margin: 10em 0;
     padding: 0;
+}
+#Center-content
+{
+    margin: auto;
 }
