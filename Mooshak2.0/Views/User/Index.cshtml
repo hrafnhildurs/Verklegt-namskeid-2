@@ -1,49 +1,49 @@
 ﻿@model List<Mooshak2._0.Models.ViewModels.UserViewModel>
 
- @{
-    ViewBag.Title = "Index";
-}
+        @{
+            ViewBag.Title = "Index";
+        }
 
-<nav class="leftNav">
-    <button id="userBtn">User</button>
-    <button id="courseBtn">Course</button>
-</nav>
+    <nav class="leftNav">
+        <button id="userBtn">User</button>
+        <button id="courseBtn">Course</button>
+    </nav>
 
-<h3>User</h3>
-<div class="container">
-    <ul class="nav nav-tabs">
+    <h3>User</h3>
+    <div class="container">
+        <ul class="nav nav-tabs">
         <li role="presentation">@Html.ActionLink("All Users", "Index", "User")</li>
         <li role="presentation">@Html.ActionLink("Students", "SortUsers", new {role = "Student"})</li>
         <li role="presentation">@Html.ActionLink("Teachers", "SortUsers", new { role = "Teacher" })</li>
         <li role="presentation">@Html.ActionLink("Admin", "SortUsers", new {role = "Administrator"})</li>
-    </ul>
+        </ul>
 
-<table class="UserTable">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>SSN</th>
-            <th>RU-username</th>
-            <th>Role</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var user in Model)
-        {
-            <tr>
+                <table class="UserTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>SSN</th>
+                            <th>RU-username</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
                 <td>@Html.DisplayFor(modelItem => user.FullName)</td>
                 <td>@Html.DisplayFor(modelItem => user.SSN)</td>
                 <td>@Html.DisplayFor(modelItem => user.Email)</td>
                 <td>@Html.DisplayFor(modelItem => user.UserRole)</td>
                 <td>@Html.ActionLink("Edit", "Edit", new { id = user.FullName }) |
                 @Html.ActionLink("Details", "Details", new { id = user.FullName }) |</td>
-            </tr>
-        }
-    </tbody>
-</table>
+                            </tr>
+                     
+                    </tbody>
+                </table>
 
-<button id="createUserBtn" onclick="location.href='@Url.Action("Create", "User")'">Create User</button>
-<button id="createMultiBtn" onclick="location.href='@Url.Action("CreateMultiple", "User")'">Create Multiple Users</button>
+        <button id="createUserBtn" onclick="location.href='@Url.Action("Create", "User")'">Create User</button>
+        <button id="createMultiBtn" onclick="location.href='@Url.Action("CreateMultiple", "User")'">Create Multiple Users</button>
 
                    
 
