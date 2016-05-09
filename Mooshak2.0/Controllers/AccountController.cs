@@ -378,7 +378,6 @@ namespace Mooshak2._0.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
-
             if (Url.IsLocalUrl(returnUrl))
             {
                 return Redirect(returnUrl);

@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Mooshak2._0.Models.ViewModels.UserViewModel>
 <!DOCTYPE html>
 <html>
     <head>
@@ -43,28 +43,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach (var user in Model)
+                        {
                         <tr>
-                            <td>Jón Jónsson</td>
-                            <td>100688-2129</td>
-                            <td>jonjons15@ru.is</td>
-                            <td>Student</td>
+                                <td>@user.FullName</td>
+                                <td>@user.SSN</td>
+                                <td>@user.Email</td>
                         </tr>
-                        @*   @foreach (var user in User)
-                            {
-                                Console.WriteLine(
-                                 "<tr>"
-
-                                     "<td>" + user.FullName + "</td>"
-
-                                     "<td>" + user.SSN + "</td>"
-
-                                     "<td>" + user.Username + "</td>"
-
-                                     "<td>" + user.Role + "</td>"
-
-                                 "</tr>"
-                            }
-                        *@
+                     
                     </tbody>
                 </table>
             </div>
@@ -80,8 +66,8 @@
         </div>
     </div>
 
-        <button id="createUserBtn">Create User</button>
-        <button id="createMultiBtn">Create Multiple Users</button>
+        <button id="createUserBtn" onclick="location.href='@Url.Action("Create", "User")'">Create User</button>
+        <button id="createMultiBtn" onclick="location.href='@Url.Action("CreateMultiple", "User")'">Create Multiple Users</button>
     </body>
  </html>
                    

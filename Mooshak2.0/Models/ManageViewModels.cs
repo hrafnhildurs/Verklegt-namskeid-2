@@ -8,6 +8,7 @@ namespace Mooshak2._0.Models
     public class IndexViewModel
     {
         public string FullName { get; set; }
+        public string SSN { get; set; }
         public string Email { get; set; }
         public bool HasPassword { get; set; }
         public IList<UserLoginInfo> Logins { get; set; }
