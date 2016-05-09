@@ -314,6 +314,9 @@
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\Course\Details.cshtml" />
     <Content Include="Views\Submission\Submit.cshtml" />
+    <Content Include="Views\Assignments\CreateAssignment.cshtml" />
+    <Content Include="Views\Assignments\Create.cshtml" />
+    <Content Include="Views\Assignments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

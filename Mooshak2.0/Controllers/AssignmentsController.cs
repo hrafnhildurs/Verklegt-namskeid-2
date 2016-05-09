@@ -31,16 +31,24 @@ namespace Mooshak2._0.Controllers
             //return View(viewModel);
         }*/
 
-        public ActionResult Create(int id)
+        public ActionResult Create()
         {
-            var viewModel = _service.CreateAssignmentByID(id);
-            return View(viewModel);
+            return View();
         }
 
-       /* public ActionResult Edit(int id)
+        [HttpPost]
+        public ActionResult Create(AssignmentViewModel viewModel)
         {
-            //var viewModel = _service.EditAssignmentByID(id);
-            //return View(viewModel);
-        }*/
+            _service.AddToDB(viewModel);
+
+            return RedirectToAction("index");
+
+        }
+
+        /* public ActionResult Edit(int id)
+         {
+             //var viewModel = _service.EditAssignmentByID(id);
+             //return View(viewModel);
+         }*/
     }
 }
