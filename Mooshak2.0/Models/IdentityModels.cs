@@ -18,6 +18,7 @@ namespace Mooshak2._0.Models
             return userIdentity;
         }
         public string FullName { get; set; }
+        public string SSN { get; set; }
     }
 
 

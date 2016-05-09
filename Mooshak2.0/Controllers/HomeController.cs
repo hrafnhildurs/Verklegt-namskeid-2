@@ -11,23 +11,9 @@ namespace Mooshak2._0.Controllers
     {
         public ActionResult Index()
         {
-            ManageRoles manager = new ManageRoles();
-            if (!manager.RoleExists("Administrator"))
-            {
-                manager.CreateRole("Administrator");
-            }
-            if (!manager.RoleExists("Student"))
-            {
-                manager.CreateRole("Student");
-            }
-            if (!manager.RoleExists("Teacher"))
-            {
-                manager.CreateRole("Teacher");
-            }
-
             if (User.IsInRole("Administrator"))
             {
-                return RedirectToAction("Register", "Account");
+                return RedirectToAction("Index", "User");
             }
             if (User.IsInRole("Teacher"))
             {

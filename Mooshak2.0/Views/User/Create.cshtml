@@ -1,67 +1,82 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title>Create User</title>
-</head>
-<body>
-    <fieldset>
-        <form action="#" method="get">
-            <label for="Name">Name:</label>
-            <input type="text" id="Name" />
-            <br />
-            <label for="SSN">SSN:</label>
-            <input type="text" id="SSN" />
-            <br />
-            <label for="RU-ID">RU-ID:</label>
-            <input type="text" id="RU-ID" />
-            <br />
-            <input type="submit" value="Search" />
-            <br />
-        </form>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>SSN</th>
-                        <th>RU-ID</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Jon Jonsson</td>
-                        <td>230587-5549</td>
-                        <td>jonjons14@ru.is</td>
+﻿@using System.Web.Mvc.Html
+@using Mooshak2._0.Models
+@model Mooshak2._0.Models.RegisterViewModel
 
-                        <!--Hér þarf að sækja í gagnagrunn til að byrta í töflunni-->
+@{
+    ViewBag.Title = "Create User";
+}
 
-                    </tr>
-                </tbody>
-            </table>
-            <br/>
-            <label for="Role">Role:</label>
-            <select id="Role">
-                <option value="teacher">Teacher</option>
-                <option value="student">Student</option>
-            </select>
-            <br/>
+<h2>@ViewBag.Title.</h2>
 
-            <label for="Course">Course:</label>
-            <select id="Course">
-                <option value="dataStructure">Data Structure</option>
-                <option value="programming">Programming</option>
+@using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4>Create a new account.</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.FullName, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.FullName, new {@class = "form-control"})
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.SSN, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.SSN, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.isAdministrator, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.isAdministrator)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.isTeacher, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.isTeacher)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.isStudent, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.CheckBoxFor(m => m.isStudent)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseID, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.CourseID, (ViewBag.CourseList as List<SelectListItem>), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Create" />
+        </div>
+    </div>
+}
 
-                <!-- Hér þarf að sækja þau násmkeið sem búið er að skrá úr gagnagrunni og byrta í dropdown lista-->
 
-            </select>
-            <br/>
-            <input type="button" value="Cancel" />
-            <input type="Submit" value="Create" />
-    </fieldset>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/content/site")
-
-
-</body>
-</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 

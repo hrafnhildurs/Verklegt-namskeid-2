@@ -3,10 +3,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Mooshak2._0.Models;
+using WebGrease.Css.Ast;
 
 namespace Mooshak2._0.Controllers
 {
@@ -68,6 +70,7 @@ namespace Mooshak2._0.Controllers
             {
                 HasPassword = HasPassword(),
                 FullName = User.Identity.GetUserName(),
+                SSN = SSN(),
                 Email = await UserManager.GetEmailAsync(userId),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
@@ -383,7 +386,16 @@ namespace Mooshak2._0.Controllers
             RemovePhoneSuccess,
             Error
         }
+        private string SSN()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user != null)
+            {
+                return user.SSN;
+            }
+            return null;
+        }
 
-#endregion
+        #endregion
     }
 }
