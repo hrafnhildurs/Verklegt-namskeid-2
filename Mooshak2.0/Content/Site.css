@@ -36,18 +36,10 @@ div.indexPage
     text-align: center;
 }
 
-table.userList
-{
-    border: 2pt solid black;
-    width: 800px;
-}
-
-
-
 table{
     margin: auto;
     border: 1px solid black;
-    width: 800px;
+    width: 1000px;
     align-content: center;
 }
 tr:nth-child(even) 
@@ -89,6 +81,15 @@ h2#Logo-text
     margin: 10em 0;
     padding: 0;
 }
+
+#TextAreaSubmitCode
+{
+    max-width: 100%;
+    width: 100%;
+    border: 2pt solid gray;
+}
+
+
 #Center-content
 {
     margin: auto;
