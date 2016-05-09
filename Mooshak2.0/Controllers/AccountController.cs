@@ -154,6 +154,7 @@ namespace Mooshak2._0.Controllers
             {
                 var user = new ApplicationUser { UserName = model.FullName, Email = model.Email };
                 user.FullName = model.FullName;
+                user.SSN = model.SSN;
                
                 var result = await UserManager.CreateAsync(user, model.Password);
 
