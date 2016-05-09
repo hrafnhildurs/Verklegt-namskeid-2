@@ -8,11 +8,11 @@ namespace Mooshak2._0.Controllers
 {
     public class SubmissionController : Controller
     {
-        public ActionResult Submit(int UserID, int ProjectID)
+        public ActionResult Submit(int? StudentID, int? ProjectID)
         {
             return View();
         }
-        public ActionResult Export(int UserID, int ProjectID)
+        public ActionResult Export(int StudentID, int ProjectID)
         {
             return View();
         }
