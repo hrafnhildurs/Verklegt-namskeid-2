@@ -49,22 +49,22 @@
                             <td>jonjons15@ru.is</td>
                             <td>Student</td>
                         </tr>
-                        @*   @foreach (var user in User)
-                            {
-                                Console.WriteLine(
-                                 "<tr>"
+                           @foreach (var user in Model)
+                           {
+                               Console.WriteLine(
+                                "<tr>",
 
-                                     "<td>" + user.FullName + "</td>"
+                                    "<td>" + user.FullName + "</td>",
 
-                                     "<td>" + user.SSN + "</td>"
+                                    "<td>" + user.SSN + "</td>",
 
-                                     "<td>" + user.Username + "</td>"
+                                    "<td>" + user.Username + "</td>",
 
-                                     "<td>" + user.Role + "</td>"
+                                    "<td>" + user.Role + "</td>",
 
-                                 "</tr>"
-                            }
-                        *@
+                                "</tr>");
+                           }
+                        
                     </tbody>
                 </table>
             </div>
