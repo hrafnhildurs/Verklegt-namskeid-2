@@ -35,8 +35,9 @@
             <td>@Html.DisplayFor(modelItem => user.SSN)</td>
             <td>@Html.DisplayFor(modelItem => user.Email)</td>
             <td>@Html.DisplayFor(modelItem => user.UserRole)</td>
-            <td>@Html.ActionLink("Edit", "Edit", new {id = user.FullName}) |
-                @Html.ActionLink("Details", "Details", new {id = user.FullName}) |</td>
+            <td>@Html.ActionLink("Edit", "Edit", new {userSSN = user.SSN}) |
+                @Html.ActionLink("Details", "Details", new {userSSN = user.SSN}) |
+                @Html.ActionLink("Delete", "Delete", new { userSSN = user.SSN }) </td>
         </tr>
     }
     </tbody>

@@ -19,16 +19,10 @@ namespace Mooshak2._0.Controllers
             return View(allUsers);
         }
 
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string userSSN)
         {
-            if (id.HasValue)
-            {
-                int userID = id.Value;
-                var user = _service.GetUserByID(userID);
+                var user = _service.GetUserByID(userSSN);
                 return View(user);
-            }
-
-            return View();
         }
 
         [HttpPost]
@@ -38,9 +32,13 @@ namespace Mooshak2._0.Controllers
 
             return RedirectToAction("Index");
         }
-        public ActionResult Delete()
+
+        public ActionResult Delete(string userSSN)
         {
-            return View();
+            _service.DeleteUserByID(userSSN);
+
+            return RedirectToAction("Index");
+
         }
         public ActionResult Create()
         {

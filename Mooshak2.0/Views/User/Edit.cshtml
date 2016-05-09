@@ -8,9 +8,8 @@
 @using (Html.BeginForm())
 {
     <div class="form-group">
-        @Html.HiddenFor(m => Model.UserID)
 
-        <label for="">Name</label>
+        <label for="m.FullName">Name</label>
         @Html.TextBoxFor(m => Model.FullName, new { @class = "form-control" })
 
         <label for="">SSN</label>

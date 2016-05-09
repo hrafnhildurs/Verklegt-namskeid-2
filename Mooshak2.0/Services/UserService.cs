@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Net;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
+using System.Web.UI.WebControls;
 using Microsoft.VisualBasic.ApplicationServices;
 using Mooshak2._0.Migrations;
 using Mooshak2._0.Models;
@@ -66,42 +69,38 @@ namespace Mooshak2._0.Services
             return viewModel;
         }
 
-        public UserViewModel GetUserByID(int userId)
+        public UserViewModel GetUserByID(string userSSN)
         {
             ManageRoles man = new ManageRoles();
-            var user = _db.Users.SingleOrDefault(x => x.Id == userId.ToString());
-            if (user == null)
+            var user = _db.Users.Where(x => x.SSN == userSSN).FirstOrDefault();
+
+            if (user != null)
             {
-                //TODO: kasta villu                                                                                    
+                var viewModel = new UserViewModel
+                {
+                    FullName = user.FullName,
+                    SSN = user.SSN,
+                    Email = user.Email
+                    //UserRole = man.GetUserRole(user.FullName)
+                };
+
+                return viewModel;
             }
 
-            var viewModel = new UserViewModel
-            {
-                FullName = user.FullName,
-                SSN = user.SSN,
-                Email = user.Email,
-                UserRole = man.GetUserRole(user.FullName)
-            };
+            return null;
 
-            return viewModel;
         }
 
-        public void EditUserById(UserViewModel viewModel)
+        public void EditUserById(UserViewModel user)
         {
-            var model = _db.Users.Where(x => x.Id == viewModel.UserID.ToString()).SingleOrDefault();
-
+            var model = _db.Users.Where(x => x.SSN == user.SSN).FirstOrDefault();
             if (model == null)
             {
-                //TODO: kasta villu                                                                                    
+                //TODO: kasta villu 
             }
-
-            if (model != null)
-            {
-                model.FullName = viewModel.FullName;
-                model.SSN = viewModel.SSN;
-                model.Email = viewModel.Email;
-            }
-
+            model.FullName = user.FullName;
+            model.SSN = user.SSN;
+            model.Email = user.Email;
 
             try
             {
@@ -122,6 +121,31 @@ namespace Mooshak2._0.Services
                     Console.WriteLine();
                 }
                 throw;
+            }
+
+        }
+
+        public void DeleteUserByID(string userSSN)
+        {
+            var user = _db.Users.Where(x => x.SSN == userSSN).FirstOrDefault();
+            if (user == null)
+            {
+                //TODO: kasta villu                                                                                    
+            }
+            _db.Users.Remove(user);
+            _db.SaveChanges();
+        }
+
+        public bool CheckIfUserExist(string userSSN)
+        {
+            var user = _db.Users.Where(x => x.SSN == userSSN).SingleOrDefault();
+            if (user != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
