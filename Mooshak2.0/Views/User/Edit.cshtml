@@ -1,8 +1,28 @@
-﻿
+﻿@model Mooshak2._0.Models.ViewModels.UserViewModel
 @{
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Edit user</h2>
 
-<!--hér á að birtast create gluggi sem er útfylltur með upplýsingum um valinn notanda. Þarf að hugsa um að hann verði ekki til 2x sinnum-->
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.HiddenFor(m => Model.UserID)
+
+        <label for="">Name</label>
+        @Html.TextBoxFor(m => Model.FullName, new { @class = "form-control" })
+
+        <label for="">SSN</label>
+        @Html.TextBoxFor(m => Model.SSN, new { @class = "form-control" })
+
+        <label for="">Email</label>
+        @Html.TextBoxFor(m => Model.Email, new { @class = "form-control" })
+
+        <!--<input type="text" class="form-control">-->
+    </div>
+    <input type="submit" value="Save" class="btn btn-success">
+
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary btn-large" })
+
+}

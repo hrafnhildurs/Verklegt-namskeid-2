@@ -1,18 +1,9 @@
 ﻿@model List<Mooshak2._0.Models.ViewModels.UserViewModel>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>@ViewBag.Title - Mooshak2.0</title>
+
         @{
             ViewBag.Title = "Index";
         }
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
 
-    </head>
-<body>
     <nav class="leftNav">
         <button id="userBtn">User</button>
         <button id="courseBtn">Course</button>
@@ -21,58 +12,36 @@
     <h3>User</h3>
     <div class="container">
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#AllUsers">All Users</a></li>
-            <li><a data-toggle="tab" href="#Students">Students</a></li>
-            <li><a data-toggle="tab" href="#Teachers">Teachers</a></li>
-            <li><a data-toggle="tab" href="#Administrators">Administrators</a></li>
+        <li role="presentation">@Html.ActionLink("All Users", "Index", "User")</li>
+        <li role="presentation">@Html.ActionLink("Students", "SortUsers", new {role = "Student"})</li>
+        <li role="presentation">@Html.ActionLink("Teachers", "SortUsers", new { role = "Teacher" })</li>
+        <li role="presentation">@Html.ActionLink("Admin", "SortUsers", new {role = "Administrator"})</li>
         </ul>
 
-        <div class="tab-content">
-            <div id="AllUsers" class="tab-pane fade in active">
-                <br />
-                <p>Table that shows list of all Users</p>
-                <br />
+<table class="UserTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>SSN</th>
+            <th>RU-username</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => user.FullName)</td>
+            <td>@Html.DisplayFor(modelItem => user.SSN)</td>
+            <td>@Html.DisplayFor(modelItem => user.Email)</td>
+            <td>@Html.DisplayFor(modelItem => user.UserRole)</td>
+            <td>@Html.ActionLink("Edit", "Edit", new {id = user.FullName}) |
+                @Html.ActionLink("Details", "Details", new {id = user.FullName}) |</td>
+        </tr>
+    }
+    </tbody>
+</table>
 
-                <table class="UserTable">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>SSN</th>
-                            <th>RU-username</th>
-                            <th>Role</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var user in Model)
-                        {
-                        <tr>
-                                <td>@user.FullName</td>
-                                <td>@user.SSN</td>
-                                <td>@user.Email</td>
-                        </tr>
-                     
-                    </tbody>
-                </table>
-            </div>
-            <div id="Students" class="tab-pane fade">
-                <p>Table that shows list of Students</p>
-            </div>
-            <div id="Teachers" class="tab-pane fade">
-                <p>Table that shows list of Teachers</p>
-            </div>
-            <div id="Administrators" class="tab-pane fade">
-                <p>Table that shows list of Administrators</p>
-            </div>
-        </div>
-    </div>
-
-        <button id="createUserBtn" onclick="location.href='@Url.Action("Create", "User")'">Create User</button>
-        <button id="createMultiBtn" onclick="location.href='@Url.Action("CreateMultiple", "User")'">Create Multiple Users</button>
-    </body>
- </html>
-                   
-
-
-                                          <!--Hér þarf að vera listi í töflu yfir alla notendur úr gagnagrunni. Leitarbox fyrir ofan. Fyrir neðan [create] [create multi]
-               vinstra megin er hægt að velja [user] eða [course]-->
+<button id="createUserBtn" onclick="location.href='@Url.Action("Create", "User")'">Create User</button>
+<button id="createMultiBtn" onclick="location.href='@Url.Action("CreateMultiple", "User")'">Create Multiple Users</button>
 

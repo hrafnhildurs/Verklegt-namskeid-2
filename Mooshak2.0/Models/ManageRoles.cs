@@ -35,6 +35,25 @@ namespace Mooshak2._0.Models
             return um.FindByName(name);
         }
 
+        public string GetUserRole(string name)
+        {
+            var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+            var user = um.FindByName(name);
+            if (UserIsInRole(user.Id, "Administrator"))
+            {
+                return "Administrator";
+            }
+            if (UserIsInRole(user.Id, "Teacher"))
+            {
+                return "Teacher";
+            }
+            if (UserIsInRole(user.Id, "Student"))
+            {
+                return "Student";
+            }
+            return null;
+        }
+
         public bool CreateUser(ApplicationUser user, string password)
         {
             var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
