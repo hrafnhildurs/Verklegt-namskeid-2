@@ -86,10 +86,16 @@ namespace Mooshak2._0.Services
 
         }
 
-        public AssignmentViewModel AddToDB(int id)
+        public void AddToDB(AssignmentViewModel viewModel)
         {
-            //TODO:
-            return null;
+            var model = new Assignment
+            {
+                AssignmentName = viewModel.AssignmentName,
+                CourseID = viewModel.CourseID,
+                Deadline = viewModel.Deadline
+            };
+            _db.Assignments.Add(model);
+            _db.SaveChanges();
         }
 
         public AssignmentViewModel CreateAssignmentByID(int id)
