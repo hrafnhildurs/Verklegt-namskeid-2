@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Web.UI.WebControls;
@@ -73,6 +76,11 @@ namespace Mooshak2._0.Models
         public string FullName { get; set; }
 
         [Required]
+        [Display(Name = "SSN")]
+        [RegularExpression(@"^[0-9]{10}$", ErrorMessage = "The {0} must be 10 characters long and only contain numbers")]
+        public string SSN { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
@@ -89,11 +97,13 @@ namespace Mooshak2._0.Models
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "Administrator")]
-        public bool? isAdministrator { get; set; }
+        public bool isAdministrator { get; set; }
         [Display(Name = "Student")]
-        public bool? isStudent { get; set; }
+        public bool isStudent { get; set; }
         [Display(Name = "Teacher")]
-        public bool? isTeacher { get; set; }
+        public bool isTeacher { get; set; }
+
+        public int CourseID { get; set; }
     }
 
     public class ResetPasswordViewModel
