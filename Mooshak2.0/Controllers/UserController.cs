@@ -19,11 +19,25 @@ namespace Mooshak2._0.Controllers
             return View(allUsers);
         }
 
-        public ActionResult Edit()
+        public ActionResult Edit(int? id)
         {
+            if (id.HasValue)
+            {
+                int userID = id.Value;
+                var user = _service.GetUserByID(userID);
+                return View(user);
+            }
+
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Edit(UserViewModel user)
+        {
+            _service.EditUserById(user);
+
+            return RedirectToAction("Index");
+        }
         public ActionResult Delete()
         {
             return View();
@@ -50,6 +64,19 @@ namespace Mooshak2._0.Controllers
         {
 
             return View();
+        }
+
+        public ActionResult Details()
+        {
+
+            return View();
+        }
+
+        public ActionResult SortUsers(string role)
+        {
+            List<UserViewModel> sortedUsers = _service.GetSortedUsers(role);
+            return View("Index", sortedUsers);
+
         }
     }
 
