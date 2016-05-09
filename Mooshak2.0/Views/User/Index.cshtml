@@ -18,36 +18,30 @@
         <li role="presentation">@Html.ActionLink("Admin", "SortUsers", new {role = "Administrator"})</li>
         </ul>
 
-                <table class="UserTable">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>SSN</th>
-                            <th>RU-username</th>
-                            <th>Role</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var user in Model)
-                        {
-                            <tr>
-                <td>@Html.DisplayFor(modelItem => user.FullName)</td>
-                <td>@Html.DisplayFor(modelItem => user.SSN)</td>
-                <td>@Html.DisplayFor(modelItem => user.Email)</td>
-                <td>@Html.DisplayFor(modelItem => user.UserRole)</td>
-                <td>@Html.ActionLink("Edit", "Edit", new { id = user.FullName }) |
-                @Html.ActionLink("Details", "Details", new { id = user.FullName }) |</td>
-                            </tr>
-                     
-                    </tbody>
-                </table>
+<table class="UserTable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>SSN</th>
+            <th>RU-username</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => user.FullName)</td>
+            <td>@Html.DisplayFor(modelItem => user.SSN)</td>
+            <td>@Html.DisplayFor(modelItem => user.Email)</td>
+            <td>@Html.DisplayFor(modelItem => user.UserRole)</td>
+            <td>@Html.ActionLink("Edit", "Edit", new {id = user.FullName}) |
+                @Html.ActionLink("Details", "Details", new {id = user.FullName}) |</td>
+        </tr>
+    }
+    </tbody>
+</table>
 
-        <button id="createUserBtn" onclick="location.href='@Url.Action("Create", "User")'">Create User</button>
-        <button id="createMultiBtn" onclick="location.href='@Url.Action("CreateMultiple", "User")'">Create Multiple Users</button>
-
-                   
-
-
-                                          <!--Hér þarf að vera listi í töflu yfir alla notendur úr gagnagrunni. Leitarbox fyrir ofan. Fyrir neðan [create] [create multi]
-               vinstra megin er hægt að velja [user] eða [course]-->
+<button id="createUserBtn" onclick="location.href='@Url.Action("Create", "User")'">Create User</button>
+<button id="createMultiBtn" onclick="location.href='@Url.Action("CreateMultiple", "User")'">Create Multiple Users</button>
 
