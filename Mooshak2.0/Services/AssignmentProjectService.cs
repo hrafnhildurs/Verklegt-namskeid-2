@@ -55,24 +55,24 @@ namespace Mooshak2._0.Services
             }
         }
 
-        public AssignmentProjectViewModel GetProjectByID(int ID)
+        public AssignmentProjectViewModel GetProjectByID(int projectID)
         {
-            //get the project
-            var project = _db.Projects.SingleOrDefault(x => x.ID == ID);
-
-            //if the project doesn't exist
+            var project = _db.Projects.SingleOrDefault(x => x.ID == projectID);
             if (project == null)
             {
-                //TODO: kasta villu!
+                //TODO: kasta villu                                                                                    
             }
 
-
-            var viewModel = new AssignmentProjectViewModel()
+            var viewModel = new AssignmentProjectViewModel
             {
+                CourseID = project.CourseID,
                 ProjectName = project.ProjectName,
+                Description = project.Description,
+                Weight = project.Weight,
+                Deadline = project.Deadline
+
             };
 
-            //return the viewModel
             return viewModel;
         }
 
