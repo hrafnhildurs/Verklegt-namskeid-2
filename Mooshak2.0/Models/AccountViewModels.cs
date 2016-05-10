@@ -103,7 +103,8 @@ namespace Mooshak2._0.Models
         [Display(Name = "Teacher")]
         public bool isTeacher { get; set; }
 
-        public int CourseID { get; set; }
+        [Display(Name = "Course")]
+        public int? CourseID { get; set; }
     }
 
     public class ResetPasswordViewModel

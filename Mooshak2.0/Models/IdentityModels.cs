@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Mooshak2._0.Models.Entities;
+using System.Collections.Generic;
 
 namespace Mooshak2._0.Models
 {
@@ -20,8 +21,7 @@ namespace Mooshak2._0.Models
         }
         public string FullName { get; set; }
         public string SSN { get; set; }
-
-        //public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<Course> Courses { get; set; }
     }
 
 
@@ -36,7 +36,7 @@ namespace Mooshak2._0.Models
         public DbSet<Submission> Submissions { get; set; }
 
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection"/*, throwIfV1Schema: false*/)
         {
            
         }

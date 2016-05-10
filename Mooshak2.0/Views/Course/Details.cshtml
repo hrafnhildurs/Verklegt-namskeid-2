@@ -22,4 +22,37 @@
     </tr>
 </table>
 
+@if (Model.Students.Count == 0)
+{
+    <div class="alert alert-info">
+        There are no students currently enrolled!
+    </div>
+}
+else
+{
+    
+
+    <div class="pull-right">
+        @Html.ActionLink("Add students to course", "AddStudentToCourse", new { courseId = Model.CourseID }, new { @class = "btn btn-success" })
+    </div>
+
+    <h2 class="pull-left">Students</h2>
+
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Name</th>
+            <th>SSN</th>
+            <th>E-mail</th>
+        </tr>
+        @foreach (var student in Model.Students)
+        {
+            <tr>
+                <td>@student.FullName</td>
+                <td>@student.SSN</td>
+                <td>@student.Email</td>
+            </tr>
+        }
+    </table>
+}
 @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary btn-large" })

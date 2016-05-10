@@ -9,7 +9,6 @@ using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using Mooshak2._0.Migrations;
 using Mooshak2._0.Models;
 using Mooshak2._0.Services;
 
@@ -180,6 +179,13 @@ namespace Mooshak2._0.Controllers
                         {
                             addTo.AddUserToRole(user.Id, "Student");
                         }
+
+                        if (model.CourseID.HasValue)
+                        {
+                            UserService userService = new UserService();
+                            userService.AddStudentToCourse(model.CourseID.Value, user.Id);
+                        }
+
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

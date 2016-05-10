@@ -70,5 +70,22 @@ namespace Mooshak2._0.Controllers
 
             return View(course);
         }
+
+        [HttpGet]
+        public ActionResult AddStudentToCourse(int id)
+        {
+            AddStudentToCourseViewModel model = new AddStudentToCourseViewModel();
+            model.CourseID = id;
+            //TODO sækja notendur
+            model.AvailableStudents = null;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AddStudentToCourse(AddStudentToCourseViewModel model)
+        {
+            
+            return View();
+        }
     }
 }

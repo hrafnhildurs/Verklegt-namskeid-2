@@ -36,12 +36,6 @@ namespace Mooshak2._0.Services
         public CourseViewModel GetCourseByID(int courseId)
         {
             var course = _db.Courses.SingleOrDefault(x => x.ID == courseId);
-
-            /*var studentsInCourse = 
-                (from users in _db.Users
-                where users.Courses.Count(x => x.ID == courseId) > 0
-                select users).ToList();*/
-
             if (course == null)
             {
                 //TODO: kasta villu                                                                                    
@@ -53,14 +47,13 @@ namespace Mooshak2._0.Services
                 CourseNumber = course.CourseNumber,
                 CourseName = course.CourseName,
                 Semester = course.Semester,
-
-               // Students = studentsInCourse
-
+                Students = course.Students.ToList()
             };
 
             return viewModel;
         }
 
+        
         public void DeleteCourseByID(int courseId)
         {
             var course = _db.Courses.SingleOrDefault(x => x.ID == courseId);
