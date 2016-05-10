@@ -28,6 +28,6 @@ namespace Mooshak2._0.Models.Entities
         /// </summary>
         public string Semester { get; set; }
 
-        //public List<UserViewModel> Students { get; set; }
+        public virtual ICollection<ApplicationUser> Students { get; set; }
     }
 }

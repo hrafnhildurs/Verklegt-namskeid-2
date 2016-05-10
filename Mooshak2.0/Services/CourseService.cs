@@ -47,9 +47,7 @@ namespace Mooshak2._0.Services
                 CourseNumber = course.CourseNumber,
                 CourseName = course.CourseName,
                 Semester = course.Semester,
-
-                //Students = course.Students
-                
+                Students = course.Students.ToList()
             };
 
             return viewModel;
