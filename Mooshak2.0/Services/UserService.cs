@@ -11,7 +11,11 @@ using Microsoft.VisualBasic.ApplicationServices;
 using Mooshak2._0.Migrations;
 using Mooshak2._0.Models;
 using Mooshak2._0.Models.ViewModels;
-
+using System.Data;
+using System.Data.OleDb;
+using System.IO;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Mooshak2._0.Services
 {
@@ -23,6 +27,8 @@ namespace Mooshak2._0.Services
         {
             _db = new ApplicationDbContext();
         }
+
+        
 
         public List<UserViewModel> GetAllUsers()
         {

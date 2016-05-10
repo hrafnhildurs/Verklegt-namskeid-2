@@ -1,11 +1,10 @@
-﻿using Mooshak2._0.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Mooshak2._0.Models.ViewModels;
 using Mooshak2._0.Services;
+
 
 namespace Mooshak2._0.Controllers
 {
@@ -60,9 +59,9 @@ namespace Mooshak2._0.Controllers
 
         public ActionResult CreateMultiple()
         {
-
             return View();
         }
+
 
         public ActionResult Details(string userSSN)
         {
@@ -76,6 +75,7 @@ namespace Mooshak2._0.Controllers
             return View("Index", sortedUsers);
 
         }
+
     }
 
 }
