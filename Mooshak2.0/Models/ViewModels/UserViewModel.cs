@@ -8,7 +8,6 @@ namespace Mooshak2._0.Models.ViewModels
 {
     public class UserViewModel
     {
-        public int UserID { get; set; }
         public string FullName { get; set; }
         public string SSN { get; set; }
         public string Email { get; set; }
