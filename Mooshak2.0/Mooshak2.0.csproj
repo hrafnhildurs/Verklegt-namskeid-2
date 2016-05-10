@@ -323,6 +323,7 @@
     <Content Include="Views\Assignments\Index.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\AssignmentProject\Index.cshtml" />
+    <Content Include="Views\AssignmentProject\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

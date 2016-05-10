@@ -19,15 +19,18 @@ namespace Mooshak2._0.Controllers
         }
 
         [HttpGet]
-        public ActionResult Create(int? id)
+        public ActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(AssignmentProjectViewModel model)
+        public ActionResult Create(AssignmentProjectViewModel viewModel)
         {
-            return View(model);
+            _service.AddToDB(viewModel);
+
+            return RedirectToAction("index");
+
         }
 
         [HttpGet]
