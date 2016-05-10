@@ -67,7 +67,6 @@ namespace Mooshak2._0.Controllers
         public ActionResult Details(int id)
         {
             CourseViewModel course = _service.GetCourseByID(id);
-
             return View(course);
         }
     }

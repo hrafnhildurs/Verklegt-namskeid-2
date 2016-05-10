@@ -19,28 +19,26 @@ namespace Mooshak2._0.Controllers
             return View(allUsers);
         }
 
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string userSSN)
         {
-            if (id.HasValue)
-            {
-                int userID = id.Value;
-                var user = _service.GetUserByID(userID);
+                var user = _service.GetUserBySSN(userSSN);
                 return View(user);
-            }
-
-            return View();
         }
 
         [HttpPost]
         public ActionResult Edit(UserViewModel user)
         {
-            _service.EditUserById(user);
+            _service.EditUserBySSN(user);
 
             return RedirectToAction("Index");
         }
-        public ActionResult Delete()
+
+        public ActionResult Delete(string userSSN)
         {
-            return View();
+            _service.DeleteUserBySSN(userSSN);
+
+            return RedirectToAction("Index");
+
         }
         public ActionResult Create()
         {
@@ -66,10 +64,10 @@ namespace Mooshak2._0.Controllers
             return View();
         }
 
-        public ActionResult Details()
+        public ActionResult Details(string userSSN)
         {
-
-            return View();
+           UserViewModel user = _service.GetUserBySSN(userSSN);
+            return View(user);
         }
 
         public ActionResult SortUsers(string role)

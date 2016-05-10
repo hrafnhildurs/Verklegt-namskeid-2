@@ -225,7 +225,7 @@
       <DependentUpon>201605082223155_initial1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\ViewModels\AccountViewModels.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
     <Compile Include="Models\Entities\AssignmentProject.cs" />
     <Compile Include="Models\Entities\Course.cs" />
@@ -317,6 +317,7 @@
     <Content Include="Views\Assignments\CreateAssignment.cshtml" />
     <Content Include="Views\Assignments\Create.cshtml" />
     <Content Include="Views\Assignments\Index.cshtml" />
+    <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\AssignmentProject\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

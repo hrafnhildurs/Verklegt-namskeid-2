@@ -70,7 +70,7 @@ namespace Mooshak2._0.Controllers
             {
                 HasPassword = HasPassword(),
                 FullName = User.Identity.GetUserName(),
-                SSN = SSN(),
+                SSN = SSN().Insert(6,"-").Insert(4,""),
                 Email = await UserManager.GetEmailAsync(userId),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),

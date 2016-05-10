@@ -1,6 +1,7 @@
 ﻿using Mooshak2._0.Models.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Mooshak2._0.Models;
@@ -32,7 +33,6 @@ namespace Mooshak2._0.Services
         }
 
 
-
         public CourseViewModel GetCourseByID(int courseId)
         {
             var course = _db.Courses.SingleOrDefault(x => x.ID == courseId);
@@ -46,7 +46,9 @@ namespace Mooshak2._0.Services
                 CourseID =  course.ID,
                 CourseNumber = course.CourseNumber,
                 CourseName = course.CourseName,
-                Semester = course.Semester
+                Semester = course.Semester,
+
+                //Students = course.Students
                 
             };
 
@@ -99,27 +101,7 @@ namespace Mooshak2._0.Services
             model.Semester = viewModel.Semester;
 
 
-            try
-            {
-                _db.SaveChanges();
-            }
-            catch (DbEntityValidationException ex)
-            {
-                foreach (var error in ex.EntityValidationErrors)
-                {
-                    Console.WriteLine("====================");
-                    Console.WriteLine("Entity {0} in state {1} has validation errors:",
-                        error.Entry.Entity.GetType().Name, error.Entry.State);
-                    foreach (var ve in error.ValidationErrors)
-                    {
-                        Console.WriteLine("\tProperty: {0}, Error: {1}",
-                            ve.PropertyName, ve.ErrorMessage);
-                    }
-                    Console.WriteLine();
-                }
-                throw;
-            }
-
+           _db.SaveChanges();
         }
     }
 }

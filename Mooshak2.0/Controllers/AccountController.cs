@@ -11,6 +11,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Mooshak2._0.Migrations;
 using Mooshak2._0.Models;
+using Mooshak2._0.Services;
 
 namespace Mooshak2._0.Controllers
 {
@@ -19,6 +20,7 @@ namespace Mooshak2._0.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private UserService _service = new UserService();
 
         public AccountController()
         {
@@ -152,37 +154,46 @@ namespace Mooshak2._0.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.FullName, Email = model.Email };
-                user.FullName = model.FullName;
-               
-                var result = await UserManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
+                var UserExist = _service.CheckIfUserExist(model.SSN);
+                if (!UserExist)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    var user = new ApplicationUser {UserName = model.FullName, Email = model.Email};
+                    user.FullName = model.FullName;
+                    user.SSN = model.SSN;
 
-                    ManageRoles addTo = new ManageRoles();
-                    if (model.isAdministrator == true)
-                    {
-                        addTo.AddUserToRole(user.Id, "Administrator");
-                    }
-                    if (model.isTeacher == true)
-                    {
-                        addTo.AddUserToRole(user.Id, "Teacher");
-                    }
-                    if (model.isStudent == true)
-                    {
-                        addTo.AddUserToRole(user.Id, "Student");
-                    }
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    var result = await UserManager.CreateAsync(user, model.Password);
 
-                    return RedirectToLocal(returnUrl);
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                        ManageRoles addTo = new ManageRoles();
+                        if (model.isAdministrator == true)
+                        {
+                            addTo.AddUserToRole(user.Id, "Administrator");
+                        }
+                        if (model.isTeacher == true)
+                        {
+                            addTo.AddUserToRole(user.Id, "Teacher");
+                        }
+                        if (model.isStudent == true)
+                        {
+                            addTo.AddUserToRole(user.Id, "Student");
+                        }
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                        return RedirectToLocal(returnUrl);
+                    }
+                    AddErrors(result);
                 }
-                AddErrors(result);
+                else
+                {
+                    return View("Error");
+                }
             }
 
             // If we got this far, something failed, redisplay form
