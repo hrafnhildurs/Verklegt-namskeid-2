@@ -34,17 +34,18 @@ namespace Mooshak2._0.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Edit(AssignmentProjectViewModel model)
+        public ActionResult Edit(int id)
         {
-            return View(model);
-        }
+            var Model = _service.GetProjectByID(id);
 
+            return View(Model);
+        }
         [HttpGet]
         public ActionResult Delete(int? id)
         {
