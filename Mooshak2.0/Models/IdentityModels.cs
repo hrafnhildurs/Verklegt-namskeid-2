@@ -27,7 +27,7 @@ namespace Mooshak2._0.Models
         /// <summary>
         /// List of the entity classes
         /// </summary>
-        public DbSet<Assignment> Assignments { get; set; }
+        public DbSet<Assignment> AssignmentProject { get; set; }
         public DbSet<AssignmentProject> Projects { get; set; }
         public DbSet<Course> Courses { get; set; }
         public DbSet<Submission> Submissions { get; set; }

@@ -10,11 +10,8 @@ namespace Mooshak2._0.Controllers
         //instance of the assignmentService
         private AssignmentsService _service = new AssignmentsService();
         // GET: Assignments
-        public ActionResult Index()
-        {
-            List<AssignmentViewModel> model = _service.GetAllAssignments();
-            return View();
-        }
+
+        
 
         //Get details about a specific assignment
         public ActionResult Details(int id)
@@ -23,6 +20,7 @@ namespace Mooshak2._0.Controllers
 
             return View(viewModel);
         }
+
 
         /*public ActionResult Delete(int id)
         {

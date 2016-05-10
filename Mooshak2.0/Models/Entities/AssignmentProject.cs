@@ -39,5 +39,7 @@ namespace Mooshak2._0.Models.Entities
         /// Description of what the project is about
         /// </summary>
         public string Description { get; set; }
+
+        public string Deadline { get; set; }
     }
 }

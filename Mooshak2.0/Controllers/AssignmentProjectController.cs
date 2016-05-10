@@ -14,9 +14,8 @@ namespace Mooshak2._0.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            List<AssignmentProjectViewModel> model = _service.GetAllProjects();
-
-            return View();
+            List<AssignmentProjectViewModel> allProjects = _service.GetAllProjects();
+            return View(allProjects);
         }
 
         [HttpGet]

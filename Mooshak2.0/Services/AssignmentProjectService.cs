@@ -21,16 +21,26 @@ namespace Mooshak2._0.Services
 
         public List<AssignmentProjectViewModel> GetAllProjects()
         {
-            List<AssignmentProject> projects = _db.Projects.ToList();
+            List<AssignmentProject> project = _db.Projects.ToList();
             List<AssignmentProjectViewModel> viewModel = new List<AssignmentProjectViewModel>();
 
-            foreach (var tmp in projects)
+            foreach (var tmp in project)
             {
-                viewModel.Add(new AssignmentProjectViewModel() { ProjectName = tmp.ProjectName });
-            }
+                viewModel.Add(new AssignmentProjectViewModel()
+                {
+                    ProjectName = tmp.ProjectName,
+                    Description = tmp.Description,
+                    Weight = tmp.Weight,
+                    Deadline = tmp.Deadline            
 
+                });
+            }
             return viewModel;
         }
+
+        
+
+           
 
         public AssignmentProjectViewModel AddToDB()
         {
