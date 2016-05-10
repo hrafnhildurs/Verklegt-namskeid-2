@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Mooshak2._0.Models.ViewModels;
 
 namespace Mooshak2._0.Models.Entities
 {
@@ -26,5 +27,7 @@ namespace Mooshak2._0.Models.Entities
         /// The semester the course is being taught
         /// </summary>
         public string Semester { get; set; }
+
+        //public List<UserViewModel> Students { get; set; }
     }
 }
