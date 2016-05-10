@@ -37,10 +37,10 @@ namespace Mooshak2._0.Services
         {
             var course = _db.Courses.SingleOrDefault(x => x.ID == courseId);
 
-            var studentsInCourse = 
+            /*var studentsInCourse = 
                 (from users in _db.Users
                 where users.Courses.Count(x => x.ID == courseId) > 0
-                select users).ToList();
+                select users).ToList();*/
 
             if (course == null)
             {
@@ -54,7 +54,7 @@ namespace Mooshak2._0.Services
                 CourseName = course.CourseName,
                 Semester = course.Semester,
 
-                Students = studentsInCourse
+               // Students = studentsInCourse
 
             };
 

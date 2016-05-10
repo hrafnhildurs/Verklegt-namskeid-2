@@ -21,7 +21,7 @@ namespace Mooshak2._0.Models
         public string FullName { get; set; }
         public string SSN { get; set; }
 
-        public virtual ICollection<Course> Courses { get; set; }
+        //public virtual ICollection<Course> Courses { get; set; }
     }
 
 

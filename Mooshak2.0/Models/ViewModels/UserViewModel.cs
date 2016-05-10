@@ -14,9 +14,7 @@ namespace Mooshak2._0.Models.ViewModels
         public string UserRole { get; set; }
 
         //public virtual ICollection<Course> Courses { get; set; }
-
-
-        //public List<Course> Courses { get; set; }
+    
     }
 
 }
