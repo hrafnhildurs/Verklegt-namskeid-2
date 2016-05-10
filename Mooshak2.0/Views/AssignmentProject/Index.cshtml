@@ -1,58 +1,43 @@
-﻿@model Mooshak2._0.Models.ViewModels.AssignmentProjectViewModel
+﻿@model List<Mooshak2._0.Models.ViewModels.AssignmentProjectViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "view";
 }
 
-<h2>Index</h2>
+<h2>List of all courses</h2>
+<div style="overflow-y:scroll; height: 300px;">
+    <table class="table table-bordered">
 
-<div>
-    <h4>AssignmentProjectViewModel</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AssignmentID)
-        </dt>
+        <thead>
+            <tr>
+                <th>Project ID</th>
+                <th>Project Name</th>
+                <th>Deadline</th>
+                <th>Weight</th>
+                <th>Course</th>
+                <th>    </th>
+            </tr>
+        </thead>
+        @foreach (var project in Model)
+        {
+            <tr>
+                <td>@project.ID</td>
+                <td>@project.ProjectName</td>
+                <td>@project.Deadline</td>
+                <td>@project.Weight</td>
+                <td>@project.CourseID</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = project.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = project.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = project.ID },
+                    new { onclick = "return confirm('Are you sure you want to delete this course?')" })
+                </td>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.AssignmentID)
-        </dd>
+        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProjectName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProjectName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Weight)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Weight)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Deadline)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Deadline)
-        </dd>
-
-    </dl>
+    </table>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<button onclick="location.href='@Url.Action("Create", "AssignmentProject")'" class="btn btn-primary">
+    <span class="glyphicon glyphicon-plus"></span> Create New
+</button>

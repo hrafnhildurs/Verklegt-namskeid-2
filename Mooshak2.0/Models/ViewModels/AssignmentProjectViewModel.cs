@@ -21,5 +21,8 @@ namespace Mooshak2._0.Models.ViewModels
 
         public int CourseID { get; set; }
 
+        public string Input { get; set; }
+
+        public string Output { get; set; }
     }
 }
