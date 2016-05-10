@@ -13,7 +13,7 @@ namespace Mooshak2._0.Models.ViewModels
         public string Semester { get; set; }
 
 
-        //public List<UserViewModel> Students { get; set; }
+        public virtual ICollection<ApplicationUser> Students { get; set; }
 
     }
 }

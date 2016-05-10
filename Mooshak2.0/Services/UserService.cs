@@ -155,6 +155,20 @@ namespace Mooshak2._0.Services
                 return false;
             }
         }
-
+ /*
+        public void AddStudentToCourse(int courseId, int studentId)
+        {
+            User studentToAdd = (from user in _db.Users where user.Id == studentId.ToString() select user).SingleOrDefault();
+            Course courseToAdd = (from course in _db.Courses where course.ID == courseId select course).SingleOrDefault();
+            if (studentToAdd != null && courseToAdd != null)
+            {
+                if (studentToAdd.Courses.Where(x => x.ID == courseId).Count() == 0)
+                {
+                    studentToAdd.Courses.Add(courseToAdd);
+                    _dbContext.SaveChanges();
+                }
+            }
+        }
+        */
     }
 }
