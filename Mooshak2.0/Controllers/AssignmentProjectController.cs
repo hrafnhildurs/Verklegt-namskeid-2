@@ -46,16 +46,15 @@ namespace Mooshak2._0.Controllers
 
             return View(Model);
         }
-        [HttpGet]
-        public ActionResult Delete(int? id)
-        {
-            return View();
-        }
+      
 
         [HttpPost]
-        public ActionResult Delete(AssignmentProjectViewModel model)
+        public ActionResult Delete(int id)
         {
-            return View(model);
+            _service.DeleteProjectByID(id);
+
+            return RedirectToAction("Index");
+
         }
 
         [HttpGet]
