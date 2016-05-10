@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI.WebControls;
 using Microsoft.VisualBasic.ApplicationServices;
-using Mooshak2._0.Migrations;
 using Mooshak2._0.Models;
 using Mooshak2._0.Models.ViewModels;
 using System.Data;
@@ -155,20 +154,20 @@ namespace Mooshak2._0.Services
                 return false;
             }
         }
- /*
-        public void AddStudentToCourse(int courseId, int studentId)
+ 
+        public void AddStudentToCourse(int courseId, string studentId)
         {
-            User studentToAdd = (from user in _db.Users where user.Id == studentId.ToString() select user).SingleOrDefault();
+            ApplicationUser studentToAdd = (from user in _db.Users where user.Id == studentId select user).SingleOrDefault();
             Course courseToAdd = (from course in _db.Courses where course.ID == courseId select course).SingleOrDefault();
             if (studentToAdd != null && courseToAdd != null)
             {
                 if (studentToAdd.Courses.Where(x => x.ID == courseId).Count() == 0)
                 {
                     studentToAdd.Courses.Add(courseToAdd);
-                    _dbContext.SaveChanges();
+                    _db.SaveChanges();
                 }
             }
         }
-        */
+
     }
 }

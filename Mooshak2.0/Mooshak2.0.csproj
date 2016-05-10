@@ -208,33 +208,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605040955585_Test.cs" />
-    <Compile Include="Migrations\201605040955585_Test.Designer.cs">
-      <DependentUpon>201605040955585_Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605041156326_FullName.cs" />
-    <Compile Include="Migrations\201605041156326_FullName.Designer.cs">
-      <DependentUpon>201605041156326_FullName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605052258561_initial.cs" />
-    <Compile Include="Migrations\201605052258561_initial.Designer.cs">
-      <DependentUpon>201605052258561_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605082223155_initial1.cs" />
-    <Compile Include="Migrations\201605082223155_initial1.Designer.cs">
-      <DependentUpon>201605082223155_initial1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605101119242_initial2.cs" />
-    <Compile Include="Migrations\201605101119242_initial2.Designer.cs">
-      <DependentUpon>201605101119242_initial2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605101126183_initial3.cs" />
-    <Compile Include="Migrations\201605101126183_initial3.Designer.cs">
-      <DependentUpon>201605101126183_initial3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201605101249215_initial4.cs" />
-    <Compile Include="Migrations\201605101249215_initial4.Designer.cs">
-      <DependentUpon>201605101249215_initial4.cs</DependentUpon>
+    <Compile Include="Migrations\201605101449418_initial.cs" />
+    <Compile Include="Migrations\201605101449418_initial.Designer.cs">
+      <DependentUpon>201605101449418_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201605101302137_initial5.cs" />
     <Compile Include="Migrations\201605101302137_initial5.Designer.cs">
@@ -264,6 +240,7 @@
     <Compile Include="Models\Entities\Submission.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageRoles.cs" />
+    <Compile Include="Models\ViewModels\AddStudentToCourseViewModel.cs" />
     <Compile Include="Scripts\ManageViewModels.cs" />
     <Compile Include="Models\ViewModels\AssignmentProjectViewModel.cs" />
     <Compile Include="Models\ViewModels\AssignmentViewModel.cs" />
@@ -366,26 +343,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605040955585_Test.resx">
-      <DependentUpon>201605040955585_Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605041156326_FullName.resx">
-      <DependentUpon>201605041156326_FullName.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605052258561_initial.resx">
-      <DependentUpon>201605052258561_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605082223155_initial1.resx">
-      <DependentUpon>201605082223155_initial1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605101119242_initial2.resx">
-      <DependentUpon>201605101119242_initial2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605101126183_initial3.resx">
-      <DependentUpon>201605101126183_initial3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605101249215_initial4.resx">
-      <DependentUpon>201605101249215_initial4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605101449418_initial.resx">
+      <DependentUpon>201605101449418_initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605101302137_initial5.resx">
       <DependentUpon>201605101302137_initial5.cs</DependentUpon>
