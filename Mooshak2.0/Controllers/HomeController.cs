@@ -17,11 +17,11 @@ namespace Mooshak2._0.Controllers
             }
             if (User.IsInRole("Teacher"))
             {
-                return RedirectToAction("Index", "Assignments");
+                return RedirectToAction("Index", "User");
             }
             if (User.IsInRole("Student"))
             {
-                return RedirectToAction("Index", "Assignments");
+                return RedirectToAction("Index", "User");
             }
             return View();
         }
