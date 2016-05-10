@@ -11,6 +11,6 @@ namespace Mooshak2._0.Models.ViewModels
         public List<AssignmentProjectViewModel> Projects { get; set; }
         public int ID { get; set; }
         public int CourseID { get; set; }
-        public string Deadline { get; set; }
+        public DateTime Deadline { get; set; }
     }
 }
