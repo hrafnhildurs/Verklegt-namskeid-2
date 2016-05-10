@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mooshak2._0.Models.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,7 @@ namespace Mooshak2._0.Models.Entities
         /// <summary>
         /// The date of the submission
         /// </summary>
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
 
         /// <summary>
         /// A foreign key to the student that is submitting
@@ -33,8 +34,18 @@ namespace Mooshak2._0.Models.Entities
         public string SubmittedCode { get; set; }
 
         /// <summary>
+        /// The output when submittedCode is run with the projectInput
+        /// </summary>
+        public string SubmissionOutput { get; set; }
+
+        /// <summary>
         /// Is the solution accepted or not
         /// </summary>
         public bool Result { get; set; }
+
+        /// <summary>
+        /// List of students to select from when group members are to be included
+        /// </summary>
+       /// public List<UserViewModel> StudentList { get; set; }
     }
 }
