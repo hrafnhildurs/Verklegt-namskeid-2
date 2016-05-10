@@ -89,20 +89,15 @@ namespace Mooshak2._0.Services
             return projects;
         }
 
-        public void DeleteProjectByID(int? ID)
+        public void DeleteProjectByID(int id)
         {
-            //if ID exists
-            if (ID.HasValue)
+            var project = _db.Projects.SingleOrDefault(x => x.ID == id);
+            if (project == null)
             {
-                //find the project and assign it to instance
-                AssignmentProject project = _db.Projects.Where(x => x.ID == ID).SingleOrDefault();
-                if (project != null)
-                {
-                    //delete it from the database
-                    _db.Projects.Remove(project);
-                    _db.SaveChanges();
-                }
+                //TODO: kasta villu                                                                                    
             }
+            _db.Projects.Remove(project);
+            _db.SaveChanges();
         }
 
         public void SubmitCode(Submission submission)
