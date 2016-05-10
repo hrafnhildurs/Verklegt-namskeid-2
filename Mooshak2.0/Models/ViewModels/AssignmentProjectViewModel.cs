@@ -17,7 +17,7 @@ namespace Mooshak2._0.Models.ViewModels
 
         public string Description { get; set; }
         
-        public string Deadline { get; set; }
+        public DateTime Deadline { get; set; }
 
         public int CourseID { get; set; }
 
