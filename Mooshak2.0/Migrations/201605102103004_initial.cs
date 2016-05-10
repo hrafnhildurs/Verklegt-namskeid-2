@@ -16,7 +16,9 @@ namespace Mooshak2._0.Migrations
                         AssignmentName = c.String(),
                         Deadline = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.Courses", t => t.CourseID, cascadeDelete: true)
+                .Index(t => t.CourseID);
             
             CreateTable(
                 "dbo.Courses",
@@ -102,6 +104,7 @@ namespace Mooshak2._0.Migrations
                         CourseID = c.Int(nullable: false),
                         Input = c.String(),
                         Output = c.String(),
+                        Submitted = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.ID);
             
@@ -152,6 +155,7 @@ namespace Mooshak2._0.Migrations
             DropForeignKey("dbo.ApplicationUserCourses", "Course_ID", "dbo.Courses");
             DropForeignKey("dbo.ApplicationUserCourses", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Assignments", "CourseID", "dbo.Courses");
             DropIndex("dbo.ApplicationUserCourses", new[] { "Course_ID" });
             DropIndex("dbo.ApplicationUserCourses", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
@@ -160,6 +164,7 @@ namespace Mooshak2._0.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.Assignments", new[] { "CourseID" });
             DropTable("dbo.ApplicationUserCourses");
             DropTable("dbo.Submissions");
             DropTable("dbo.AspNetRoles");

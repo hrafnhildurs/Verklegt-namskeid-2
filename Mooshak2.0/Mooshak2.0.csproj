@@ -208,9 +208,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201605101449418_initial.cs" />
-    <Compile Include="Migrations\201605101449418_initial.Designer.cs">
-      <DependentUpon>201605101449418_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201605102103004_initial.cs" />
+    <Compile Include="Migrations\201605102103004_initial.Designer.cs">
+      <DependentUpon>201605102103004_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -239,7 +239,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\cow_head_cartoon.png" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Models\Entities\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -315,16 +315,16 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Models\Entities\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Models\Entities\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Models\Entities\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201605101449418_initial.resx">
-      <DependentUpon>201605101449418_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201605102103004_initial.resx">
+      <DependentUpon>201605102103004_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

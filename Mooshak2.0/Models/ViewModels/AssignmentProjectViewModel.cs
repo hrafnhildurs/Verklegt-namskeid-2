@@ -24,5 +24,7 @@ namespace Mooshak2._0.Models.ViewModels
         public string Input { get; set; }
 
         public string Output { get; set; }
+
+        public bool Submitted { get; set; }
     }
 }

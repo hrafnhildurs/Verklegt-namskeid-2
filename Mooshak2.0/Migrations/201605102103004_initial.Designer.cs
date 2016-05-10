@@ -13,7 +13,7 @@ namespace Mooshak2._0.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201605101449418_initial"; }
+            get { return "201605102103004_initial"; }
         }
         
         string IMigrationMetadata.Source

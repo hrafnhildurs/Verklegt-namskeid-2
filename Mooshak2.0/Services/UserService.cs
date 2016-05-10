@@ -2,19 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
-using System.Web.UI.WebControls;
-using Microsoft.VisualBasic.ApplicationServices;
 using Mooshak2._0.Models;
 using Mooshak2._0.Models.ViewModels;
-using System.Data;
-using System.Data.OleDb;
-using System.IO;
-using System.Configuration;
-using System.Data.SqlClient;
 using Mooshak2._0.Models.Entities;
 
 namespace Mooshak2._0.Services

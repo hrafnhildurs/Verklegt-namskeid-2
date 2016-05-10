@@ -29,5 +29,6 @@ namespace Mooshak2._0.Models.Entities
         public string Semester { get; set; }
 
         public virtual ICollection<ApplicationUser> Students { get; set; }
+        public virtual ICollection<Assignment> Assignments { get; set; }
     }
 }

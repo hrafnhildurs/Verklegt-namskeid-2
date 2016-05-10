@@ -47,5 +47,7 @@ namespace Mooshak2._0.Models.Entities
         public string Input { get; set; }
 
         public string Output { get; set; }
+
+        public bool Submitted { get; set; }
     }
 }
