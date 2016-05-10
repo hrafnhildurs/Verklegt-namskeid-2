@@ -38,33 +38,19 @@ namespace Mooshak2._0.Services
             return viewModel;
         }
 
-        
-
-           
-
-        public AssignmentProjectViewModel AddToDB()
+        public void AddToDB(AssignmentProjectViewModel viewModel)
         {
-            AssignmentProjectViewModel model = new AssignmentProjectViewModel();
-            model.ProjectName = "";
-            model.Weight = 0;
-            model.Description = "";
-
-            return model;
-
-        }
-
-        public void AddToDB(AssignmentProjectViewModel model)
-        {
-            if (model != null)
+            if (viewModel != null)
             {
-                AssignmentProject newPr = new AssignmentProject
+                AssignmentProject Model = new AssignmentProject
                 {
-                    ProjectName = model.ProjectName,
-                    AssignmentID = model.AssignmentID,
-                    Description = model.Description,
-                    Weight = model.Weight
+                    CourseID = viewModel.CourseID,
+                    ProjectName = viewModel.ProjectName,
+                    Description = viewModel.Description,
+                    Weight = viewModel.Weight,
+                    Deadline = viewModel.Deadline
                 };
-                _db.Projects.Add(newPr);
+                _db.Projects.Add(Model);
                 _db.SaveChanges();
             }
         }
