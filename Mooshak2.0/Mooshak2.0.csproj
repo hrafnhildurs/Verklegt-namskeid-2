@@ -236,6 +236,26 @@
     <Compile Include="Migrations\201605101249215_initial4.Designer.cs">
       <DependentUpon>201605101249215_initial4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605101302137_initial5.cs" />
+    <Compile Include="Migrations\201605101302137_initial5.Designer.cs">
+      <DependentUpon>201605101302137_initial5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605101318180_initial6.cs" />
+    <Compile Include="Migrations\201605101318180_initial6.Designer.cs">
+      <DependentUpon>201605101318180_initial6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605101324466_initial7.cs" />
+    <Compile Include="Migrations\201605101324466_initial7.Designer.cs">
+      <DependentUpon>201605101324466_initial7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605101354416_initial8.cs" />
+    <Compile Include="Migrations\201605101354416_initial8.Designer.cs">
+      <DependentUpon>201605101354416_initial8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605101412280_initial9.cs" />
+    <Compile Include="Migrations\201605101412280_initial9.Designer.cs">
+      <DependentUpon>201605101412280_initial9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
@@ -262,7 +282,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\cow_head_cartoon.png" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Models\Entities\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
@@ -338,9 +358,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Models\Entities\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Models\Entities\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Models\Entities\fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -366,6 +386,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605101249215_initial4.resx">
       <DependentUpon>201605101249215_initial4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605101302137_initial5.resx">
+      <DependentUpon>201605101302137_initial5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605101318180_initial6.resx">
+      <DependentUpon>201605101318180_initial6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605101324466_initial7.resx">
+      <DependentUpon>201605101324466_initial7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605101354416_initial8.resx">
+      <DependentUpon>201605101354416_initial8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605101412280_initial9.resx">
+      <DependentUpon>201605101412280_initial9.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,8 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
 namespace Mooshak2._0.Models.Entities
 {
     public class Assignment
@@ -21,7 +25,7 @@ namespace Mooshak2._0.Models.Entities
         /// <summary>
         /// The deadline of the assignment
         /// </summary>
-        public string Deadline { get; set; }
+        public DateTime Deadline { get; set; }
 
     }
 }

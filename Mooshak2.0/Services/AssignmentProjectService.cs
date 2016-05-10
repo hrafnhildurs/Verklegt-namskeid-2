@@ -31,7 +31,7 @@ namespace Mooshak2._0.Services
                     ProjectName = tmp.ProjectName,
                     Description = tmp.Description,
                     Weight = tmp.Weight,
-                    Deadline = tmp.Deadline            
+                    Deadline = tmp.Deadline           
 
                 });
             }
@@ -96,8 +96,11 @@ namespace Mooshak2._0.Services
             {
                 //TODO: kasta villu                                                                                    
             }
-            _db.Projects.Remove(project);
-            _db.SaveChanges();
+            else
+            {
+                _db.Projects.Remove(project);
+                _db.SaveChanges();
+             }
         }
 
         public void SubmitCode(Submission submission)
