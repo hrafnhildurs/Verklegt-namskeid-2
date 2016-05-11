@@ -15,9 +15,11 @@
         <label for="">SSN</label>
         @Html.TextBoxFor(m => Model.SSN, new { @class = "form-control" })
 
-        <label for="">Email</label>
+        <label for="">E-mail</label>
         @Html.TextBoxFor(m => Model.Email, new { @class = "form-control" })
 
+        <label for="">Role</label>
+        @Html.DropDownListFor(m => m.UserRole, (ViewBag.RoleList as List<SelectListItem>), new { @class = "form-control" })
         <!--<input type="text" class="form-control">-->
     </div>
     <input type="submit" value="Save" class="btn btn-success">

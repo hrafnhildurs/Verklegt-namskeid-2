@@ -24,7 +24,8 @@ namespace Mooshak2._0.Controllers
 
         public ActionResult Edit(string userSSN)
         {
-                var user = _service.GetUserBySSN(userSSN);
+            ViewBag.RoleList = GetRoles();
+            var user = _service.GetUserBySSN(userSSN);
                 return View(user);
         }
 
@@ -32,6 +33,7 @@ namespace Mooshak2._0.Controllers
         public ActionResult Edit(UserViewModel user)
         {
             _service.EditUserBySSN(user);
+
 
             return RedirectToAction("Index");
         }
@@ -43,7 +45,6 @@ namespace Mooshak2._0.Controllers
             return RedirectToAction("Index");
 
         }
-        
 
 
         public ActionResult CreateMultiple()
@@ -54,7 +55,7 @@ namespace Mooshak2._0.Controllers
 
         public ActionResult Details(string userSSN)
         {
-            UserViewModel user = _service.GetUserBySSN(userSSN);
+           UserViewModel user = _service.GetUserBySSN(userSSN);
             return View(user);
         }
 
@@ -62,6 +63,17 @@ namespace Mooshak2._0.Controllers
         {
             List<UserViewModel> sortedUsers = _service.GetSortedUsers(role);
             return View("Index", sortedUsers);
+
+        }
+
+        private List<SelectListItem> GetRoles()
+        {
+            List<SelectListItem> result = new List<SelectListItem>();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            result.AddRange(roleManager.Roles.Select(x => new SelectListItem() { Value = x.Name, Text = x.Name }));
+
+            return result;
         }
     }
+
 }

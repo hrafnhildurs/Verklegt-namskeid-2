@@ -168,7 +168,7 @@ namespace Mooshak2._0.Controllers
 
                     if (result.Succeeded)
                     {
-                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        //await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         
                         ManageRoles addTo = new ManageRoles();
                         if (model.Role == "Administrator")
@@ -196,7 +196,7 @@ namespace Mooshak2._0.Controllers
                         // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                         // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                        return RedirectToLocal(returnUrl);
+                        return RedirectToAction("Index", "User");
                     }
                     AddErrors(result);
                 }

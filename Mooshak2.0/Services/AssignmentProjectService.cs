@@ -7,6 +7,7 @@ using System.Web;
 using Mooshak2._0.Models.Entities;
 using Mooshak2._0.Models;
 using System.Web.Mvc;
+using System.IO;
 
 namespace Mooshak2._0.Services
 {
@@ -107,15 +108,28 @@ namespace Mooshak2._0.Services
         {
             if (submission != null)
             {
-                Submission newSub = new Submission
+                // Create a string array with the lines of text
+                string[] lines = { "First line", "Second line", "Third line" };
+
+                // Set a variable to the My Documents path.
+               // string mydocpath =
+                    //Environment.GetFolderPath(Environment.);
+
+                // Write the string array to a new file named "WriteLines.txt".
+                using (StreamWriter outputFile = new StreamWriter( @"~\Mooshak2.0\SubmittedCodes\WriteLines.txt"))
                 {
-                    Date = submission.Date,
-                    StudentID = submission.StudentID,
-                    ProjectID = submission.ProjectID,
-                    SubmittedCode = submission.SubmittedCode
-                };
-                _db.Submissions.Add(newSub);
-                _db.SaveChanges();
+                    foreach (string line in lines)
+                        outputFile.WriteLine(line);
+                }
+                /* Submission newSub = new Submission
+                 {
+                     Date = submission.Date,
+                     StudentID = submission.StudentID,
+                     ProjectID = submission.ProjectID,
+                     SubmittedCode = submission.SubmittedCode
+                 };
+                 _db.Submissions.Add(newSub);
+                 _db.SaveChanges();*/
             }
         }
         public SubmissionViewModel ExportSubmissionByID(int? ID)

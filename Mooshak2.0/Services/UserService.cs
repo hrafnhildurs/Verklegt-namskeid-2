@@ -75,7 +75,7 @@ namespace Mooshak2._0.Services
                 var viewModel = new UserViewModel
                 {
                     FullName = user.FullName,
-                    SSN = user.SSN,
+                    SSN = user.SSN.Insert(6, "-").Insert(4, ""),
                     Email = user.Email,
                     UserRole = man.GetUserRole(user.FullName)
                 };
@@ -89,14 +89,22 @@ namespace Mooshak2._0.Services
 
         public void EditUserBySSN(UserViewModel user)
         {
+            ManageRoles man = new ManageRoles();
             var model = _db.Users.Where(x => x.SSN == user.SSN).FirstOrDefault();
             if (model == null)
             {
                 //TODO: kasta villu 
             }
             model.FullName = user.FullName;
-            model.SSN = user.SSN;
+            model.SSN = user.SSN.Insert(6, "-").Insert(4, "");
             model.Email = user.Email;
+
+            if (man.GetUserRole(model.FullName) != null)
+            {
+                man.ClearUserRoles(model.UserName);
+            }
+
+            man.AddUserToRole(model.Id, user.UserRole);
 
             try
             {
