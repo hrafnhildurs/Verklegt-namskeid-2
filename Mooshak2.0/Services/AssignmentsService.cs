@@ -18,7 +18,25 @@ namespace Mooshak2._0.Services
             _db = new ApplicationDbContext();
         }
 
+        public List<AssignmentViewModel> GetAllAssignments()
+        {
+            List<Assignment> assignment = _db.Assignments.ToList();
+            List<AssignmentViewModel> viewModel = new List<AssignmentViewModel>();
 
+            foreach (var tmp in assignment)
+            {
+                viewModel.Add(new AssignmentViewModel()
+                {
+                    ID = tmp.ID,
+                    CourseID = tmp.CourseID,
+                    AssignmentName = tmp.AssignmentName,
+                    Deadline = tmp.Deadline
+
+                });
+            }
+
+            return viewModel;
+        }
 
         public List<AssignmentViewModel> GetAssignmentsInCourse(int courseID)
         {
@@ -29,7 +47,7 @@ namespace Mooshak2._0.Services
         public AssignmentViewModel GetAssignmentByID (int assignmentID)
         {
             //get the assignment
-            var assignment = _db.AssignmentProject.SingleOrDefault(x => x.ID == assignmentID);
+            var assignment = _db.Assignments.SingleOrDefault(x => x.ID == assignmentID);
 
             //if the assignment doesn't exist
             if (assignment == null)
@@ -59,10 +77,10 @@ namespace Mooshak2._0.Services
         {
             if(assignmentID.HasValue)
             {
-                Assignment assignment = _db.AssignmentProject.Where(x => x.ID == assignmentID.Value).SingleOrDefault();
+                Assignment assignment = _db.Assignments.Where(x => x.ID == assignmentID.Value).SingleOrDefault();
                 if (assignment != null)
                 {
-                    _db.AssignmentProject.Remove(assignment);
+                    _db.Assignments.Remove(assignment);
                     _db.SaveChanges();
                 }
             }
@@ -81,7 +99,7 @@ namespace Mooshak2._0.Services
                 CourseID = viewModel.CourseID,
                 Deadline = viewModel.Deadline
             };
-            _db.AssignmentProject.Add(model);
+            _db.Assignments.Add(model);
             _db.SaveChanges();
         }
 
@@ -95,7 +113,7 @@ namespace Mooshak2._0.Services
         {
             if (id.HasValue)
             {
-                Assignment assignment = _db.AssignmentProject.Where(x => x.ID == id.Value).SingleOrDefault();
+                Assignment assignment = _db.Assignments.Where(x => x.ID == id.Value).SingleOrDefault();
                 if (assignment != null)
                 {
                     model.CourseID = assignment.CourseID;
