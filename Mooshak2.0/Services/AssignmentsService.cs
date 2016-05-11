@@ -47,7 +47,7 @@ namespace Mooshak2._0.Services
             var viewModel = new AssignmentViewModel
             {
                 AssignmentName = assignment.AssignmentName,
-                Projects = projects,
+                //Projects = projects,
                 //projectDescription =  description
             };
 
@@ -80,7 +80,7 @@ namespace Mooshak2._0.Services
                 AssignmentName = viewModel.AssignmentName,
                 CourseID = viewModel.CourseID,
                 Deadline = viewModel.Deadline,
-                AssignmentProjects = viewModel.Projects.ToList()
+               // AssignmentProjects = viewModel.Projects.ToList()
             };
             _db.AssignmentProject.Add(model);
             _db.SaveChanges();

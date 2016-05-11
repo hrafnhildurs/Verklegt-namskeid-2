@@ -2,6 +2,10 @@
 using System.Data;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Security;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Mooshak2._0.Models;
 using Mooshak2._0.Models.ViewModels;
 using Mooshak2._0.Services;
 
@@ -39,23 +43,7 @@ namespace Mooshak2._0.Controllers
             return RedirectToAction("Index");
 
         }
-        public ActionResult Create()
-        {
-            ViewBag.CourseList = GetCourses();
-       
 
-            return View();
-        }
-
-        private List<SelectListItem> GetCourses()
-        {
-            List<SelectListItem> result = new List<SelectListItem>();
-
-            CourseService courseService = new CourseService();
-            result.AddRange(courseService.GetAllCourses().Select(x=>new SelectListItem() { Value = x.CourseID.ToString(), Text = x.CourseName} ));
-
-            return result;
-        }
 
         public ActionResult CreateMultiple()
         {

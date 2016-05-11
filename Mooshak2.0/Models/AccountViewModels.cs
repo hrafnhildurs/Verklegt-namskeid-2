@@ -96,12 +96,7 @@ namespace Mooshak2._0.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Administrator")]
-        public bool isAdministrator { get; set; }
-        [Display(Name = "Student")]
-        public bool isStudent { get; set; }
-        [Display(Name = "Teacher")]
-        public bool isTeacher { get; set; }
+        public string Role { get; set; }
 
         [Display(Name = "Course")]
         public int? CourseID { get; set; }

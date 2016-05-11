@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -7,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Mooshak2._0.Models;
@@ -141,6 +143,8 @@ namespace Mooshak2._0.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.CourseList = GetCourses();
+            ViewBag.RoleList = GetRoles();
             return View();
         }
 
@@ -165,21 +169,21 @@ namespace Mooshak2._0.Controllers
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
+                        
                         ManageRoles addTo = new ManageRoles();
-                        if (model.isAdministrator == true)
+                        if (model.Role == "Administrator")
                         {
                             addTo.AddUserToRole(user.Id, "Administrator");
                         }
-                        if (model.isTeacher == true)
+                        if (model.Role == "Teacher")
                         {
                             addTo.AddUserToRole(user.Id, "Teacher");
                         }
-                        if (model.isStudent == true)
+                        if (model.Role == "Student")
                         {
                             addTo.AddUserToRole(user.Id, "Student");
                         }
-
+                       
                         if (model.CourseID.HasValue)
                         {
                             UserService userService = new UserService();
@@ -373,9 +377,26 @@ namespace Mooshak2._0.Controllers
             base.Dispose(disposing);
         }
 
-    #region Helpers
-    // Used for XSRF protection when adding external logins
-    private const string XsrfKey = "XsrfId";
+        private List<SelectListItem> GetRoles()
+        {
+            List<SelectListItem> result = new List<SelectListItem>();
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+            result.AddRange(roleManager.Roles.Select(x => new SelectListItem() { Value = x.Name, Text = x.Name }));
+
+            return result;
+        }
+        private List<SelectListItem> GetCourses()
+        {
+            List<SelectListItem> result = new List<SelectListItem>();
+
+            CourseService courseService = new CourseService();
+            result.AddRange(courseService.GetAllCourses().Select(x => new SelectListItem() { Value = x.CourseID.ToString(), Text = x.CourseName }));
+
+            return result;
+        }
+        #region Helpers
+        // Used for XSRF protection when adding external logins
+        private const string XsrfKey = "XsrfId";
 
         private IAuthenticationManager AuthenticationManager
         {
