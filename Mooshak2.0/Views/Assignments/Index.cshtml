@@ -1,39 +1,35 @@
-﻿
-@{
-    ViewBag.Title = "Index";
-}
+﻿@model List<Mooshak2._0.Models.ViewModels.AssignmentViewModel>
 
-<h2>Assignments</h2>
-<br />
-<br />
-<br />
+
+<h2>List of assignments</h2>
 
 <table class="table table-bordered">
     <thead>
         <tr>
             <th>Name</th>
-            <th>Deadline</th>
-            <th>Submittions</th>
             <th>Course</th>
+            <th>Deadline</th>
+            <th> </th>
+
         </tr>
     </thead>
     @foreach (var assignment in Model)
     {
         <tr>
-            <td>@assignment.assignmentName</td>
-            <td>@assignment.CourseID</td>
+            <td>@assignment.AssignmentName</td>
+            <td>@assignment.Course.CourseName</td>
             <td>@assignment.Deadline</td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = assignment.ID }) |
                 @Html.ActionLink("Details", "Details", new { id = assignment.ID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = assignment.ID },
-                new { onclick = "return confirm('Are you sure you want to delete this course?')" })
+                new { onclick = "return confirm('Are you sure you want to delete this assignment?')" })
             </td>
         </tr>
 
     }
 
 </table>
-<button onclick="location.href='@Url.Action("Create", "Assignment")'" class="btn btn-primary">
+<button onclick="location.href='@Url.Action("Create", "Assignments")'" class="btn btn-primary">
     <span class="glyphicon glyphicon-plus"></span> Create New
 </button>

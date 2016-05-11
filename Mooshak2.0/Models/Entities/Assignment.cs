@@ -24,6 +24,8 @@ namespace Mooshak2._0.Models.Entities
         /// </summary>
         public DateTime Deadline { get; set; }
 
+        public Course Course { get; set; }
+
         //public virtual ICollection<AssignmentProject> AssignmentProjects { get; set; }
     }
 }

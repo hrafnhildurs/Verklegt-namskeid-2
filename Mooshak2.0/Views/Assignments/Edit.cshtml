@@ -1,7 +1,43 @@
-﻿
+﻿@model Mooshak2._0.Models.ViewModels.AssignmentViewModel
+
+@using System.Web.Mvc.Html
+@using Mooshak2._0.Models
+@using Mooshak2._0.Models.Entities
+@using Mooshak2._0.Models.ViewModels
+
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "CreateAssignment";
 }
 
-<h2>Edit</h2>
+<h2>Create assignment</h2>
+
+<form action="/Assignments/Edit" method="post">
+    <div>
+        <label for="">Course</label>
+        <select id="courseId" name="courseId" class="form-control">
+            @foreach (var course in Model.AvailableCourses)
+            {
+                var selected = "";
+                if (course.CourseID == Model.CourseID)
+                {
+                    selected = "SELECTED";
+                }
+                <option value="@course.CourseID" @selected>@course.CourseName</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="">Deadline</label>
+        @Html.TextBoxFor(m => Model.Deadline, new { @class = "form-control" })
+
+        <label for="">Assignment Name</label>
+        @Html.TextBoxFor(m => Model.AssignmentName, new { @class = "form-control" })
+        <!--<input type="text" class="form-control">-->
+       @Html.HiddenFor(m => Model.ID)
+    </div>
+    <input type="submit" value="Update" class="btn btn-success">
+    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary btn-large" })
+</form>
 

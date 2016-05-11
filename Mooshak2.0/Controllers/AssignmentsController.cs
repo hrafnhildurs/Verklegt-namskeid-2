@@ -9,6 +9,7 @@ namespace Mooshak2._0.Controllers
     {
         //instance of the assignmentService
         private AssignmentsService _service = new AssignmentsService();
+        private CourseService _courseService = new CourseService();
         // GET: Assignments
 
       
@@ -20,17 +21,27 @@ namespace Mooshak2._0.Controllers
             return View(viewModel);
         }
 
-
-        /*public ActionResult Delete(int id)
+        public ActionResult Index()
         {
-            //var viewModel = _service.DeleteAssignmentByID(id);
+            var assignments = _service.GetAllAssignments();
 
-            //return View(viewModel);
-        }*/
+            return View(assignments);
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+            _service.DeleteAssignmentByID(id);
+
+            return RedirectToAction("Index");
+        }
 
         public ActionResult Create()
         {
-            return View();
+            var courses = _courseService.GetAllCourses();
+            var assignmentViewModel = new AssignmentViewModel {AvailableCourses = courses};
+
+            return View(assignmentViewModel);
         }
 
         [HttpPost]
@@ -38,32 +49,26 @@ namespace Mooshak2._0.Controllers
         {
             _service.AddToDB(viewModel);
 
-            return RedirectToAction("index");
+            return RedirectToAction("Index");
 
         }
+        
+        public ActionResult Edit(int id)
+         {
+            var courses = _courseService.GetAllCourses();
+            var assignment = _service.GetAssignmentByID(id);
+            assignment.AvailableCourses = courses;
 
-        /*[HttpGet]
-        public ActionResult AddAssignmentToCourse(int CourseId)
-        {
-            AddStudentToCourseViewModel model = new AddStudentToCourseViewModel();
-            model.CourseID = id;
-            var students = _userService.GetAllUsers();
-            model.AvailableStudents = students;
-            return View(model);
-        }
+            return View(assignment);
+         }
 
         [HttpPost]
-        public ActionResult SaveAssignmentToCourse(int courseId, int assignmentId)
+        public ActionResult Edit(AssignmentViewModel assignment)
         {
-            _userService.AddStudentToCourse(courseId, studentId);
+            _service.EditAssignmentById(assignment.ID, assignment);
+            //update assignment
+            return RedirectToAction("Index");
+        }
 
-            return RedirectToAction("Details", new { id = courseId });
-        }*/
-
-        /* public ActionResult Edit(int id)
-         {
-             //var viewModel = _service.EditAssignmentByID(id);
-             //return View(viewModel);
-         }*/
     }
 }

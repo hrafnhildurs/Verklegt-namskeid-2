@@ -1,4 +1,5 @@
 ﻿@model Mooshak2._0.Models.ViewModels.AssignmentViewModel
+
 @using System.Web.Mvc.Html
 @using Mooshak2._0.Models
 @using Mooshak2._0.Models.Entities
@@ -10,40 +11,28 @@
 
 <h2>Create assignment</h2>
 
-<form action="/Assignment/Create" method="post">
-    <div>
-        <select id="courseId" name="courseId" class="form-control">
-            @foreach (var course in Model.AvailableCourses)
-            {
-                <option value="@course.CourseID">@course.CourseName</option>
-            }
-        </select>
-    </div>
-</form>
 
-
-    @using (Html.BeginForm())
-    {
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Create" />
+        <form action="/Assignments/Create" method="post">
+            <div>
+                <label for="">Course</label>
+                <select id="courseId" name="courseId" class="form-control">
+                    @foreach (var course in Model.AvailableCourses)
+                    {
+                        <option value="@course.CourseID">@course.CourseName</option>
+                    }
+                </select>
             </div>
-        </div>
 
-        <div class="form-group">
+            <div class="form-group">
 
-            <label for="">Deadline</label>
-            @Html.TextBoxFor(m => Model.Deadline, new { @class = "form-control" })
+                <label for="">Deadline</label>
+                @Html.TextBoxFor(m => Model.Deadline, new { @class = "form-control" })
 
-            <label for="">Assignment Name</label>
-            @Html.TextBoxFor(m => Model.Projects, new { @class = "form-control" })
-            <!--<input type="text" class="form-control">-->
-        </div>
-        <input type="submit" value="Save" class="btn btn-success">
-        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary btn-large" })
-    }
+                <label for="">Assignment Name</label>
+                @Html.TextBoxFor(m => Model.AssignmentName, new { @class = "form-control" })
+                <!--<input type="text" class="form-control">-->
+            </div>
+            <input type="submit" value="Save" class="btn btn-success">
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary btn-large" })
+        </form>
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>

@@ -43,13 +43,7 @@ namespace Mooshak2._0.Controllers
             return RedirectToAction("Index");
 
         }
-        public ActionResult Create()
-        {
-            ViewBag.CourseList = GetCourses();
-       
-
-            return View();
-        }
+        
 
 
         public ActionResult CreateMultiple()

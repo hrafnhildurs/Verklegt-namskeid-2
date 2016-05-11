@@ -2,6 +2,7 @@
 using Mooshak2._0.Models.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using Mooshak2._0.Models.Entities;
@@ -13,6 +14,7 @@ namespace Mooshak2._0.Services
     {
         //Instance of DbContext
         private ApplicationDbContext _db;
+
         public AssignmentsService()
         {
             _db = new ApplicationDbContext();
@@ -25,13 +27,14 @@ namespace Mooshak2._0.Services
 
             foreach (var tmp in assignment)
             {
+                var course = _db.Courses.SingleOrDefault(x => x.ID == tmp.CourseID);
                 viewModel.Add(new AssignmentViewModel()
                 {
                     ID = tmp.ID,
                     CourseID = tmp.CourseID,
                     AssignmentName = tmp.AssignmentName,
-                    Deadline = tmp.Deadline
-
+                    Deadline = tmp.Deadline,
+                    Course =  course
                 });
             }
 
@@ -48,11 +51,12 @@ namespace Mooshak2._0.Services
         {
             //get the assignment
             var assignment = _db.Assignments.SingleOrDefault(x => x.ID == assignmentID);
+            var course = _db.Courses.SingleOrDefault(x => x.ID == assignment.CourseID);
 
             //if the assignment doesn't exist
             if (assignment == null)
             {
-                //TODO: kasta villu!
+                throw new InvalidDataException();
             }
 
             //get the projects that are a part of this assignment
@@ -65,6 +69,9 @@ namespace Mooshak2._0.Services
             var viewModel = new AssignmentViewModel
             {
                 AssignmentName = assignment.AssignmentName,
+                Course = course,
+                CourseID = assignment.CourseID,
+                Deadline = assignment.Deadline
                 //Projects = projects,
                 //projectDescription =  description
             };
@@ -72,7 +79,7 @@ namespace Mooshak2._0.Services
             //return the viewModel
             return viewModel;
         }
-        //er ekki alveg viss hvað er að gerast hérna ... hverju á ég að returna ??
+        
         public void DeleteAssignmentByID(int? assignmentID)
         {
             if(assignmentID.HasValue)
@@ -117,9 +124,9 @@ namespace Mooshak2._0.Services
                 Assignment assignment = _db.Assignments.Where(x => x.ID == id.Value).SingleOrDefault();
                 if (assignment != null)
                 {
-                    model.CourseID = assignment.CourseID;
-                    model.Deadline = assignment.Deadline;
-                    model.AssignmentName = assignment.AssignmentName;
+                    assignment.CourseID = model.CourseID;
+                    assignment.Deadline = model.Deadline;
+                    assignment.AssignmentName = model.AssignmentName;
                     _db.SaveChanges();
                 }
             }
