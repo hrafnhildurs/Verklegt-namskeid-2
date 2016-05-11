@@ -5,8 +5,8 @@
         }
 
     <nav class="leftNav">
-        <button id="userBtn" class="btn btn-default">User</button>
-        <button id="courseBtn" class="btn btn-default">Course</button>
+        <button id="userBtn" class="btn btn-default" onclick="location.href='@Url.Action("Index", "User")'">Users</button>
+        <button id="courseBtn" class="btn btn-default" onclick="location.href='@Url.Action("Index", "Course")'">Courses</button>
     </nav>
 
     <h3>Users</h3>
@@ -44,6 +44,6 @@
     </tbody>
 </table>
 
-<button id="createUserBtn" class="btn btn-default" onclick="location.href='@Url.Action("Register", "Account")'">Create User</button>
-<button id="createMultiBtn" class="btn btn-default" onclick="location.href='@Url.Action("CreateMultiple", "User")'">Create Multiple Users</button>
+<button id="createUserBtn" class="btn btn-primary" onclick="location.href='@Url.Action("Register", "Account")'"><span class="glyphicon glyphicon-plus"></span> Create User</button>
+<button id="createMultiBtn" class="btn btn-primary" onclick="location.href='@Url.Action("CreateMultiple", "User")'"><span class="glyphicon glyphicon-plus"></span> Create Multiple Users</button>
 
