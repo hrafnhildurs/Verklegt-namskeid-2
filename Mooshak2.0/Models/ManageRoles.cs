@@ -40,6 +40,7 @@ namespace Mooshak2._0.Models
         {
             var um = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var user = um.FindByName(name);
+
             if (UserIsInRole(user.Id, "Administrator"))
             {
                 return "Administrator";
