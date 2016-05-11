@@ -3,6 +3,11 @@
     ViewBag.Title = "View";
 }
 
+<nav class="leftNav">
+    <button id="userBtn" class="btn btn-default" onclick="location.href = '@Url.Action("Index", "User")'">Users</button>
+    <button id="courseBtn" class="btn btn-default" onclick="location.href = '@Url.Action("Index", "Course")'">Courses</button>
+</nav>
+
 <h2>List of all courses</h2>
 <div style="overflow-y: scroll; height: 300px;">
 <table class="table table-bordered">
