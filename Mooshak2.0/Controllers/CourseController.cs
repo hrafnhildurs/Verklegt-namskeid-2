@@ -13,6 +13,7 @@ namespace Mooshak2._0.Controllers
     public class CourseController : Controller
     {
         private CourseService _service = new CourseService();
+        private UserService _userService = new UserService();
        
         // creates a list of viewmodels (all courses)
         public ActionResult Index()
@@ -67,6 +68,7 @@ namespace Mooshak2._0.Controllers
         public ActionResult Details(int id)
         {
             CourseViewModel course = _service.GetCourseByID(id);
+
             return View(course);
         }
 
@@ -75,9 +77,24 @@ namespace Mooshak2._0.Controllers
         {
             AddStudentToCourseViewModel model = new AddStudentToCourseViewModel();
             model.CourseID = id;
-            //TODO sækja notendur
-            model.AvailableStudents = null;
+            var students = _userService.GetAllUsers();
+            model.AvailableStudents = students;
             return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SaveStudentToCourse(int courseId, string studentId)
+        {
+            _userService.AddStudentToCourse(courseId, studentId);
+
+            return RedirectToAction("Details", new {id = courseId});
+        }
+
+        public ActionResult RemoveStudentFromCourse(int courseId, string studentId)
+        {
+            _userService.RemoveStudentFromCourse(courseId, studentId);
+
+            return RedirectToAction("Details", new { id = courseId });
         }
 
         [HttpPost]
