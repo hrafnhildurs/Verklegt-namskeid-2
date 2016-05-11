@@ -60,19 +60,17 @@ namespace Mooshak2._0.Services
             }
 
             //get the projects that are a part of this assignment
-            var projects = _db.Projects.Where(x => x.AssignmentID == assignmentID).
-                Select(x => new AssignmentProjectViewModel
-                {
-                    ProjectName = x.ProjectName
-                }).ToList();
+            var projects = _db.Projects.Where(x => x.AssignmentID == assignmentID).ToList();
+               
             //make new viewModel
             var viewModel = new AssignmentViewModel
             {
+                ID = assignment.ID,
                 AssignmentName = assignment.AssignmentName,
                 Course = course,
                 CourseID = assignment.CourseID,
-                Deadline = assignment.Deadline
-                //Projects = projects,
+                Deadline = assignment.Deadline,
+                Projects = projects,
                 //projectDescription =  description
             };
 

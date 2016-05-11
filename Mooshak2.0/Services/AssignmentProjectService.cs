@@ -27,9 +27,14 @@ namespace Mooshak2._0.Services
 
             foreach (var tmp in project)
             {
+                var assignment = _db.Assignments.SingleOrDefault(x => x.ID == tmp.AssignmentID);
+                var course = _db.Courses.SingleOrDefault(x => x.ID == tmp.CourseID);
                 viewModel.Add(new AssignmentProjectViewModel()
                 {
+                    ID = tmp.ID,
                     ProjectName = tmp.ProjectName,
+                    CourseName = course.CourseName,
+                    AssignmentName = assignment.AssignmentName,
                     Description = tmp.Description,
                     Weight = tmp.Weight,
                     Deadline = tmp.Deadline           
@@ -45,11 +50,12 @@ namespace Mooshak2._0.Services
             {
                 AssignmentProject Model = new AssignmentProject
                 {
+                    AssignmentID = viewModel.AssignmentID,
                     CourseID = viewModel.CourseID,
                     ProjectName = viewModel.ProjectName,
                     Description = viewModel.Description,
                     Weight = viewModel.Weight,
-                    Deadline = viewModel.Deadline
+                    Deadline = new DateTime(2016, 1, 1, 23, 59, 59)
                 };
                 _db.Projects.Add(Model);
                 _db.SaveChanges();
@@ -63,14 +69,18 @@ namespace Mooshak2._0.Services
             {
                 //TODO: kasta villu                                                                                    
             }
-
+            var assignment = _db.Assignments.SingleOrDefault(x => x.ID == project.AssignmentID);
+            var course = _db.Courses.SingleOrDefault(x => x.ID == project.CourseID);
             var viewModel = new AssignmentProjectViewModel
             {
+                ID = project.ID,
                 CourseID = project.CourseID,
                 ProjectName = project.ProjectName,
                 Description = project.Description,
                 Weight = project.Weight,
-                Deadline = project.Deadline
+                Deadline = project.Deadline,
+                CourseName = course.CourseName,
+                AssignmentName = assignment.AssignmentName,
 
             };
 
@@ -90,18 +100,17 @@ namespace Mooshak2._0.Services
             return projects;
         }
 
-        public void DeleteProjectByID(int id)
+        public void DeleteProjectById(int id)
         {
             var project = _db.Projects.SingleOrDefault(x => x.ID == id);
             if (project == null)
             {
-                //TODO: kasta villu                                                                                    
+                throw new InvalidDataException();                                                                                  
             }
-            else
-            {
-                _db.Projects.Remove(project);
-                _db.SaveChanges();
-             }
+          
+            _db.Projects.Remove(project);
+            _db.SaveChanges();
+             
         }
 
         public void SubmitCode(Submission submission)
