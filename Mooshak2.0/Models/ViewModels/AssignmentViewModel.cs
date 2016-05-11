@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Mooshak2._0.Models.Entities;
 
 namespace Mooshak2._0.Models.ViewModels
 {
@@ -12,5 +13,6 @@ namespace Mooshak2._0.Models.ViewModels
         public int ID { get; set; }
         public int CourseID { get; set; }
         public DateTime Deadline { get; set; }
+        public List<CourseViewModel> AvailableCourses { get; set; } //setti þetta inn
     }
 }

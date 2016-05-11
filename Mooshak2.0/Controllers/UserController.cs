@@ -43,7 +43,6 @@ namespace Mooshak2._0.Controllers
         {
             ViewBag.CourseList = GetCourses();
        
-
             return View();
         }
 
@@ -65,7 +64,7 @@ namespace Mooshak2._0.Controllers
 
         public ActionResult Details(string userSSN)
         {
-           UserViewModel user = _service.GetUserBySSN(userSSN);
+            UserViewModel user = _service.GetUserBySSN(userSSN);
             return View(user);
         }
 
@@ -73,9 +72,6 @@ namespace Mooshak2._0.Controllers
         {
             List<UserViewModel> sortedUsers = _service.GetSortedUsers(role);
             return View("Index", sortedUsers);
-
         }
-
     }
-
 }

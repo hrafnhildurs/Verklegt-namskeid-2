@@ -11,8 +11,7 @@ namespace Mooshak2._0.Controllers
         private AssignmentsService _service = new AssignmentsService();
         // GET: Assignments
 
-        
-
+      
         //Get details about a specific assignment
         public ActionResult Details(int id)
         {
@@ -42,6 +41,24 @@ namespace Mooshak2._0.Controllers
             return RedirectToAction("index");
 
         }
+
+        /*[HttpGet]
+        public ActionResult AddAssignmentToCourse(int CourseId)
+        {
+            AddStudentToCourseViewModel model = new AddStudentToCourseViewModel();
+            model.CourseID = id;
+            var students = _userService.GetAllUsers();
+            model.AvailableStudents = students;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult SaveAssignmentToCourse(int courseId, int assignmentId)
+        {
+            _userService.AddStudentToCourse(courseId, studentId);
+
+            return RedirectToAction("Details", new { id = courseId });
+        }*/
 
         /* public ActionResult Edit(int id)
          {

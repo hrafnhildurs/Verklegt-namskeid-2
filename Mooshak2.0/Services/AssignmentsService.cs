@@ -103,13 +103,13 @@ namespace Mooshak2._0.Services
             _db.SaveChanges();
         }
 
-        public AssignmentViewModel CreateAssignmentByID(int id)
+        public AssignmentViewModel CreateAssignment(int CourseId)
         {
             //TODO:
             return null;
         }
 
-        public void EditAssignmentByID(int? id, AssignmentViewModel model)
+        public void EditAssignmentById(int? id, AssignmentViewModel model)
         {
             if (id.HasValue)
             {
