@@ -212,6 +212,10 @@
     <Compile Include="Migrations\201605102103004_initial.Designer.cs">
       <DependentUpon>201605102103004_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605111016165_initial1.cs" />
+    <Compile Include="Migrations\201605111016165_initial1.Designer.cs">
+      <DependentUpon>201605111016165_initial1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
@@ -300,7 +304,6 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
-    <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\Course\Details.cshtml" />
     <Content Include="Views\Submission\Submit.cshtml" />
     <Content Include="Views\Assignments\Create.cshtml" />
@@ -326,6 +329,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201605102103004_initial.resx">
       <DependentUpon>201605102103004_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605111016165_initial1.resx">
+      <DependentUpon>201605111016165_initial1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
