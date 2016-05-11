@@ -79,7 +79,8 @@ namespace Mooshak2._0.Services
             {
                 AssignmentName = viewModel.AssignmentName,
                 CourseID = viewModel.CourseID,
-                Deadline = viewModel.Deadline
+                Deadline = viewModel.Deadline,
+                AssignmentProjects = viewModel.Projects.ToList()
             };
             _db.AssignmentProject.Add(model);
             _db.SaveChanges();
