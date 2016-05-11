@@ -317,7 +317,7 @@
     <Content Include="Views\Course\AddStudentToCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\Uploads\" />
     <Folder Include="SubmittedCodes\" />
   </ItemGroup>
   <ItemGroup>
