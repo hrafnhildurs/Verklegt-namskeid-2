@@ -10,6 +10,7 @@ namespace Mooshak2._0.Models.ViewModels
     {
         public int CourseID { get; set; }
         public string StudentID { get; set; }
-        public List<SelectListItem> AvailableStudents { get; set; }
+        //public List<SelectListItem> AvailableStudents { get; set; }
+        public List<UserViewModel> AvailableStudents { get; set; }
     }
 }

@@ -29,6 +29,7 @@ namespace Mooshak2._0.Services
             {
                 viewModel.Add(new UserViewModel()
                 {
+                    Id = tmp.Id,
                     FullName = tmp.FullName,
                     SSN = tmp.SSN,
                     Email = tmp.Email,
@@ -156,6 +157,21 @@ namespace Mooshak2._0.Services
                     _db.SaveChanges();
                 }
             }
+        }
+
+        public void RemoveStudentFromCourse(int courseId, string studentId)
+        {
+            ApplicationUser studentToAdd = (from user in _db.Users where user.Id == studentId select user).SingleOrDefault();
+            Course courseToAdd = (from course in _db.Courses where course.ID == courseId select course).SingleOrDefault();
+            if (studentToAdd != null && courseToAdd != null)
+            {
+                if (studentToAdd.Courses.Where(x => x.ID == courseId).Count() == 1)
+                {
+                    studentToAdd.Courses.Remove(courseToAdd);
+                    _db.SaveChanges();
+                }
+            }
+
         }
 
     }

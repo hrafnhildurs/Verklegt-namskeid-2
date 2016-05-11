@@ -4,9 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-@Model.Students
-
-<h2>Details</h2>
+<h2>Course details</h2>
 <table class="table table-bordered">
     <thead>
     <tr>
@@ -32,11 +30,7 @@ else
 {
     
 
-    <div class="pull-right">
-        @Html.ActionLink("Add students to course", "AddStudentToCourse", new { courseId = Model.CourseID }, new { @class = "btn btn-success" })
-    </div>
-
-    <h2 class="pull-left">Students</h2>
+    <h2 class="pull-left">Registered students</h2>
 
 
     <table class="table table-bordered">
@@ -44,6 +38,7 @@ else
             <th>Name</th>
             <th>SSN</th>
             <th>E-mail</th>
+            <th>  </th>
         </tr>
         @foreach (var student in Model.Students)
         {
@@ -51,8 +46,15 @@ else
                 <td>@student.FullName</td>
                 <td>@student.SSN</td>
                 <td>@student.Email</td>
+                <td>
+                    @Html.ActionLink("Remove", "RemoveStudentFromCourse", new { courseId = Model.CourseID,
+                    studentId = student.Id },
+                    new { onclick = "return confirm('Are you sure you want to remove the student from this course?')" })
+                </td>
             </tr>
         }
     </table>
 }
 @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-primary btn-large" })
+@Html.ActionLink("Add students to course", "AddStudentToCourse", new { id = Model.CourseID }, new { @class = "btn btn-success" })
+
