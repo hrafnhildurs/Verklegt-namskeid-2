@@ -31,6 +31,27 @@
         </div>*@
 
         <div class="form-group">
+            @Html.LabelFor(model => model.ProjectID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <p>nafn á verkefni veivei</p>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <p>@DateTime.Now.ToShortDateString();</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <p>@User.Identity.Name</p>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.SubmittedCode, htmlAttributes: new { cols = 120, rows = 10, @placeholder = "Paste your code in this box.....",  @id = "TextAreaSubmitCode" })
                 @Html.ValidationMessageFor(model => model.SubmittedCode, "", new { @class = "text-danger" })
@@ -52,35 +73,22 @@
                 @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })
             </div>
         </div>
+        *@
         
-        <div class="form-group">
-            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <p>@DateTime.Now.ToShortDateString();</p>
-            </div>
-        </div>
+        @*
+    <div class="form-group">
+        @Html.LabelFor(m => m.StudentID, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+           @Html.DropDownListFor(m => m.StudentID, (ViewBag.sortedUsers as List<SelectListItem>), new { @class = "form-control" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <p>@User.Identity.Name</p>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.StudentID, new { @class = "col-md-2 control-label" })
-            <div class="col-md-10">
-               @Html.DropDownListFor(m => m.StudentID, (ViewBag.sortedUsers as List<SelectListItem>), new { @class = "form-control" })
-           
-               </div> *@
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Submit For Grading" class="btnSubmitCode" />
-            </div>
-        </div>
+           </div>
     </div>
+        *@
+    <div>
+        <input type ="submit" value="Submit For Grading" class="btn btn-primary">
+        
+    </div>
+        </div>
 }
 
 <div>
