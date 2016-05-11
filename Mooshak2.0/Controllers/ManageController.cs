@@ -69,7 +69,7 @@ namespace Mooshak2._0.Controllers
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
-                FullName = User.Identity.GetUserName(),
+                FullName = FullName(),
                 SSN = SSN().Insert(6,"-").Insert(4,""),
                 Email = await UserManager.GetEmailAsync(userId),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
@@ -392,6 +392,15 @@ namespace Mooshak2._0.Controllers
             if (user != null)
             {
                 return user.SSN;
+            }
+            return null;
+        }
+        private string FullName()
+        {
+            var user = UserManager.FindById(User.Identity.GetUserId());
+            if (user != null)
+            {
+                return user.FullName;
             }
             return null;
         }

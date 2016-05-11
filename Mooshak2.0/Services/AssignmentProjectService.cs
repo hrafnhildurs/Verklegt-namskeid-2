@@ -113,34 +113,12 @@ namespace Mooshak2._0.Services
              
         }
 
-        public void SubmitCode(Submission submission)
+        public void SubmitCode(String submissionCode)
         {
-            if (submission != null)
-            {
-                // Create a string array with the lines of text
-                string[] lines = { "First line", "Second line", "Third line" };
 
-                // Set a variable to the My Documents path.
-               // string mydocpath =
-                    //Environment.GetFolderPath(Environment.);
-
-                // Write the string array to a new file named "WriteLines.txt".
-                using (StreamWriter outputFile = new StreamWriter( @"~\Mooshak2.0\SubmittedCodes\WriteLines.txt"))
-                {
-                    foreach (string line in lines)
-                        outputFile.WriteLine(line);
-                }
-                /* Submission newSub = new Submission
-                 {
-                     Date = submission.Date,
-                     StudentID = submission.StudentID,
-                     ProjectID = submission.ProjectID,
-                     SubmittedCode = submission.SubmittedCode
-                 };
-                 _db.Submissions.Add(newSub);
-                 _db.SaveChanges();*/
-            }
+            
         }
+   
         public SubmissionViewModel ExportSubmissionByID(int? ID)
         {
             var submission = _db.Submissions.SingleOrDefault(x => x.ID == ID);
@@ -160,7 +138,6 @@ namespace Mooshak2._0.Services
             };
 
             return viewModel;
-        }
-    }
+      }   }
 }
 
