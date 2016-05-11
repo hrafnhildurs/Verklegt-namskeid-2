@@ -311,6 +311,7 @@
     <Content Include="Views\AssignmentProject\Create.cshtml" />
     <Content Include="Views\AssignmentProject\Edit.cshtml" />
     <Content Include="Views\AssignmentProject\Delete.cshtml" />
+    <Content Include="Views\Course\AddStudentToCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,7 +10,7 @@ namespace Mooshak2._0.DAL
     {
         protected override void Seed(ApplicationDbContext context)
         {
-            var test = "";
+            
         }
     }
 }
