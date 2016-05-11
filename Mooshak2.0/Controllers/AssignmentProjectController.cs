@@ -21,8 +21,20 @@ namespace Mooshak2._0.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            ViewBag.AssignmentList = GetAssignmentID();
             return View();
         }
+
+        private List<SelectListItem> GetAssignmentID()
+        {
+            List<SelectListItem> result = new List<SelectListItem>();
+
+            AssignmentsService assignments = new AssignmentsService();
+            result.AddRange(assignments.GetAllAssignments().Select(x => new SelectListItem() { Value = x.ID.ToString(), Text = x.AssignmentName }));
+
+            return result;
+        }
+
 
         [HttpPost]
         public ActionResult Create(AssignmentProjectViewModel viewModel)
