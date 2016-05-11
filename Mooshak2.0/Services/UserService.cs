@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using Microsoft.AspNet.Identity.Owin;
 using Mooshak2._0.Models;
 using Mooshak2._0.Models.ViewModels;
 using Mooshak2._0.Models.Entities;
@@ -33,7 +34,7 @@ namespace Mooshak2._0.Services
                     FullName = tmp.FullName,
                     SSN = tmp.SSN,
                     Email = tmp.Email,
-                    UserRole = man.GetUserRole(tmp.FullName)
+                    UserRole = man.GetUserRole(tmp.Email)
                 });
             }
 
@@ -56,7 +57,7 @@ namespace Mooshak2._0.Services
                         FullName = tmp.FullName,
                         SSN = tmp.SSN,
                         Email = tmp.Email,
-                        UserRole = man.GetUserRole(tmp.FullName)
+                        UserRole = man.GetUserRole(tmp.Email)
                     });
                 }
                 ;
@@ -75,9 +76,9 @@ namespace Mooshak2._0.Services
                 var viewModel = new UserViewModel
                 {
                     FullName = user.FullName,
-                    SSN = user.SSN.Insert(6, "-").Insert(4, ""),
+                    SSN = user.SSN,
                     Email = user.Email,
-                    UserRole = man.GetUserRole(user.FullName)
+                    UserRole = man.GetUserRole(user.Email)
                 };
 
                 return viewModel;
@@ -88,24 +89,25 @@ namespace Mooshak2._0.Services
         }
 
         public void EditUserBySSN(UserViewModel user)
-        {
+        {   
             ManageRoles man = new ManageRoles();
             var model = _db.Users.Where(x => x.SSN == user.SSN).FirstOrDefault();
             if (model == null)
             {
                 //TODO: kasta villu 
             }
-            model.FullName = user.FullName;
-            model.SSN = user.SSN.Insert(6, "-").Insert(4, "");
-            model.Email = user.Email;
-
-            if (man.GetUserRole(model.FullName) != null)
+            else
             {
-                man.ClearUserRoles(model.UserName);
+                model.FullName = user.FullName;
+                model.SSN = user.SSN;
+                model.Email = user.Email;
+
+                if (man.GetUserRole(model.Email) != null)
+                {
+                    man.ClearUserRoles(model.Id);
+                }
+                man.AddUserToRole(model.Id, user.UserRole);
             }
-
-            man.AddUserToRole(model.Id, user.UserRole);
-
             try
             {
                 _db.SaveChanges();
