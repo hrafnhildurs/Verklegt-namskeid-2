@@ -224,6 +224,26 @@
     <Compile Include="Migrations\201605111955584_initial3.Designer.cs">
       <DependentUpon>201605111955584_initial3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605121309590_initial4.cs" />
+    <Compile Include="Migrations\201605121309590_initial4.Designer.cs">
+      <DependentUpon>201605121309590_initial4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121325060_initia5.cs" />
+    <Compile Include="Migrations\201605121325060_initia5.Designer.cs">
+      <DependentUpon>201605121325060_initia5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121327185_initial5.cs" />
+    <Compile Include="Migrations\201605121327185_initial5.Designer.cs">
+      <DependentUpon>201605121327185_initial5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121328462_initial6.cs" />
+    <Compile Include="Migrations\201605121328462_initial6.Designer.cs">
+      <DependentUpon>201605121328462_initial6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121348006_initial7.cs" />
+    <Compile Include="Migrations\201605121348006_initial7.Designer.cs">
+      <DependentUpon>201605121348006_initial7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
@@ -234,6 +254,7 @@
     <Compile Include="Models\ManageRoles.cs" />
     <Compile Include="Models\ViewModels\AddStudentToCourseViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\AddTeacherToCourseViewModel.cs" />
     <Compile Include="Models\ViewModels\AssignmentProjectViewModel.cs" />
     <Compile Include="Models\ViewModels\AssignmentViewModel.cs" />
     <Compile Include="Models\ViewModels\CourseViewModel.cs" />
@@ -323,6 +344,7 @@
     <Content Include="Views\AssignmentProject\Edit.cshtml" />
     <Content Include="Views\AssignmentProject\Delete.cshtml" />
     <Content Include="Views\Course\AddStudentToCourse.cshtml" />
+    <Content Include="Views\Course\AddTeacherToCourse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Uploads\" />
@@ -348,6 +370,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605111955584_initial3.resx">
       <DependentUpon>201605111955584_initial3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121309590_initial4.resx">
+      <DependentUpon>201605121309590_initial4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121325060_initia5.resx">
+      <DependentUpon>201605121325060_initia5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121327185_initial5.resx">
+      <DependentUpon>201605121327185_initial5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121328462_initial6.resx">
+      <DependentUpon>201605121328462_initial6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121348006_initial7.resx">
+      <DependentUpon>201605121348006_initial7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

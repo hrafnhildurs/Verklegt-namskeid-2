@@ -140,7 +140,7 @@ namespace Mooshak2._0.Controllers
 
         //
         // GET: /Account/Register
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Register()
         {
             ViewBag.CourseList = GetCourses();
@@ -151,7 +151,7 @@ namespace Mooshak2._0.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model, string returnUrl)
         {
@@ -186,8 +186,11 @@ namespace Mooshak2._0.Controllers
                        
                         if (model.CourseID.HasValue)
                         {
-                            UserService userService = new UserService();
-                            userService.AddStudentToCourse(model.CourseID.Value, user.Id);
+                            if (model.Role == "Student")
+                            {
+                                UserService userService = new UserService();
+                                userService.AddStudentToCourse(model.CourseID.Value, user.Id);
+                            }
                         }
 
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Net;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity.Owin;
 using Mooshak2._0.Models;
 using Mooshak2._0.Models.ViewModels;
@@ -11,6 +13,7 @@ namespace Mooshak2._0.Services
 {
     public class UserService
     {
+        //Instance of DbContext
         private ApplicationDbContext _db;
 
         public UserService()
@@ -22,10 +25,14 @@ namespace Mooshak2._0.Services
 
         public List<UserViewModel> GetAllUsers()
         {
+            //Instance of the ManageRoles class to get the user's role
             ManageRoles man = new ManageRoles();
+            //A list of all the users in the database
             List<ApplicationUser> users = _db.Users.ToList();
+            //List of view models to return
             List<UserViewModel> viewModel = new List<UserViewModel>();
 
+            //Get all the users from the list and adding them to te view model
             foreach (var tmp in users)
             {
                 viewModel.Add(new UserViewModel()
@@ -37,17 +44,20 @@ namespace Mooshak2._0.Services
                     UserRole = man.GetUserRole(tmp.Email)
                 });
             }
-
+            //return the list of view models
             return viewModel;
         }
 
         public List<UserViewModel> GetSortedUsers(string role)
         {
+            //Instance of the ManageRoles class to get the user's role
             ManageRoles man = new ManageRoles();
-
+            //List of view models to return
             List<UserViewModel> viewModel = new List<UserViewModel>();
+            //A list of all the users in the database
             List<ApplicationUser> users = _db.Users.ToList();
 
+            //Get all the users from the list with the right role and adding them to te view model
             foreach (var tmp in users)
             {
                 if (man.UserIsInRole(tmp.Id, role))
@@ -62,15 +72,18 @@ namespace Mooshak2._0.Services
                 }
                 ;
             }
-
+            //Return the view model
             return viewModel;
         }
 
         public UserViewModel GetUserBySSN(string userSSN)
         {
+            //Instance of the ManageRoles class to get the user's role
             ManageRoles man = new ManageRoles();
+            //Get the right user from the database
             var user = _db.Users.Where(x => x.SSN == userSSN).FirstOrDefault();
-
+            
+            //if the user exists add him to a view model and return it, otherwise throw exception
             if (user != null)
             {
                 var viewModel = new UserViewModel
@@ -83,18 +96,24 @@ namespace Mooshak2._0.Services
 
                 return viewModel;
             }
-
-            return null;
-
+            else
+            {
+                throw new ArgumentNullException();
+            }
         }
 
         public void EditUserBySSN(UserViewModel user)
-        {   
+        {
+            //Instance of the ManageRoles class to get the user's role
             ManageRoles man = new ManageRoles();
+            //Find the right user
             var model = _db.Users.Where(x => x.SSN == user.SSN).FirstOrDefault();
+            
+            //If the user dosn't exist throw an exception otherwise change the user information
             if (model == null)
             {
                 //TODO: kasta villu 
+                throw new ArgumentNullException();
             }
             else
             {
@@ -133,10 +152,14 @@ namespace Mooshak2._0.Services
 
         public void DeleteUserBySSN(string userSSN)
         {
+            //Find the right user
             var user = _db.Users.Where(x => x.SSN == userSSN).FirstOrDefault();
+
+            //if the user dosn't exist thorw an exception, otherwise remove the user from the database
             if (user == null)
             {
-                //TODO: kasta villu                                                                                    
+                //TODO: kasta villu       
+                throw new ArgumentNullException();
             }
             _db.Users.Remove(user);
             _db.SaveChanges();
@@ -144,6 +167,7 @@ namespace Mooshak2._0.Services
 
         public bool CheckIfUserExist(string userSSN)
         {
+            //Search for user, return true if found, otherwise false
             var user = _db.Users.Where(x => x.SSN == userSSN).SingleOrDefault();
             if (user != null)
             {
@@ -156,9 +180,13 @@ namespace Mooshak2._0.Services
         }
  
         public void AddStudentToCourse(int courseId, string studentId)
-        {
+        {   
+            //Find the right student
             ApplicationUser studentToAdd = (from user in _db.Users where user.Id == studentId select user).SingleOrDefault();
+            //Find the right course
             Course courseToAdd = (from course in _db.Courses where course.ID == courseId select course).SingleOrDefault();
+            
+            //If both the student and the course exist, add the student to the course, otherwise throw an exception
             if (studentToAdd != null && courseToAdd != null)
             {
                 if (studentToAdd.Courses.Where(x => x.ID == courseId).Count() == 0)
@@ -167,19 +195,31 @@ namespace Mooshak2._0.Services
                     _db.SaveChanges();
                 }
             }
+            else
+            {
+                throw new ArgumentNullException();
+            }
         }
 
         public void RemoveStudentFromCourse(int courseId, string studentId)
         {
-            ApplicationUser studentToAdd = (from user in _db.Users where user.Id == studentId select user).SingleOrDefault();
+            //Find the right student
+            ApplicationUser studentToRemove = (from user in _db.Users where user.Id == studentId select user).SingleOrDefault();
+            //Find the right course
             Course courseToAdd = (from course in _db.Courses where course.ID == courseId select course).SingleOrDefault();
-            if (studentToAdd != null && courseToAdd != null)
+
+            //If both the student and the course are found, remove the student from the course, otherwise throw an exception
+            if (studentToRemove != null && courseToAdd != null)
             {
-                if (studentToAdd.Courses.Where(x => x.ID == courseId).Count() == 1)
+                if (studentToRemove.Courses.Where(x => x.ID == courseId).Count() == 1)
                 {
-                    studentToAdd.Courses.Remove(courseToAdd);
+                    studentToRemove.Courses.Remove(courseToAdd);
                     _db.SaveChanges();
                 }
+            }
+            else
+            {
+                throw new ArgumentNullException();
             }
 
         }
