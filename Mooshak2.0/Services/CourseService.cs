@@ -30,7 +30,6 @@ namespace Mooshak2._0.Services
                 CourseName = viewModel.CourseName,
                 CourseNumber = viewModel.CourseNumber,
                 Semester = viewModel.Semester,
-                TeacherId = viewModel.TeacherID
             };
             _db.Courses.Add(model);
             _db.SaveChanges();
@@ -51,6 +50,7 @@ namespace Mooshak2._0.Services
                 CourseNumber = course.CourseNumber,
                 CourseName = course.CourseName,
                 Semester = course.Semester,
+                TeacherID = course.TeacherId,
                 Students = course.Students.ToList()
             };
 
@@ -101,6 +101,7 @@ namespace Mooshak2._0.Services
             model.CourseName = viewModel.CourseName;
             model.CourseNumber = viewModel.CourseNumber;
             model.Semester = viewModel.Semester;
+            model.TeacherId = viewModel.TeacherID;
 
 
            _db.SaveChanges();

@@ -195,7 +195,7 @@ namespace Mooshak2._0.Controllers
                             {
                                 CourseService courseService = new CourseService();
                                 var course = courseService.GetCourseByID(model.CourseID.Value);
-                                course.TeacherID = user.Id;
+                                course.TeacherID = model.FullName;
                             }
                         }
 
