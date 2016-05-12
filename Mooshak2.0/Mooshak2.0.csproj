@@ -244,6 +244,22 @@
     <Compile Include="Migrations\201605121412456_initial8.Designer.cs">
       <DependentUpon>201605121412456_initial8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605121458454_initial9.cs" />
+    <Compile Include="Migrations\201605121458454_initial9.Designer.cs">
+      <DependentUpon>201605121458454_initial9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121546071_initial10.cs" />
+    <Compile Include="Migrations\201605121546071_initial10.Designer.cs">
+      <DependentUpon>201605121546071_initial10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121547049_initial11.cs" />
+    <Compile Include="Migrations\201605121547049_initial11.Designer.cs">
+      <DependentUpon>201605121547049_initial11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121610279_initial12.cs" />
+    <Compile Include="Migrations\201605121610279_initial12.Designer.cs">
+      <DependentUpon>201605121610279_initial12.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
@@ -370,6 +386,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605111955584_initial3.resx">
       <DependentUpon>201605111955584_initial3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121458454_initial9.resx">
+      <DependentUpon>201605121458454_initial9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121546071_initial10.resx">
+      <DependentUpon>201605121546071_initial10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121547049_initial11.resx">
+      <DependentUpon>201605121547049_initial11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121610279_initial12.resx">
+      <DependentUpon>201605121610279_initial12.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

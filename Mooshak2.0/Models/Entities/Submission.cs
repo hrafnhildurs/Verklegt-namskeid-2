@@ -43,6 +43,8 @@ namespace Mooshak2._0.Models.Entities
         /// </summary>
         public bool Result { get; set; }
 
+        public int AssignmentID { get; set; }
+
         /// <summary>
         /// List of students to select from when group members are to be included
         /// </summary>
