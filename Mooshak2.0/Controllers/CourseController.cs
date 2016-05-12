@@ -37,7 +37,7 @@ namespace Mooshak2._0.Controllers
 
         }
 
-        // Change a course that already exists in Mooshak
+        // Edit a course that already exists in Mooshak
         public ActionResult Edit(int id)
         {
             var course = _service.GetCourseByID(id);
@@ -63,7 +63,7 @@ namespace Mooshak2._0.Controllers
             
         }
 
-        // Shows information about a course that already exists in Mooshak
+        // Show information about a course that already exists in Mooshak
         [HttpGet]
         public ActionResult Details(int id)
         {
