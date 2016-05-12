@@ -18,33 +18,36 @@
         <li role="presentation">@Html.ActionLink("Admin", "SortUsers", new {role = "Administrator"})</li>
         </ul>
 
-<table class="table table-bordered" style="overflow-y: scroll; height: 300px;">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>SSN</th>
-            <th>RU-username</th>
-            <th>Role</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-    @foreach (var user in Model)
-    {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => user.FullName)</td>
-            <td>@Html.DisplayFor(modelItem => user.SSN)</td>
-            <td>@Html.DisplayFor(modelItem => user.Email)</td>
-            <td>@Html.DisplayFor(modelItem => user.UserRole)</td>
-            <td>@Html.ActionLink("Edit", "Edit", new { userSSN = user.SSN}) |
-                @Html.ActionLink("Details", "Details", new {userSSN = user.SSN}) |
-                @Html.ActionLink("Delete", "Delete", new { userSSN = user.SSN },
-               new { onclick = "return confirm('Are you sure you want to delete this user?')" }) </td>
-        </tr>
-    }
-    </tbody>
-</table>
-
+        <div style="overflow-y: scroll; height: 300px;">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>SSN</th>
+                        <th>RU-username</th>
+                        <th>Role</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => user.FullName)</td>
+                            <td>@Html.DisplayFor(modelItem => user.SSN)</td>
+                            <td>@Html.DisplayFor(modelItem => user.Email)</td>
+                            <td>@Html.DisplayFor(modelItem => user.UserRole)</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { userSSN = user.SSN }) |
+                            @Html.ActionLink("Details", "Details", new { userSSN = user.SSN }) |
+                            @Html.ActionLink("Delete", "Delete", new { userSSN = user.SSN },
+               new { onclick = "return confirm('Are you sure you want to delete this user?')" })
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
 <button id="createUserBtn" class="btn btn-primary" onclick="location.href='@Url.Action("Register", "Account")'"><span class="glyphicon glyphicon-plus"></span> Create User</button>
 <button id="createMultiBtn" class="btn btn-primary" onclick="location.href='@Url.Action("CreateMultiple", "User")'"><span class="glyphicon glyphicon-plus"></span> Create Multiple Users</button>
 

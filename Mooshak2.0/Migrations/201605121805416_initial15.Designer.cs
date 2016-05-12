@@ -7,13 +7,13 @@ namespace Mooshak2._0.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class initial10 : IMigrationMetadata
+    public sealed partial class initial15 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial10));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(initial15));
         
         string IMigrationMetadata.Id
         {
-            get { return "201605121546071_initial10"; }
+            get { return "201605121805416_initial15"; }
         }
         
         string IMigrationMetadata.Source

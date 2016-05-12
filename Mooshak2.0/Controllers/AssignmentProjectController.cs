@@ -20,6 +20,12 @@ namespace Mooshak2._0.Controllers
             return View(allProjects);
         }
 
+        [HttpGet]
+        public ActionResult UnfinishedProjects()
+        {
+            List<AssignmentProjectViewModel> projects = _service.GetAllUnfinishedProjects();
+            return View(projects);
+        }
         /*[HttpGet]
         public ActionResult Create()
         {
@@ -59,14 +65,6 @@ namespace Mooshak2._0.Controllers
             return result;
         }
 
-
-        [HttpGet]
-        public ActionResult UnfinishedProjects()
-        {
-            List<AssignmentProjectViewModel> projects = _service.GetAllUnfinishedProjects();
-            return View(projects);
-        }
-
         [HttpGet]
         public ActionResult Edit()
         {
@@ -101,5 +99,6 @@ namespace Mooshak2._0.Controllers
         {
             return View(model);
         }
+
     }
 }

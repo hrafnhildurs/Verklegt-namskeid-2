@@ -16,18 +16,20 @@ namespace Mooshak2._0.Models.Entities
         /// <summary>
         /// The database-generated unique ID of the project.
         /// </summary>
-        public int ID { get; set; } 
-        
+        public int ID { get; set; }
+
         /// <summary>
         /// A foreign key to the assignment
         /// </summary>
         public int AssignmentID { get; set; }
 
+        public string AssignmentName { get; set; }
+
         /// <summary>
         /// The name of the project. Example: "Part1".
         /// </summary>
         public string ProjectName { get; set; }
-        
+
         /// <summary>
         /// Determines how much this project weights in the assignment.
         /// Example: if this project is 20% of the grade of the assignment,
@@ -43,6 +45,8 @@ namespace Mooshak2._0.Models.Entities
         public DateTime Deadline { get; set; }
 
         public int CourseID { get; set; }
+
+        public string CourseName { get; set; }
 
         public string Input { get; set; }
 
