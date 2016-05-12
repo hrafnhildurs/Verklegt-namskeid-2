@@ -11,6 +11,7 @@ namespace Mooshak2._0.Models.ViewModels
         public string CourseNumber { get; set; }
         public string CourseName { get; set; }
         public string Semester { get; set; }
+        public string TeacherID { get; set; }
         public List<ApplicationUser> Students { get; set; }
 
     }

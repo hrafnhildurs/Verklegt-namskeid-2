@@ -68,6 +68,7 @@ namespace Mooshak2._0.Services
                         SSN = tmp.SSN,
                         Email = tmp.Email,
                         UserRole = man.GetUserRole(tmp.Email)
+                        
                     });
                 }
                 ;

@@ -7,6 +7,8 @@ using System.Web;
 using Mooshak2._0.Models;
 using Mooshak2._0.Models.Entities;
 using System.Data.Entity.Validation;
+using Microsoft.AspNet.Identity;
+using Microsoft.VisualBasic.ApplicationServices;
 
 namespace Mooshak2._0.Services
 {
@@ -22,11 +24,12 @@ namespace Mooshak2._0.Services
         // adds a course to the database
         public void AddToDB(CourseViewModel viewModel)
         {
+            ApplicationUserManager man;
             var model = new Course
             {
                 CourseName = viewModel.CourseName,
                 CourseNumber = viewModel.CourseNumber,
-                Semester = viewModel.Semester
+                Semester = viewModel.Semester,
             };
             _db.Courses.Add(model);
             _db.SaveChanges();
@@ -47,6 +50,7 @@ namespace Mooshak2._0.Services
                 CourseNumber = course.CourseNumber,
                 CourseName = course.CourseName,
                 Semester = course.Semester,
+                TeacherID = course.TeacherId,
                 Students = course.Students.ToList()
             };
 
@@ -97,6 +101,7 @@ namespace Mooshak2._0.Services
             model.CourseName = viewModel.CourseName;
             model.CourseNumber = viewModel.CourseNumber;
             model.Semester = viewModel.Semester;
+            model.TeacherId = viewModel.TeacherID;
 
 
            _db.SaveChanges();

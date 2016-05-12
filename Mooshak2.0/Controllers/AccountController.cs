@@ -191,6 +191,12 @@ namespace Mooshak2._0.Controllers
                                 UserService userService = new UserService();
                                 userService.AddStudentToCourse(model.CourseID.Value, user.Id);
                             }
+                            if (model.Role == "Teacher")
+                            {
+                                CourseService courseService = new CourseService();
+                                var course = courseService.GetCourseByID(model.CourseID.Value);
+                                course.TeacherID = model.FullName;
+                            }
                         }
 
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

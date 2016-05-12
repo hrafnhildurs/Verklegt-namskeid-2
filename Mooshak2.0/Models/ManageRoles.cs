@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Security;
 
 namespace Mooshak2._0.Models
-{
+{   //This class if mainly from Lab7 in Webprogramming
     public class ManageRoles
     {
         public bool RoleExists(string name)
