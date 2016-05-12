@@ -8,6 +8,7 @@ using Mooshak2._0.Models;
 using Mooshak2._0.Models.ViewModels;
 using System.IO;
 using System.Diagnostics;
+using Microsoft.AspNet.Identity;
 
 namespace Mooshak2._0.Controllers
 {
@@ -16,25 +17,30 @@ namespace Mooshak2._0.Controllers
         private AssignmentProjectService _service = new AssignmentProjectService();
 
         [HttpGet]
-        public ActionResult Submit()
+        public ActionResult Submit(int projectId, int assignmentId)
         {
-
-            return View();
+            SubmissionViewModel model = new SubmissionViewModel();
+            model.ProjectID = projectId;
+            model.AssignmentID = assignmentId;
+            return View(model);
         }
-        //Fékk þennann kóða hér : http://haacked.com/archive/2010/07/16/uploading-files-with-aspnetmvc.aspx/
+        
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Submit(SubmissionViewModel viewModel)
         {
-            _service.SaveCodeToDb(viewModel);
+            if (ModelState.IsValid)
+            {
+                viewModel.StudentID = User.Identity.GetUserId();
+                _service.SaveCodeToDb(viewModel);
+                return RedirectToAction("UnfinishedProjects", "AssignmentProject");
+            }
 
-            return RedirectToAction("UnfinishedProjects");
+            return View(viewModel);
         }
         public ActionResult Export(int StudentID, int ProjectID)
         {
             return View();
         }
-
-
-
     }
 }

@@ -11,53 +11,19 @@
 { 
     @Html.AntiForgeryToken()
     
+    @Html.HiddenFor(model => model.AssignmentID)
+    @Html.HiddenFor(model => model.ProjectID)
+
+    @Html.ValidationSummary()
+
     <div class="form-horizontal">
-        <hr />
-        @Html.HiddenFor(model => model.StudentID, htmlAttributes: new { @class = "control-label col-md-2"})
-        @Html.HiddenFor(model => model.a, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div>
-            @Html.LabelFor(model => model.AssignmentID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                <p>Assignment</p>
-            </div>
-        </div>
-        <div >
-            @Html.LabelFor(model => model.ProjectID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                <p>Project</p>
-            </div>
-        </div>
-
-        
-        
-        <div>
-            @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                <p>@DateTime.Now.ToShortDateString();</p>
-            </div>
-        </div>
-
-        <div>
-            @Html.LabelFor(model => model.StudentID, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div>
-                <p>@User.Identity.Name</p>
-            </div>
-        </div>
-        <br />
-        <br />
-        <br />
+        <hr />   
         <div>
             @Html.TextAreaFor(model => model.SubmittedCode, htmlAttributes: new { id = "TextAreaSubmitCode", placeholder="Paste your code here....", cols="10", rows="15"})
         </div>
         <br />
-        <br />
-        <br />
-        
-
-        <form action="" method="post" enctype="multipart/form-data">
-            <input type="submit" class="btn btn-success"/>
-        </form>
-</div>
+        <input type="submit" onclick="return confirm('Are you sure you want to submit your code?')" class="btn btn-success"/>
+    </div>
 
 }
 

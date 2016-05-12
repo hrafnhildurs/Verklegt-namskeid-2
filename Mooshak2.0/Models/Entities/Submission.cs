@@ -21,7 +21,7 @@ namespace Mooshak2._0.Models.Entities
         /// <summary>
         /// A foreign key to the student that is submitting
         /// </summary>
-        public int StudentID { get; set; }
+        public string StudentID { get; set; }
 
         /// <summary>
         /// A foreign key to the project

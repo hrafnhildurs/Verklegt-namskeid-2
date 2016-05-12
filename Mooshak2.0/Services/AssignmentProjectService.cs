@@ -9,6 +9,7 @@ using Mooshak2._0.Models;
 using System.Web.Mvc;
 using System.IO;
 
+
 namespace Mooshak2._0.Services
 {
     public class AssignmentProjectService
@@ -66,6 +67,7 @@ namespace Mooshak2._0.Services
                     ProjectName = tmp.ProjectName,
                     CourseName = course != null ? course.CourseName : "No course!",
                     AssignmentName = assignment != null ? assignment.AssignmentName : "No assignment!",
+                    AssignmentID = assignment != null ? assignment.ID : 0,
                     Description = tmp.Description,
                     Weight = tmp.Weight,
                     Deadline = tmp.Deadline
@@ -153,11 +155,10 @@ namespace Mooshak2._0.Services
             var model = new Submission
             {
                 AssignmentID = viewModel.AssignmentID,
-                Date = viewModel.Date,
+                Date = DateTime.Now,
                 ProjectID = viewModel.ProjectID,
                 StudentID = viewModel.StudentID,
                 Result = viewModel.Result,
-                SubmissionOutput = viewModel.SubmissionOutput,
                 SubmittedCode = viewModel.SubmittedCode
             };
             _db.Submissions.Add(model);
@@ -184,6 +185,7 @@ namespace Mooshak2._0.Services
 
             return viewModel;
         }
+        
     }
     }
 
