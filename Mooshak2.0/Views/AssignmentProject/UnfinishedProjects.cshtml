@@ -1,39 +1,34 @@
 ﻿@model List<Mooshak2._0.Models.ViewModels.AssignmentProjectViewModel>
 
-@{
-    ViewBag.Title = "View";
-}
-hallohallo
-<p>fluðrumbumbull</p>
-<h2>Unfinished Projects</h2>
+    <h2>Unfinished Projects</h2>
     <div>
-    <table class="table table-bordered">
+        <table class="table table-bordered">
 
-        <thead>
-            <tr>
-                <th>Course</th>
-                <th>Assignment</th>
-                <th>Project</th>
-                <th>Weight</th>
-                <th>Deadline</th>
-                <th> </th>
-            </tr>
-        </thead>
-        @foreach (var project in Model)
-        { 
-            <tr>
-                <td>@project.CourseName</td>
-                <td>@project.AssignmentName</td>
-                <td>@project.ProjectName</td>
-                <td>@project.Weight</td>
-                <td>@project.Deadline</td>
-                <td>
-                    <button id="userBtn" class="btn btn-success" 
-                            onclick="location.href = '@Url.Action("Submit", "Submission", new { id = project.ID})'">Submit Solution</button>
-                </td>
-            </tr>
-        }
-
-    </table>
-</div>
-
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Assignment</th>
+                    <th>Project</th>
+                    <th>Weight</th>
+                    <th>Deadline</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            @foreach (var project in Model)
+            {
+                <tr>
+                    <td>@project.CourseName</td>
+                    <td>@project.AssignmentName</td>
+                    <td>@project.ProjectName</td>
+                    <td>@project.Weight</td>
+                    <td>@project.Deadline</td>
+                    <td>
+                        <button id="userBtn" class="btn btn-success"
+                                onclick="location.href = '@Url.Action("Submit", "Submission", new {id = project.ID})'">
+                            Submit Solution
+                        </button> 
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>

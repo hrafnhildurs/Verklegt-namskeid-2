@@ -21,7 +21,7 @@ namespace Mooshak2._0.Controllers
             }
             if (User.IsInRole("Student"))
             {
-                return RedirectToAction("Index", "Manage");
+                return RedirectToAction("UnfinishedProjects", "AssignmentProject");
             }
             return View();
         }

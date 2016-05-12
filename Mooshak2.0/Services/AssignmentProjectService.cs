@@ -148,21 +148,6 @@ namespace Mooshak2._0.Services
 
 
         }
-        public void SaveCodeToDb(SubmissionViewModel viewModel)
-        {
-            var model = new Submission
-            {
-                AssignmentID = viewModel.AssignmentID,
-                Date = viewModel.Date,
-                ProjectID = viewModel.ProjectID,
-                StudentID = viewModel.StudentID,
-                Result = viewModel.Result,
-                SubmissionOutput = viewModel.SubmissionOutput,
-                SubmittedCode = viewModel.SubmittedCode
-            };
-            _db.Submissions.Add(model);
-            _db.SaveChanges();
-        }
 
         public SubmissionViewModel ExportSubmissionByID(int? ID)
         {
@@ -185,5 +170,6 @@ namespace Mooshak2._0.Services
             return viewModel;
         }
     }
-    }
+}
+
 

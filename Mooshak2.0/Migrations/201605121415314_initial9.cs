@@ -9,7 +9,7 @@ namespace Mooshak2._0.Migrations
         {
             DropColumn("dbo.AssignmentProjects", "AssignmentName");
             DropColumn("dbo.AssignmentProjects", "CourseName");
-            AlterColumn("dbo.Submissions", "StudentID", c => c.Int(nullable: false));
+
         }
         
         public override void Down()
