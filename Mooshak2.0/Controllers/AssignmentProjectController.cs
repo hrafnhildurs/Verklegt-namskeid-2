@@ -1,4 +1,5 @@
-﻿using Mooshak2._0.Models.ViewModels;
+﻿using System;
+using Mooshak2._0.Models.ViewModels;
 using Mooshak2._0.Services;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Mooshak2._0.Controllers
     {
         //instance of the AssignmentProjectService
         private AssignmentProjectService _service = new AssignmentProjectService();
+        private AssignmentsService _assignmentsService = new AssignmentsService();
 
         [HttpGet]
         public ActionResult Index()
@@ -18,11 +20,33 @@ namespace Mooshak2._0.Controllers
             return View(allProjects);
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public ActionResult Create()
         {
             ViewBag.AssignmentList = GetAssignmentID();
             return View();
+        }*/
+
+        [HttpGet]
+        public ActionResult Create(int id)
+        {
+            var assignment = _assignmentsService.GetAssignmentByID(id);
+            var viewModel = new AssignmentProjectViewModel()
+            {
+                AssignmentID = assignment.ID,
+                AssignmentName = assignment.AssignmentName,
+                Deadline = assignment.Deadline
+            };
+
+            return View(viewModel);
+        }
+
+
+        public ActionResult Save(AssignmentProjectViewModel viewModel)
+        {
+            _service.AddToDB(viewModel);
+
+            return RedirectToAction("Details", "Assignments", new { id = viewModel.AssignmentID });
         }
 
         private List<SelectListItem> GetAssignmentID()
@@ -35,15 +59,6 @@ namespace Mooshak2._0.Controllers
             return result;
         }
 
-
-        [HttpPost]
-        public ActionResult Create(AssignmentProjectViewModel viewModel)
-        {
-            _service.AddToDB(viewModel);
-
-            return RedirectToAction("index");
-
-        }
 
         [HttpGet]
         public ActionResult Edit()
@@ -60,12 +75,11 @@ namespace Mooshak2._0.Controllers
         }
       
 
-        [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int id, int assignmentId)
         {
-            _service.DeleteProjectByID(id);
+            _service.DeleteProjectById(id);
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", "Assignments", new { id = assignmentId });
 
         }
 
