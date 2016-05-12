@@ -335,7 +335,6 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Course\Details.cshtml" />
     <Content Include="Views\Submission\Submit.cshtml" />
-    <Content Include="Views\Assignments\CreateAssignment.cshtml" />
     <Content Include="Views\Assignments\Create.cshtml" />
     <Content Include="Views\Assignments\Index.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
@@ -344,7 +343,7 @@
     <Content Include="Views\AssignmentProject\Edit.cshtml" />
     <Content Include="Views\AssignmentProject\Delete.cshtml" />
     <Content Include="Views\Course\AddStudentToCourse.cshtml" />
-    <Content Include="Views\Course\AddTeacherToCourse.cshtml" />
+    <Content Include="Views\Assignments\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Uploads\" />

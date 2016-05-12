@@ -9,10 +9,10 @@ namespace Mooshak2._0.Controllers
     {
         //instance of the assignmentService
         private AssignmentsService _service = new AssignmentsService();
+        private CourseService _courseService = new CourseService();
         // GET: Assignments
 
-        
-
+      
         //Get details about a specific assignment
         public ActionResult Details(int id)
         {
@@ -21,17 +21,27 @@ namespace Mooshak2._0.Controllers
             return View(viewModel);
         }
 
-
-        /*public ActionResult Delete(int id)
+        public ActionResult Index()
         {
-            //var viewModel = _service.DeleteAssignmentByID(id);
+            var assignments = _service.GetAllAssignments();
 
-            //return View(viewModel);
-        }*/
+            return View(assignments);
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+            _service.DeleteAssignmentByID(id);
+
+            return RedirectToAction("Index");
+        }
 
         public ActionResult Create()
         {
-            return View();
+            var courses = _courseService.GetAllCourses();
+            var assignmentViewModel = new AssignmentViewModel {AvailableCourses = courses};
+
+            return View(assignmentViewModel);
         }
 
         [HttpPost]
@@ -39,14 +49,26 @@ namespace Mooshak2._0.Controllers
         {
             _service.AddToDB(viewModel);
 
-            return RedirectToAction("index");
+            return RedirectToAction("Index");
 
         }
-
-        /* public ActionResult Edit(int id)
+        
+        public ActionResult Edit(int id)
          {
-             //var viewModel = _service.EditAssignmentByID(id);
-             //return View(viewModel);
-         }*/
+            var courses = _courseService.GetAllCourses();
+            var assignment = _service.GetAssignmentByID(id);
+            assignment.AvailableCourses = courses;
+
+            return View(assignment);
+         }
+
+        [HttpPost]
+        public ActionResult Edit(AssignmentViewModel assignment)
+        {
+            _service.EditAssignmentById(assignment.ID, assignment);
+            //update assignment
+            return RedirectToAction("Index");
+        }
+
     }
 }
