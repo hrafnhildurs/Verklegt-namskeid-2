@@ -52,15 +52,15 @@ namespace Mooshak2._0.Services
             List<AssignmentProject> project = _db.Projects.ToList();
             List<AssignmentProjectViewModel> viewModel = new List<AssignmentProjectViewModel>();
 
-            if(project == null)
+            if (project == null)
             {
                 //TODO kassta villu
             }
-            foreach (var tmp in project.Where(x=>x.Submitted == false))
+            foreach (var tmp in project.Where(x => x.Submitted == false))
             {
                 var assignment = _db.Assignments.SingleOrDefault(x => x.ID == tmp.AssignmentID);
                 var course = _db.Courses.SingleOrDefault(x => x.ID == tmp.CourseID);
-                 viewModel.Add(new AssignmentProjectViewModel()
+                viewModel.Add(new AssignmentProjectViewModel()
                 {
                     ID = tmp.ID,
                     ProjectName = tmp.ProjectName,
@@ -68,7 +68,7 @@ namespace Mooshak2._0.Services
                     AssignmentName = assignment != null ? assignment.AssignmentName : "No assignment!",
                     Description = tmp.Description,
                     Weight = tmp.Weight,
-                    Deadline = tmp.Deadline           
+                    Deadline = tmp.Deadline
                 });
             }
             return viewModel;
@@ -135,20 +135,35 @@ namespace Mooshak2._0.Services
             var project = _db.Projects.SingleOrDefault(x => x.ID == id);
             if (project == null)
             {
-                throw new InvalidDataException();                                                                                  
+                throw new InvalidDataException();
             }
-          
+
             _db.Projects.Remove(project);
             _db.SaveChanges();
-             
+
         }
 
         public void SubmitCode(String submissionCode)
         {
 
-            
+
         }
-   
+        public void SaveCodeToDb(SubmissionViewModel viewModel)
+        {
+            var model = new Submission
+            {
+                AssignmentID = viewModel.AssignmentID,
+                Date = viewModel.Date,
+                ProjectID = viewModel.ProjectID,
+                StudentID = viewModel.StudentID,
+                Result = viewModel.Result,
+                SubmissionOutput = viewModel.SubmissionOutput,
+                SubmittedCode = viewModel.SubmittedCode
+            };
+            _db.Submissions.Add(model);
+            _db.SaveChanges();
+        }
+
         public SubmissionViewModel ExportSubmissionByID(int? ID)
         {
             var submission = _db.Submissions.SingleOrDefault(x => x.ID == ID);
@@ -168,6 +183,7 @@ namespace Mooshak2._0.Services
             };
 
             return viewModel;
-      }   }
-}
+        }
+    }
+    }
 

@@ -7,18 +7,28 @@
 <h2>Submit</h2>
 
 
-
+@using (Html.BeginForm())
+{ 
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
         <hr />
-
+        @Html.HiddenFor(model => model.StudentID, htmlAttributes: new { @class = "control-label col-md-2"})
+        @Html.HiddenFor(model => model.a, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div>
+            @Html.LabelFor(model => model.AssignmentID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div>
+                <p>Assignment</p>
+            </div>
+        </div>
         <div >
             @Html.LabelFor(model => model.ProjectID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div>
-                <p>Nafn á námskeiði </p>
+                <p>Project</p>
             </div>
         </div>
+
+        
         
         <div>
             @Html.LabelFor(model => model.Date, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -33,21 +43,23 @@
                 <p>@User.Identity.Name</p>
             </div>
         </div>
-
         <br />
         <br />
         <br />
+        <div>
+            @Html.TextAreaFor(model => model.SubmittedCode, htmlAttributes: new { id = "TextAreaSubmitCode", placeholder="Paste your code here....", cols="10", rows="15"})
+        </div>
+        <br />
+        <br />
+        <br />
+        
 
         <form action="" method="post" enctype="multipart/form-data">
-
-            <label for="file">Choose a file to upload</label>
-            <input type="file" name="file" id="file" />
-            <br />
-            <br />
-            <br />
             <input type="submit" class="btn btn-success"/>
         </form>
 </div>
+
+}
 
 
 <div>

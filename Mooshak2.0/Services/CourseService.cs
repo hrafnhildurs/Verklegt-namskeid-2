@@ -35,13 +35,13 @@ namespace Mooshak2._0.Services
             _db.SaveChanges();
         }
 
-
+        // gets a course from the database by ID
         public CourseViewModel GetCourseByID(int courseId)
         {
             var course = _db.Courses.SingleOrDefault(x => x.ID == courseId);
             if (course == null)
             {
-                //TODO: kasta villu                                                                                    
+                throw new ArgumentNullException();
             }
 
             var viewModel = new CourseViewModel
@@ -57,19 +57,19 @@ namespace Mooshak2._0.Services
             return viewModel;
         }
 
-        
+        // deletes a course from the database by ID
         public void DeleteCourseByID(int courseId)
         {
             var course = _db.Courses.SingleOrDefault(x => x.ID == courseId);
             if (course == null)
             {
-                //TODO: kasta villu                                                                                    
+                throw new ArgumentNullException();
             }
             _db.Courses.Remove(course);
             _db.SaveChanges();
         }
 
-        // returns a list of all courses registered in the db.
+        // returns a list of all courses registered in the database
         public List<CourseViewModel> GetAllCourses()
         {
             List<Course> courses = _db.Courses.ToList();
@@ -95,7 +95,7 @@ namespace Mooshak2._0.Services
             var model = _db.Courses.Where(x => x.ID == viewModel.CourseID).SingleOrDefault();
             if (model == null)
             {
-                //TODO: kasta villu                                                                                    
+                throw new ArgumentNullException();
             }
             
             model.CourseName = viewModel.CourseName;
