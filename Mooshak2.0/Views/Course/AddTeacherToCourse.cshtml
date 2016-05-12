@@ -1,0 +1,20 @@
+﻿@model Mooshak2._0.Models.ViewModels.AddTeacherToCourseViewModel
+
+<h2>Add teacher to course</h2>
+
+<form action="/Course/SaveTeacherToCourse" method="post">
+    <div>
+        <select id="teacherId" name="teacherId" class="form-control">
+            @foreach (var teacher in Model.AvailableTeachers)
+            {
+                <option value="@teacher.Id">@teacher.FullName</option>
+            }
+        </select>
+    </div>
+    <input type="hidden" name="courseId" id="courseId" value="@Model.CourseID" />
+
+    <div style="padding-top: 15px">
+        <input type="submit" value="Save" class="btn btn-success">
+        @Html.ActionLink("Cancel", "Details", new { id = Model.CourseID }, new { @class = "btn btn-primary btn-large" })
+    </div>
+</form>

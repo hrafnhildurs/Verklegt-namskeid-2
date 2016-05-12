@@ -25,11 +25,38 @@ namespace Mooshak2._0.Services
             List<AssignmentProject> project = _db.Projects.ToList();
             List<AssignmentProjectViewModel> viewModel = new List<AssignmentProjectViewModel>();
 
-            if(project == null)
+            if (project == null)
             {
                 //TODO kassta villu
             }
             foreach (var tmp in project)
+            {
+                var assignment = _db.Assignments.SingleOrDefault(x => x.ID == tmp.AssignmentID);
+                var course = _db.Courses.SingleOrDefault(x => x.ID == tmp.CourseID);
+                viewModel.Add(new AssignmentProjectViewModel()
+                {
+                    ID = tmp.ID,
+                    ProjectName = tmp.ProjectName,
+                    CourseName = course != null ? course.CourseName : "No course!",
+                    AssignmentName = assignment != null ? assignment.AssignmentName : "No assignment!",
+                    Description = tmp.Description,
+                    Weight = tmp.Weight,
+                    Deadline = tmp.Deadline
+                });
+            }
+            return viewModel;
+        }
+
+        public List<AssignmentProjectViewModel> GetAllUnfinishedProjects()
+        {
+            List<AssignmentProject> project = _db.Projects.ToList();
+            List<AssignmentProjectViewModel> viewModel = new List<AssignmentProjectViewModel>();
+
+            if(project == null)
+            {
+                //TODO kassta villu
+            }
+            foreach (var tmp in project.Where(x=>x.Submitted == false))
             {
                 var assignment = _db.Assignments.SingleOrDefault(x => x.ID == tmp.AssignmentID);
                 var course = _db.Courses.SingleOrDefault(x => x.ID == tmp.CourseID);

@@ -20,21 +20,18 @@
             </tr>
         </thead>
         @foreach (var project in Model)
-        {
-            if (project.Submitted == false)// Þyrfti að bera saman user til að fá bara upp fyrir þann sem er loggaður inn
-            {
-                <tr>
-                    <td>@project.CourseName</td>
-                    <td>@project.AssignmentName</td>
-                    <td>@project.ProjectName</td>
-                    <td>@project.Weight</td>
-                    <td>@project.Deadline</td>
-                    <td>
-                        <button id="userBtn" class="btn btn-success" 
-                                onclick="location.href = '@Url.Action("Submit", "Submission", new { id = project.ID})'">Submit Solution</button>
-                    </td>
-                </tr>
-            }
+        { 
+            <tr>
+                <td>@project.CourseName</td>
+                <td>@project.AssignmentName</td>
+                <td>@project.ProjectName</td>
+                <td>@project.Weight</td>
+                <td>@project.Deadline</td>
+                <td>
+                    <button id="userBtn" class="btn btn-success" 
+                            onclick="location.href = '@Url.Action("Submit", "Submission", new { id = project.ID})'">Submit Solution</button>
+                </td>
+            </tr>
         }
 
     </table>

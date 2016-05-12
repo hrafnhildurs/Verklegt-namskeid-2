@@ -63,7 +63,7 @@ namespace Mooshak2._0.Controllers
         [HttpGet]
         public ActionResult UnfinishedProjects()
         {
-            List<AssignmentProjectViewModel> projects = _service.GetAllProjects();
+            List<AssignmentProjectViewModel> projects = _service.GetAllUnfinishedProjects();
             return View(projects);
         }
 

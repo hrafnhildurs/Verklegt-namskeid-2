@@ -254,6 +254,7 @@
     <Compile Include="Models\ManageRoles.cs" />
     <Compile Include="Models\ViewModels\AddStudentToCourseViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ViewModels\AddTeacherToCourseViewModel.cs" />
     <Compile Include="Models\ViewModels\AssignmentProjectViewModel.cs" />
     <Compile Include="Models\ViewModels\AssignmentViewModel.cs" />
     <Compile Include="Models\ViewModels\CourseViewModel.cs" />
@@ -369,21 +370,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605111955584_initial3.resx">
       <DependentUpon>201605111955584_initial3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605121253323_initial4.resx">
-      <DependentUpon>201605121253323_initial4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605121303029_initial5.resx">
-      <DependentUpon>201605121303029_initial5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605121312268_initial6.resx">
-      <DependentUpon>201605121312268_initial6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605121329544_initial7.resx">
-      <DependentUpon>201605121329544_initial7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201605121412456_initial8.resx">
-      <DependentUpon>201605121412456_initial8.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

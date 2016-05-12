@@ -77,7 +77,7 @@ namespace Mooshak2._0.Controllers
         {
             AddStudentToCourseViewModel model = new AddStudentToCourseViewModel();
             model.CourseID = id;
-            var students = _userService.GetAllUsers();
+            var students = _userService.GetSortedUsers("Student");
             model.AvailableStudents = students;
             return View(model);
         }
