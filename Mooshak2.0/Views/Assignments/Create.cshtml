@@ -1,20 +1,18 @@
-﻿@model Mooshak2._0.Models.ViewModels.AssignmentViewModel
+﻿@model AssignmentViewModel
 
 @using System.Web.Mvc.Html
 @using Mooshak2._0.Models
 @using Mooshak2._0.Models.Entities
 @using Mooshak2._0.Models.ViewModels
 
-@{
-    ViewBag.Title = "CreateAssignment";
-}
-
 <h2>Create assignment</h2>
 
-
-        <form action="/Assignments/Create" method="post">
-            <div>
-                <label for="">Course</label>
+<div class="form-horizontal">
+    <hr/>
+    <form action="/Assignments/Create" method="post">
+        <div class="form-group">
+            <label class="col-md-2 control-label">Course</label>
+            <div class="col-md-10">
                 <select id="courseId" name="courseId" class="form-control">
                     @foreach (var course in Model.AvailableCourses)
                     {
@@ -22,17 +20,23 @@
                     }
                 </select>
             </div>
+        </div>
 
-            <div class="form-group">
-
-                <label for="">Deadline</label>
-                @Html.TextBoxFor(m => Model.Deadline, new { @class = "form-control" })
-
-                <label for="">Assignment Name</label>
-                @Html.TextBoxFor(m => Model.AssignmentName, new { @class = "form-control" })
-                <!--<input type="text" class="form-control">-->
+        <div class="form-group">
+            <label class="col-md-2 control-label">Deadline</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => Model.Deadline, new {@class = "form-control"})
             </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Assignment Name</label>
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => Model.AssignmentName, new {@class = "form-control"})
+            </div>
+        </div>
+        <div class="col-md-offset-2">
             <input type="submit" value="Save" class="btn btn-success">
-            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary btn-large" })
-        </form>
-
+            @Html.ActionLink("Cancel", "Index", null, new {@class = "btn btn-primary btn-large"})
+        </div>
+    </form>
+</div>
