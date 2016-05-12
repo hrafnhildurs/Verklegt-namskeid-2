@@ -244,6 +244,22 @@
     <Compile Include="Migrations\201605121348006_initial7.Designer.cs">
       <DependentUpon>201605121348006_initial7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201605121409048_initial8.cs" />
+    <Compile Include="Migrations\201605121409048_initial8.Designer.cs">
+      <DependentUpon>201605121409048_initial8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121415314_initial9.cs" />
+    <Compile Include="Migrations\201605121415314_initial9.Designer.cs">
+      <DependentUpon>201605121415314_initial9.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121425574_initial10.cs" />
+    <Compile Include="Migrations\201605121425574_initial10.Designer.cs">
+      <DependentUpon>201605121425574_initial10.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605121436527_initial11.cs" />
+    <Compile Include="Migrations\201605121436527_initial11.Designer.cs">
+      <DependentUpon>201605121436527_initial11.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Entities\Assignment.cs" />
@@ -384,6 +400,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605121348006_initial7.resx">
       <DependentUpon>201605121348006_initial7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121409048_initial8.resx">
+      <DependentUpon>201605121409048_initial8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121415314_initial9.resx">
+      <DependentUpon>201605121415314_initial9.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121425574_initial10.resx">
+      <DependentUpon>201605121425574_initial10.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605121436527_initial11.resx">
+      <DependentUpon>201605121436527_initial11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
