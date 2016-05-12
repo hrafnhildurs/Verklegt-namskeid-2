@@ -61,6 +61,13 @@ namespace Mooshak2._0.Controllers
 
 
         [HttpGet]
+        public ActionResult UnfinishedProjects()
+        {
+            List<AssignmentProjectViewModel> projects = _service.GetAllProjects();
+            return View(projects);
+        }
+
+        [HttpGet]
         public ActionResult Edit()
         {
             return View();

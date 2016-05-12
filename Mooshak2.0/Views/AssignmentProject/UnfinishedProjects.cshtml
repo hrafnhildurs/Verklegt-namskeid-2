@@ -1,0 +1,42 @@
+﻿@model List<Mooshak2._0.Models.ViewModels.AssignmentProjectViewModel>
+
+@{
+    ViewBag.Title = "View";
+}
+
+
+<h2>Unfinished Projects</h2>
+    <div>
+    <table class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th>Course</th>
+                <th>Assignment</th>
+                <th>Project</th>
+                <th>Weight</th>
+                <th>Deadline</th>
+                <th> </th>
+            </tr>
+        </thead>
+        @foreach (var project in Model)
+        {
+            if (project.Submitted == false)// Þyrfti að bera saman user til að fá bara upp fyrir þann sem er loggaður inn
+            {
+                <tr>
+                    <td>@project.CourseName</td>
+                    <td>@project.AssignmentName</td>
+                    <td>@project.ProjectName</td>
+                    <td>@project.Weight</td>
+                    <td>@project.Deadline</td>
+                    <td>
+                        <button id="userBtn" class="btn btn-success" 
+                                onclick="location.href = '@Url.Action("Submit", "Submission", new { id = project.ID})'">Submit Solution</button>
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>
+

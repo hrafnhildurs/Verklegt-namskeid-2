@@ -23,6 +23,8 @@ namespace Mooshak2._0.Models.Entities
         /// </summary>
         public int AssignmentID { get; set; }
 
+        public string AssignmentName { get; set; }
+
         /// <summary>
         /// The name of the project. Example: "Part1".
         /// </summary>
@@ -43,6 +45,8 @@ namespace Mooshak2._0.Models.Entities
         public DateTime Deadline { get; set; }
 
         public int CourseID { get; set; }
+
+        public string CourseName { get; set; }
 
         public string Input { get; set; }
 
