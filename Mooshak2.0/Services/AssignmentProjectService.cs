@@ -97,26 +97,31 @@ namespace Mooshak2._0.Services
         public AssignmentProjectViewModel GetProjectByID(int projectID)
         {
             var project = _db.Projects.SingleOrDefault(x => x.ID == projectID);
-            if (project == null)
+            if (project != null)
             {
-                //TODO: kasta villu                                                                                    
+                var assignment = _db.Assignments.SingleOrDefault(x => x.ID == project.AssignmentID);
+                var course = _db.Courses.SingleOrDefault(x => x.ID == project.CourseID);
+                var viewModel = new AssignmentProjectViewModel
+                {
+                    ID = project.ID,
+                    CourseID = project.CourseID,
+                    ProjectName = project.ProjectName,
+                    Description = project.Description,
+                    Weight = project.Weight,
+                    Deadline = project.Deadline,
+                    CourseName = course.CourseName,
+                    AssignmentName = assignment.AssignmentName,
+
+                };
+
+                return viewModel;
             }
-            var assignment = _db.Assignments.SingleOrDefault(x => x.ID == project.AssignmentID);
-            var course = _db.Courses.SingleOrDefault(x => x.ID == project.CourseID);
-            var viewModel = new AssignmentProjectViewModel
+            else
             {
-                ID = project.ID,
-                CourseID = project.CourseID,
-                ProjectName = project.ProjectName,
-                Description = project.Description,
-                Weight = project.Weight,
-                Deadline = project.Deadline,
-                CourseName = course.CourseName,
-                AssignmentName = assignment.AssignmentName,
+                throw new ArgumentNullException();
+            }
 
-            };
 
-            return viewModel;
         }
 
         public List<AssignmentProjectViewModel> GetProjectsInAssignment(int AssignmentID)
@@ -135,34 +140,38 @@ namespace Mooshak2._0.Services
         public void DeleteProjectById(int id)
         {
             var project = _db.Projects.SingleOrDefault(x => x.ID == id);
-            if (project == null)
+            if (project != null)
             {
-                throw new InvalidDataException();
+                _db.Projects.Remove(project);
+                _db.SaveChanges();
             }
-
-            _db.Projects.Remove(project);
-            _db.SaveChanges();
-
+            else
+            {
+                throw new ArgumentNullException();
+            }
         }
 
-        public void SubmitCode(String submissionCode)
-        {
-
-
-        }
         public void SaveCodeToDb(SubmissionViewModel viewModel)
         {
-            var model = new Submission
+            if (viewModel != null)
             {
-                AssignmentID = viewModel.AssignmentID,
-                Date = DateTime.Now,
-                ProjectID = viewModel.ProjectID,
-                StudentID = viewModel.StudentID,
-                Result = viewModel.Result,
-                SubmittedCode = viewModel.SubmittedCode
-            };
-            _db.Submissions.Add(model);
-            _db.SaveChanges();
+
+                var model = new Submission
+                {
+                    AssignmentID = viewModel.AssignmentID,
+                    Date = DateTime.Now,
+                    ProjectID = viewModel.ProjectID,
+                    StudentID = viewModel.StudentID,
+                    Result = viewModel.Result,
+                    SubmittedCode = viewModel.SubmittedCode
+                };
+                _db.Submissions.Add(model);
+                _db.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentNullException();
+            }
         }
 
         public SubmissionViewModel ExportSubmissionByID(int? ID)
@@ -170,20 +179,21 @@ namespace Mooshak2._0.Services
             var submission = _db.Submissions.SingleOrDefault(x => x.ID == ID);
 
             //if the project doesn't exist
-            if (submission == null)
+            if (submission != null)
             {
-                //TODO: kasta villu!
+                var viewModel = new SubmissionViewModel()
+                {
+                    Date = submission.Date,
+                    StudentID = submission.StudentID,
+                    ProjectID = submission.ProjectID,
+                    SubmittedCode = submission.SubmittedCode
+                };
+                return viewModel;
             }
-
-            var viewModel = new SubmissionViewModel()
+            else
             {
-                Date = submission.Date,
-                StudentID = submission.StudentID,
-                ProjectID = submission.ProjectID,
-                SubmittedCode = submission.SubmittedCode
-            };
-
-            return viewModel;
+                throw new ArgumentNullException();
+            } 
         }
         
     }

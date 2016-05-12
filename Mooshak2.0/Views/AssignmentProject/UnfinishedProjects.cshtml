@@ -23,12 +23,8 @@
                     <td>@project.Weight</td>
                     <td>@project.Deadline</td>
                     <td>
-                        <button id="userBtn" class="btn btn-success"
-                                onclick="location.href = '@Url.Action("Submit", "Submission", new {id = project.ID})'">
-                            Submit Solution
-                        </button> 
-                    </td>
-                </tr>
+                        @Html.ActionLink("Submit Solution", "Submit", "Submission", new { projectId = project.ID, assignmentId = project.AssignmentID }, new { @class = "btn btn-success" })
+</tr>
             }
         </table>
     </div>
