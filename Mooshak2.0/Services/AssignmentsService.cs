@@ -77,7 +77,7 @@ namespace Mooshak2._0.Services
             //return the viewModel
             return viewModel;
         }
-        
+
         public void DeleteAssignmentByID(int? assignmentID)
         {
             if(assignmentID.HasValue)
