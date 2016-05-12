@@ -24,7 +24,6 @@ namespace Mooshak2._0.Services
         // adds a course to the database
         public void AddToDB(CourseViewModel viewModel)
         {
-            ApplicationUserManager man;
             var model = new Course
             {
                 CourseName = viewModel.CourseName,
