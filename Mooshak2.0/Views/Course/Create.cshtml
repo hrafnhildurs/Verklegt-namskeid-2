@@ -26,6 +26,12 @@
                 @Html.TextBoxFor(m => Model.Semester, new {@class = "form-control"})
             </div>
         </div>
+        <div class="form-group">
+            <label class="col-md-2 control-label">Teacher</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => Model.TeacherID, ViewBag.Teachers as List<SelectListItem>, new { @class = "form-control" })
+            </div>
+        </div>
         <div class="col-md-offset-2">
             <input type="submit" value="Save" class="btn btn-success">
             @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary btn-large" })
