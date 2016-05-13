@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Mooshak2._0.Models;
@@ -62,7 +60,7 @@ namespace Mooshak2._0.Controllers
             catch (Exception)
             {
                 
-                throw new HttpException(404, "User not found!"); ;
+                throw new HttpException(404, "User not found!");
             }
 
             return RedirectToAction("Index");

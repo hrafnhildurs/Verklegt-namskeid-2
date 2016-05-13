@@ -10,17 +10,19 @@ using Mooshak2._0.Services;
 
 namespace Mooshak2._0.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class CourseController : Controller
     {
         private CourseService _service = new CourseService();
         private UserService _userService = new UserService();
-       
+
         // creates a list of viewmodels (all courses)
         public ActionResult Index()
         {
             List<CourseViewModel> allCourses = _service.GetAllCourses();
             return View(allCourses);
         }
+
 
         // Create a new course in Mooshak
         public ActionResult Create()

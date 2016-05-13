@@ -12,8 +12,10 @@ namespace Mooshak2._0.Controllers
         private CourseService _courseService = new CourseService();
         // GET: Assignments
 
-      
+
         //Get details about a specific assignment
+        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int id)
         {
             var viewModel = _service.GetAssignmentByID(id);
@@ -21,6 +23,8 @@ namespace Mooshak2._0.Controllers
             return View(viewModel);
         }
 
+        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             var assignments = _service.GetAllAssignments();
@@ -28,7 +32,8 @@ namespace Mooshak2._0.Controllers
             return View(assignments);
         }
 
-
+        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             _service.DeleteAssignmentByID(id);
@@ -36,6 +41,8 @@ namespace Mooshak2._0.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             var courses = _courseService.GetAllCourses();
@@ -45,6 +52,8 @@ namespace Mooshak2._0.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(AssignmentViewModel viewModel)
         {
             _service.AddToDB(viewModel);
@@ -52,7 +61,8 @@ namespace Mooshak2._0.Controllers
             return RedirectToAction("Index");
 
         }
-        
+        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
          {
             var courses = _courseService.GetAllCourses();
@@ -63,6 +73,8 @@ namespace Mooshak2._0.Controllers
          }
 
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(AssignmentViewModel assignment)
         {
             _service.EditAssignmentById(assignment.ID, assignment);
