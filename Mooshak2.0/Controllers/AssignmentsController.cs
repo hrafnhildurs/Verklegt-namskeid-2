@@ -6,13 +6,14 @@ using System.Web.Mvc;
 
 namespace Mooshak2._0.Controllers
 {
+    [Authorize(Roles = "Administrator, Teacher")]
     public class AssignmentsController : Controller
     {
         // instance of the assignmentService and courseService
         private AssignmentsService _service = new AssignmentsService();
         private CourseService _courseService = new CourseService();
 
-      
+
         // shows details about a specific assignment by ID and loads the projects associated with the 
         // assignment and gives the option of adding a project to the assignment
         public ActionResult Details(int id)
@@ -54,8 +55,6 @@ namespace Mooshak2._0.Controllers
 
         // receives information from Create() and saves the new assignment to the database
         [HttpPost]
-        [Authorize(Roles = "Teacher")]
-        [Authorize(Roles = "Administrator")]
         public ActionResult Create(AssignmentViewModel viewModel)
         {
             _service.AddToDB(viewModel);
@@ -76,8 +75,6 @@ namespace Mooshak2._0.Controllers
 
         // receives information from Edit() and saves the changes to the database
         [HttpPost]
-        [Authorize(Roles = "Teacher")]
-        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(AssignmentViewModel assignment)
         {
             _service.EditAssignmentById(assignment.ID, assignment);

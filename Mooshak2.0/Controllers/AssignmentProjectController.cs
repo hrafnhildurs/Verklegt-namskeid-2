@@ -14,8 +14,7 @@ namespace Mooshak2._0.Controllers
         private AssignmentsService _assignmentsService = new AssignmentsService();
 
         [HttpGet]
-        [Authorize(Roles = "Teacher")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         public ActionResult Index()
         {
             List<AssignmentProjectViewModel> allProjects = _service.GetAllProjects();
@@ -23,8 +22,7 @@ namespace Mooshak2._0.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Student")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Student")]
         public ActionResult UnfinishedProjects()
         {
             List<AssignmentProjectViewModel> projects = _service.GetAllUnfinishedProjects();
@@ -38,8 +36,7 @@ namespace Mooshak2._0.Controllers
         }*/
 
         [HttpGet]
-        [Authorize(Roles = "Teacher")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         public ActionResult Create(int id)
         {
             var assignment = _assignmentsService.GetAssignmentByID(id);
@@ -53,8 +50,7 @@ namespace Mooshak2._0.Controllers
             return View(viewModel);
         }
 
-        [Authorize(Roles = "Teacher")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         public ActionResult Save(AssignmentProjectViewModel viewModel)
         {
             _service.AddToDB(viewModel);
@@ -62,8 +58,7 @@ namespace Mooshak2._0.Controllers
             return RedirectToAction("Details", "Assignments", new { id = viewModel.AssignmentID });
         }
 
-        [Authorize(Roles = "Teacher")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         private List<SelectListItem> GetAssignmentID()
         {
             List<SelectListItem> result = new List<SelectListItem>();
@@ -75,16 +70,14 @@ namespace Mooshak2._0.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Teacher")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         public ActionResult Edit()
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Teacher")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         public ActionResult Edit(int id)
         {
             var Model = _service.GetProjectByID(id);
@@ -92,8 +85,7 @@ namespace Mooshak2._0.Controllers
             return View(Model);
         }
 
-        [Authorize(Roles = "Teacher")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         public ActionResult Delete(int id, int assignmentId)
         {
             _service.DeleteProjectById(id);
@@ -103,16 +95,14 @@ namespace Mooshak2._0.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Teacher")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         public ActionResult Details(int? id)
         {
             return View();
         }
 
         [HttpPost]
-        [Authorize(Roles = "Teacher")]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Administrator, Teacher")]
         public ActionResult Details(AssignmentProjectViewModel model)
         {
             return View(model);
