@@ -41,7 +41,9 @@ namespace Mooshak2._0.Services
                         AssignmentName = assignment != null ? assignment.AssignmentName : "No assignment!",
                         Description = tmp.Description,
                         Weight = tmp.Weight,
-                        Deadline = tmp.Deadline
+                        Deadline = tmp.Deadline,
+                        Output = tmp.Output,
+                        Input = tmp.Input
                     });
                 }
                 return viewModel;
@@ -150,7 +152,9 @@ namespace Mooshak2._0.Services
                     StudentID = tmp.StudentID,
                     Result = tmp.Result,
                     SubmittedCode = tmp.SubmittedCode,
-                    SubmissionOutput = tmp.SubmissionOutput
+                    SubmissionOutput = tmp.SubmissionOutput,
+                    Input = tmp.Input,
+                    ExpectedSubmissionOutput = tmp.ExpectedSubmissionOutput
 
                 });
             }
@@ -178,7 +182,9 @@ namespace Mooshak2._0.Services
                         AssignmentID = assignment != null ? assignment.ID : 0,
                         Description = tmp.Description,
                         Weight = tmp.Weight,
-                        Deadline = tmp.Deadline
+                        Deadline = tmp.Deadline,
+                        Input = tmp.Input,
+                        Output = tmp.Output
                     });
                 }
                 return viewModel; 
@@ -200,7 +206,10 @@ namespace Mooshak2._0.Services
                     ProjectName = viewModel.ProjectName,
                     Description = viewModel.Description,
                     Weight = viewModel.Weight,
-                    Deadline = new DateTime(2016, 1, 1, 23, 59, 59)
+                    Deadline = new DateTime(2016, 1, 1, 23, 59, 59),
+                    Input = viewModel.Input,
+                    Output = viewModel.Output
+
                 };
                 _db.Projects.Add(Model);
                 _db.SaveChanges();
@@ -228,6 +237,8 @@ namespace Mooshak2._0.Services
                     Deadline = project.Deadline,
                     CourseName = course.CourseName,
                     AssignmentName = assignment.AssignmentName,
+                    Input = project.Input,
+                    Output = project.Output
 
                 };
 
@@ -280,11 +291,16 @@ namespace Mooshak2._0.Services
                     Date = DateTime.Now,
                     ProjectID = Model.ProjectID,
                     StudentID = Model.StudentID,
-                    Result = Model.Result,
                     SubmittedCode = Model.SubmittedCode,
-                    SubmissionOutput  = Model.SubmissionOutput
+                    SubmissionOutput  = Model.SubmissionOutput,
+                    ExpectedSubmissionOutput = Model.ExpectedSubmissionOutput,
 
-                };
+            };
+                if (viewModel.ExpectedSubmissionOutput == viewModel.SubmissionOutput)
+                    model.Result = "Accepted!";
+                else
+                    model.Result = "Wrong answer!";
+
                 _db.Submissions.Add(model);
                 _db.SaveChanges();
             }
