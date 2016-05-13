@@ -195,7 +195,8 @@ namespace Mooshak2._0.Controllers
                             {
                                 CourseService courseService = new CourseService();
                                 var course = courseService.GetCourseByID(model.CourseID.Value);
-                                course.TeacherID = model.FullName;
+                                course.TeacherID = user.Id;
+                                courseService.EditCourseById(course);
                             }
                         }
 
@@ -394,6 +395,7 @@ namespace Mooshak2._0.Controllers
 
             return result;
         }
+
         private List<SelectListItem> GetCourses()
         {
             List<SelectListItem> result = new List<SelectListItem>();
