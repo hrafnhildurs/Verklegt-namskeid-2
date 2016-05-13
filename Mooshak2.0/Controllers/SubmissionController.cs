@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity;
 
 namespace Mooshak2._0.Controllers
 {
+    [Authorize(Roles = "Administrator, Student")]
     public class SubmissionController : Controller
     {
         private AssignmentProjectService _service = new AssignmentProjectService();
@@ -31,8 +32,6 @@ namespace Mooshak2._0.Controllers
         
         [HttpPost]
         [ValidateInput(false)]
-        [Authorize(Roles = "Student")]
-        [Authorize(Roles = "Administrator")]
         public ActionResult Submit(SubmissionViewModel viewModel)
         {
             if (ModelState.IsValid)
@@ -49,8 +48,6 @@ namespace Mooshak2._0.Controllers
             return View(viewModel);
         }
 
-        [Authorize(Roles = "Student")]
-        [Authorize(Roles = "Administrator")]
         public ActionResult Export(int StudentID, int ProjectID)
         {
             return View();
