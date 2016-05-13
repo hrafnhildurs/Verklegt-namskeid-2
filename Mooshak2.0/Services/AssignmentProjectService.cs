@@ -149,7 +149,8 @@ namespace Mooshak2._0.Services
                     ProjectID = tmp.ProjectID,
                     StudentID = tmp.StudentID,
                     Result = tmp.Result,
-                    SubmittedCode = tmp.SubmittedCode
+                    SubmittedCode = tmp.SubmittedCode,
+                    SubmissionOutput = tmp.SubmissionOutput
 
                 });
             }
