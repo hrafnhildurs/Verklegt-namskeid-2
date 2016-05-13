@@ -38,6 +38,8 @@ namespace Mooshak2._0.Models.Entities
         /// </summary>
         public string SubmissionOutput { get; set; }
 
+        public string ExpectedSubmissionOutput { get; set; }
+
         /// <summary>
         /// Is the solution accepted or not
         /// </summary>
