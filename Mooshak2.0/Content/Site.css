@@ -56,7 +56,6 @@ th
     margin: auto;
 
 }
-/*
 h2#Logo-text 
 { 
    position: absolute; 
@@ -67,12 +66,10 @@ h2#Logo-text
    font-weight: bold;
 
 }
-    */
 .Main-logo
 {
-    padding: 20px;
-    max-height: 100%;
-    max-width: 100%;
+    padding: 30px;
+    padding-left: 100px;
 }
 #devider 
 {
