@@ -415,6 +415,7 @@
     <Content Include="Views\Course\AddStudentToCourse.cshtml" />
     <Content Include="Views\Assignments\Edit.cshtml" />
     <Content Include="Views\AssignmentProject\UnfinishedProjects.cshtml" />
+    <Content Include="Views\Submission\ViewSubmissions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Uploads\" />
