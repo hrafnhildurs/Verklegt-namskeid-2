@@ -1,4 +1,5 @@
-﻿@model Mooshak2._0.Models.ViewModels.SubmissionViewModel
+﻿@using Mooshak2._0.Models.Entities
+@model Mooshak2._0.Models.ViewModels.SubmissionViewModel
 
 @{
     ViewBag.Title = "Submit";
@@ -24,12 +25,10 @@
             @Html.TextAreaFor(model => model.SubmittedCode, htmlAttributes: new { id = "TextAreaSubmitCode", placeholder="Paste your code here....", cols="10", rows="15"})
         </div>
         <br />
-        <input type="submit" onclick="return confirm('Are you sure you want to submit your code?')" class="btn btn-success"/>
+        <input type="submit" onclick="return confirm('Are you sure you want to submit your code?')" class="btn btn-success"/> 
+        <input type="button" class="btn btn-primary btn-large" 
+        onclick="location.href = '@Url.Action("UnfinishedProjects", "AssignmentProject")'" value="Back" />
     </div>
 
 }
 
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
