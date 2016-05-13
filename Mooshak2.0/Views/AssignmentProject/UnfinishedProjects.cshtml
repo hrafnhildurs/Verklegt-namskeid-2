@@ -1,13 +1,7 @@
 ﻿@model List<Mooshak2._0.Models.ViewModels.AssignmentProjectViewModel>
 
     <h2>Unfinished Projects</h2>
-   
-<nav class="LeftNav">
-    <button id="userBtn" class="btn btn-default" onclick="location.href = '@Url.Action("UnfinishedProjects", "AssignmentProject")'">Unfinished Assignments</button>
-    <button id="userBtn" class="btn btn-default" onclick="location.href = '@Url.Action("ViewSubmissions", "Submission")'">View Submissions</button>
-</nav>
-<br/>
- <div>
+    <div>
         <table class="table table-bordered">
 
             <thead>
@@ -26,11 +20,15 @@
                     <td>@project.CourseName</td>
                     <td>@project.AssignmentName</td>
                     <td>@project.ProjectName</td>
-                    <td>@project.Weight %</td>
+                    <td>@project.Weight</td>
                     <td>@project.Deadline</td>
                     <td>
-                        @Html.ActionLink("Submit Solution", "Submit", "Submission", new { projectId = project.ID, assignmentId = project.AssignmentID }, new { @class = "btn btn-success" })
-</tr>
+                        <button id="userBtn" class="btn btn-success"
+                                onclick="location.href = '@Url.Action("Submit", "Submission", new {id = project.ID})'">
+                            Submit Solution
+                        </button> 
+                    </td>
+                </tr>
             }
         </table>
     </div>
