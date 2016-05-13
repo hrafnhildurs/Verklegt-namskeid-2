@@ -30,7 +30,7 @@ namespace Mooshak2._0.Services
 
             if (project != null)
             {
-                    foreach (var tmp in project)
+                foreach (var tmp in project)
                 {
                     var assignment = _db.Assignments.SingleOrDefault(x => x.ID == tmp.AssignmentID);
                     var course = _db.Courses.SingleOrDefault(x => x.ID == tmp.CourseID);
