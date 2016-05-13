@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Mooshak2._0.ApplicationUserManager">
+    <Position X="25.25" Y="0.5" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.ApplicationSignInManager">
+    <Position X="20.5" Y="3.75" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\IdentityConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Controllers.AccountController">
+    <Position X="20.5" Y="5.75" Width="5.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Mooshak2._0.Controllers.AccountController.ChallengeResult" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\AccountController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAABAChACAAAAAQAAFggAAQBAABMIIAAAMQAAQgAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Controllers.AssignmentProjectController">
+    <Position X="9.75" Y="7.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAABAAAQAAAAAAAAAAEAAEACAgECAAAIAAA=</HashCode>
+      <FileName>Controllers\AssignmentProjectController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Controllers.AssignmentsController">
+    <Position X="5.75" Y="6" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAABAAAQAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AssignmentsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Controllers.CourseController">
+    <Position X="0.5" Y="6" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAABAAAQAAAAAAgAAAEAAFQCAAEEAAAAAAA=</HashCode>
+      <FileName>Controllers\CourseController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Controllers.HomeController">
+    <Position X="7.25" Y="9.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEACAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Controllers.ManageController">
+    <Position X="26.5" Y="5.75" Width="6" />
+    <NestedTypes>
+      <Enum Name="Mooshak2._0.Controllers.ManageController.ManageMessageId" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Controllers\ManageController.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EAAABACAQiAAgIAAAEFhAAAAAAEAIMIAAEEEgAAkAAA=</HashCode>
+      <FileName>Controllers\ManageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Controllers.SubmissionController">
+    <Position X="14.25" Y="6" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAABAAAAAAAAAAAAAAAASAAAAg=</HashCode>
+      <FileName>Controllers\SubmissionController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Controllers.UserController">
+    <Position X="14.25" Y="8.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAQAAAAgAAAAAEAEAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\UserController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.DAL.DatabaseInitializer">
+    <Position X="24.5" Y="2.25" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DAL\DatabaseInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.SendCodeViewModel">
+    <Position X="37.25" Y="6.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAIAAAAAAAAAAAAAAAAAAIAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ForgotViewModel">
+    <Position X="39" Y="3.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.LoginViewModel">
+    <Position X="42" Y="10.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAAgAAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.RegisterViewModel">
+    <Position X="41.75" Y="5.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAIAAEAAAAAAAAAAAAAQCAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ResetPasswordViewModel">
+    <Position X="41.75" Y="8" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAgAAAAAAAAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Models\AccountViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ApplicationUser">
+    <Position X="14.25" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAACAAAAIAAAAAAAAAAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ApplicationDbContext">
+    <Position X="28.5" Y="2.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAABAAAQA=</HashCode>
+      <FileName>Models\IdentityModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ManageRoles">
+    <Position X="20.5" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAYAAAQAAAAAAAAAIAAAAAAAAGAAAAAAQCAA=</HashCode>
+      <FileName>Models\ManageRoles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.IndexViewModel">
+    <Position X="33.5" Y="9.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAIAAAIAAQAAAAAAAAAAAAAAQAAAEAEA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.SetPasswordViewModel">
+    <Position X="38.25" Y="4.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ChangePasswordViewModel">
+    <Position X="41.75" Y="3.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Models\ManageViewModels.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.Entities.Assignment">
+    <Position X="4.25" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAgAAAAIAAAAAAAAAAAAQAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Assignment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.Entities.AssignmentProject">
+    <Position X="8" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AACQAAAAAAAggAAACAAIACAAECAAAAQAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\AssignmentProject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.Entities.Course">
+    <Position X="0.5" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAAAAAAAAAgAAAIAAACAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\Entities\Course.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.Entities.Submission">
+    <Position X="10.75" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAggAAABAAAAAQABAAAAAIBAAAAAAACAAA=</HashCode>
+      <FileName>Models\Entities\Submission.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ViewModels.AddStudentToCourseViewModel">
+    <Position X="37.25" Y="8.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAA=</HashCode>
+      <FileName>Models\ViewModels\AddStudentToCourseViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ViewModels.AddTeacherToCourseViewModel">
+    <Position X="37.25" Y="10.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAA=</HashCode>
+      <FileName>Models\ViewModels\AddTeacherToCourseViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ViewModels.AssignmentProjectViewModel">
+    <Position X="33.5" Y="5.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AACQAAAAAAAggAAACAAIACAAECAAAAQAAAEAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\AssignmentProjectViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ViewModels.AssignmentViewModel">
+    <Position X="33.5" Y="3" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAgAAAAIAAAAAAAAAAAAQAAAEAAAAAAQA=</HashCode>
+      <FileName>Models\ViewModels\AssignmentViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ViewModels.CourseViewModel">
+    <Position X="33.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAKAAAAAAAAAAAAAMAAACAAAAAAAAAQAIAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\CourseViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ViewModels.SubmissionViewModel">
+    <Position X="40.75" Y="0.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAABAAAAAQABAAAAAIBAAAAAAACAAA=</HashCode>
+      <FileName>Models\ViewModels\SubmissionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Models.ViewModels.UserViewModel">
+    <Position X="37.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAACAAAIAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ViewModels\UserViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Services.AssignmentProjectService">
+    <Position X="9.75" Y="4" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAEAAAAAABAwRAAAAAAAQAAABMAAA=</HashCode>
+      <FileName>Services\AssignmentProjectService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Services.AssignmentsService">
+    <Position X="4.25" Y="2.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAIAAAAAAAAAABAAAAACAAAAAAAAAAAAk=</HashCode>
+      <FileName>Services\AssignmentsService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Services.CourseService">
+    <Position X="0.5" Y="3" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAgAAIAAEAAAAABAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Services\CourseService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mooshak2._0.Services.UserService">
+    <Position X="14.25" Y="2.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AUAAgACAAAAAAAAAAAAAAAAAEAAAABQABAAAAAEAAAA=</HashCode>
+      <FileName>Services\UserService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -39,11 +39,13 @@ namespace Mooshak2._0.Models.Entities
         public string SubmissionOutput { get; set; }
 
         public string ExpectedSubmissionOutput { get; set; }
+        
+        public string Input { get; set; }
 
         /// <summary>
         /// Is the solution accepted or not
         /// </summary>
-        public bool Result { get; set; }
+        public string Result { get; set; }
 
         public int AssignmentID { get; set; }
 

@@ -199,8 +199,6 @@ namespace Mooshak2._0.Controllers
                                 courseService.EditCourseById(course);
                             }
                         }
-                        }
-
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                         // Send an email with this link
                         // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
@@ -216,12 +214,10 @@ namespace Mooshak2._0.Controllers
                     return View("Error");
                 }
             }
-
             // If we got this far, something failed, redisplay form
             return View(model);
         }
 
-        //
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
