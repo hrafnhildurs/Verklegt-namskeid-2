@@ -20,6 +20,7 @@
                 <th>Project name</th>
                 <th>Submitted Code</th>
                 <th>Output</th>
+                <th>Expected Output</th>
                 <th>Result</th>
                 <th> </th>
             </tr>
@@ -31,7 +32,8 @@
                 <td>@submission.ProjectID</td>
                 <td>@submission.SubmittedCode</td>
                 <td>@submission.SubmissionOutput</td>
-                <td>Accepted</td>
+                <td>@submission.ExpectedSubmissionOutput</td>
+                <td>@submission.Result</td>
                 <td>
                     @Html.ActionLink("Export", "Export", new { id = submission.SubmittedCode }) 
                 </td>

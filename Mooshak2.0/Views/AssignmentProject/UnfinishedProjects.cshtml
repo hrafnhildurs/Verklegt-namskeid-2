@@ -17,19 +17,23 @@
                     <th>Project</th>
                     <th>Weight</th>
                     <th>Deadline</th>
+                    <th>Expected output</th>
                     <th> </th>
                 </tr>
             </thead>
             @foreach (var project in Model)
             {
+
                 <tr>
                     <td>@project.CourseName</td>
                     <td>@project.AssignmentName</td>
                     <td>@project.ProjectName</td>
                     <td>@project.Weight %</td>
                     <td>@project.Deadline</td>
+                    <td>@project.Output</td>
                     <td>
-                        @Html.ActionLink("Submit Solution", "Submit", "Submission", new { projectId = project.ID, assignmentId = project.AssignmentID }, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Submit Solution", "Submit", "Submission", new { projectId = project.ID, assignmentId = project.AssignmentID, input = project.Input, output = project.Output }, new { @class = "btn btn-success" })
+
 </tr>
             }
         </table>

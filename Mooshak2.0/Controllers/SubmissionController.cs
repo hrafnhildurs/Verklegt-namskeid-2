@@ -17,11 +17,15 @@ namespace Mooshak2._0.Controllers
         private AssignmentProjectService _service = new AssignmentProjectService();
 
         [HttpGet]
-        public ActionResult Submit(int projectId, int assignmentId)
+        public ActionResult Submit(int projectId, int assignmentId, string input, string output)
         {
             SubmissionViewModel model = new SubmissionViewModel();
             model.ProjectID = projectId;
             model.AssignmentID = assignmentId;
+            model.Input = input;
+            model.ExpectedSubmissionOutput = output;
+
+
             return View(model);
         }
         
@@ -34,6 +38,8 @@ namespace Mooshak2._0.Controllers
                 viewModel.StudentID = User.Identity.GetUserId();
                 
                 _service.SaveCodeToDb(viewModel);
+
+               
 
                 return RedirectToAction("ViewSubmissions", "Submission");
             }
@@ -51,10 +57,10 @@ namespace Mooshak2._0.Controllers
         }
 
 
-        public ActionResult ViewSubmissionOutput(SubmissionViewModel viewModel)
+        /*public ActionResult ViewSubmissionOutput(SubmissionViewModel viewModel)
         {
             SubmissionViewModel submissionOutput = _service.CompileCode(viewModel);
             return View(submissionOutput);
-        }
+        }*/
     }
 }
