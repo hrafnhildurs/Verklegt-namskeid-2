@@ -10,6 +10,7 @@ using Mooshak2._0.Services;
 
 namespace Mooshak2._0.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class CourseController : Controller
     {
         // instance of the userService and courseService
@@ -35,7 +36,7 @@ namespace Mooshak2._0.Controllers
         public ActionResult Create(CourseViewModel viewModel)
         {
             _service.AddToDB(viewModel);
-           
+
             return RedirectToAction("index");
 
         }

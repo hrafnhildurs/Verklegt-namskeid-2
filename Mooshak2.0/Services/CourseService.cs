@@ -92,8 +92,8 @@ namespace Mooshak2._0.Services
                     CourseID = tmp.ID,
                     CourseNumber = tmp.CourseNumber,
                     CourseName = tmp.CourseName,
-                    Semester = tmp.Semester
-
+                    Semester = tmp.Semester,
+                    TeacherID = tmp.TeacherId
                 });
             }
 

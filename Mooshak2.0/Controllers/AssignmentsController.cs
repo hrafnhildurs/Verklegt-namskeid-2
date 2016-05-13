@@ -37,7 +37,7 @@ namespace Mooshak2._0.Controllers
 
             return RedirectToAction("Index");
         }
-        
+
         // opens the Assignments/Create page
         public ActionResult Create()
         {
@@ -54,6 +54,8 @@ namespace Mooshak2._0.Controllers
 
         // receives information from Create() and saves the new assignment to the database
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(AssignmentViewModel viewModel)
         {
             _service.AddToDB(viewModel);
@@ -74,6 +76,8 @@ namespace Mooshak2._0.Controllers
 
         // receives information from Edit() and saves the changes to the database
         [HttpPost]
+        [Authorize(Roles = "Teacher")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(AssignmentViewModel assignment)
         {
             _service.EditAssignmentById(assignment.ID, assignment);

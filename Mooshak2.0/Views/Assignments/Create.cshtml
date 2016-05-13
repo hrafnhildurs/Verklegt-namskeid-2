@@ -8,7 +8,7 @@
 <h2>Create assignment</h2>
 
 <div class="form-horizontal">
-    <hr/>
+    <hr />
     <form action="/Assignments/Create" method="post">
         <div class="form-group">
             <label class="col-md-2 control-label">Course</label>
@@ -26,7 +26,7 @@
             <label class="col-md-2 control-label">Deadline</label>
             <div class="col-md-3">
                 <div class="input-group date" id="datetimepicker1">
-                    @Html.TextBoxFor(m => Model.Deadline, new { @class = "form-control datepicker"})
+                    @Html.TextBoxFor(m => Model.Deadline, new { @class = "form-control datepicker" })
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -36,12 +36,12 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Assignment Name</label>
             <div class="col-md-3">
-                @Html.TextBoxFor(m => Model.AssignmentName, new {@class = "form-control"})
+                @Html.TextBoxFor(m => Model.AssignmentName, new { @class = "form-control" })
             </div>
         </div>
         <div class="col-md-offset-2">
             <input type="submit" value="Save" class="btn btn-success">
-            @Html.ActionLink("Cancel", "Index", null, new {@class = "btn btn-primary btn-large"})
+            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-primary btn-large" })
         </div>
     </form>
 </div>
