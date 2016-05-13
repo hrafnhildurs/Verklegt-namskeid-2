@@ -57,11 +57,14 @@ h2#Logo-text
     */
 .Main-logo
 {
-    padding: 75px;
-    padding-top: 30px;
+    padding-left: 70px;
+    padding-right: 10px;
+    padding-top: 20px;
     max-height: 100%;
     max-width: 100%;
+    border-bottom: 2pt solid gray;
 }
+
 #devider 
 {
     top: 20px;

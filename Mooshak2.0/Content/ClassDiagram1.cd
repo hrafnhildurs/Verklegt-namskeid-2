@@ -76,7 +76,7 @@
   <Class Name="Mooshak2._0.Controllers.SubmissionController">
     <Position X="14.25" Y="6" Width="4" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAQAAAABAAAAAAAAAAAAAAAASAAAAg=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAQAAAABAAAAAAAAAAAAAAAAQAAAAg=</HashCode>
       <FileName>Controllers\SubmissionController.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -102,7 +102,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Mooshak2._0.Models.ForgotViewModel">
-    <Position X="39" Y="3.25" Width="2" />
+    <Position X="38.25" Y="3" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\AccountViewModels.cs</FileName>
@@ -165,7 +165,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Mooshak2._0.Models.ChangePasswordViewModel">
-    <Position X="41.75" Y="3.25" Width="2.75" />
+    <Position X="41.75" Y="3.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Models\ManageViewModels.cs</FileName>
@@ -195,7 +195,7 @@
   <Class Name="Mooshak2._0.Models.Entities.Submission">
     <Position X="10.75" Y="0.5" Width="3.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAggAAABAAAAAQABAAAAAIBAAAAAAACAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAggAAABAAAAAQAFAAAAAIBAAAAAAACAAA=</HashCode>
       <FileName>Models\Entities\Submission.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -237,7 +237,7 @@
   <Class Name="Mooshak2._0.Models.ViewModels.SubmissionViewModel">
     <Position X="40.75" Y="0.5" Width="3.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAABAAAAAQABAAAAAIBAAAAAAACAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAgAAAABAAAAAQAFAAAAAIBAAAAAAACAAA=</HashCode>
       <FileName>Models\ViewModels\SubmissionViewModel.cs</FileName>
     </TypeIdentifier>
   </Class>
