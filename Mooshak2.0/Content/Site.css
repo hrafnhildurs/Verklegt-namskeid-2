@@ -94,3 +94,12 @@ h2#Logo-text
 {
     margin: auto;
 }
+ul.LeftNavButtons 
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li button {
+    display: block;
+}

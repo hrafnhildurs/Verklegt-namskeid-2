@@ -7,12 +7,13 @@ using System.Linq;
 using System.Web;
 using Mooshak2._0.Models.Entities;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 
 namespace Mooshak2._0.Services
 {
     public class AssignmentsService : AssignmentProjectService
     {
-        //Instance of DbContext
+        // instance of DbContext
         private ApplicationDbContext _db;
 
         public AssignmentsService()
@@ -20,6 +21,7 @@ namespace Mooshak2._0.Services
             _db = new ApplicationDbContext();
         }
 
+        // returns a list of all assignments
         public List<AssignmentViewModel> GetAllAssignments()
         {
             List<Assignment> assignment = _db.Assignments.ToList();
@@ -41,28 +43,20 @@ namespace Mooshak2._0.Services
             return viewModel;
         }
 
-        public List<AssignmentViewModel> GetAssignmentsInCourse(int courseID)
-        {
-            //TODO:
-            return null;
-        }
-
+        // gets the assignment with the given ID, its projects, and the course the assignment belongs to
         public AssignmentViewModel GetAssignmentByID (int assignmentID)
         {
-            //get the assignment
             var assignment = _db.Assignments.SingleOrDefault(x => x.ID == assignmentID);
-            var course = _db.Courses.SingleOrDefault(x => x.ID == assignment.CourseID);
+            
 
-            //if the assignment doesn't exist
             if (assignment == null)
             {
-                throw new InvalidDataException();
+                throw new ArgumentNullException();
             }
 
-            //get the projects that are a part of this assignment
+            var course = _db.Courses.SingleOrDefault(x => x.ID == assignment.CourseID);
             var projects = _db.Projects.Where(x => x.AssignmentID == assignmentID).ToList();
                
-            //make new viewModel
             var viewModel = new AssignmentViewModel
             {
                 ID = assignment.ID,
@@ -71,13 +65,12 @@ namespace Mooshak2._0.Services
                 CourseID = assignment.CourseID,
                 Deadline = assignment.Deadline,
                 Projects = projects,
-                //projectDescription =  description
             };
 
-            //return the viewModel
             return viewModel;
         }
 
+        // delete assignment with the given ID from the database
         public void DeleteAssignmentByID(int? assignmentID)
         {
             if(assignmentID.HasValue)
@@ -91,30 +84,25 @@ namespace Mooshak2._0.Services
             }
             else
             {
-                //kasta Villu
+                throw new ArgumentNullException();
             }
 
         }
 
+        // adds a new assignment to the database
         public void AddToDB(AssignmentViewModel viewModel)
         {
             var model = new Assignment
             {
                 AssignmentName = viewModel.AssignmentName,
                 CourseID = viewModel.CourseID,
-                Deadline = viewModel.Deadline,
-               // AssignmentProjects = viewModel.Projects.ToList()
+                Deadline = viewModel.Deadline
             };
             _db.Assignments.Add(model);
             _db.SaveChanges();
         }
 
-        public AssignmentViewModel CreateAssignment(int CourseId)
-        {
-            //TODO:
-            return null;
-        }
-
+        // edits an assignment by ID and updates the database
         public void EditAssignmentById(int? id, AssignmentViewModel model)
         {
             if (id.HasValue)
@@ -127,10 +115,14 @@ namespace Mooshak2._0.Services
                     assignment.AssignmentName = model.AssignmentName;
                     _db.SaveChanges();
                 }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
             }
             else
             {
-                //kasta villu!
+                throw new ArgumentNullException();
             }
         }
 

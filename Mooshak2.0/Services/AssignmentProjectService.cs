@@ -9,6 +9,7 @@ using Mooshak2._0.Models.Entities;
 using Mooshak2._0.Models;
 using System.Web.Mvc;
 using System.IO;
+using System.Diagnostics;
 
 
 namespace Mooshak2._0.Services
@@ -50,6 +51,111 @@ namespace Mooshak2._0.Services
             {
                 throw new ArgumentNullException();
             }
+        }
+
+        internal SubmissionViewModel CompileCode(SubmissionViewModel Model)
+        {
+            
+
+
+            var workingFolder = "C:\\Temp\\Mooshak2Code\\";
+            var cppFileName = "Hello.cpp";
+            var exeFilePath = workingFolder + "Hello.exe";
+
+            // Write the code to a file, such that the compiler
+            // can find it:
+            System.IO.File.WriteAllText(workingFolder + cppFileName, Model.SubmittedCode);
+
+            // In this case, we use the C++ compiler (cl.exe) which ships
+            // with Visual Studio. It is located in this folder:
+            var compilerFolder = "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\VC\\bin\\";
+            // There is a bit more to executing the compiler than
+            // just calling cl.exe. In order for it to be able to know
+            // where to find #include-d files (such as <iostream>),
+            // we need to add certain folders to the PATH.
+            // There is a .bat file which does that, and it is
+            // located in the same folder as cl.exe, so we need to execute
+            // that .bat file first.
+
+            // Using this approach means that:
+            // * the computer running our web application must have
+            //   Visual Studio installed. This is an assumption we can
+            //   make in this project.
+            // * Hardcoding the path to the compiler is not an optimal
+            //   solution. A better approach is to store the path in
+            //   web.config, and access that value using ConfigurationManager.AppSettings.
+
+            // Execute the compiler:
+            Process compiler = new Process();
+            compiler.StartInfo.FileName = "cmd.exe";
+            compiler.StartInfo.WorkingDirectory = workingFolder;
+            compiler.StartInfo.RedirectStandardInput = true;
+            compiler.StartInfo.RedirectStandardOutput = true;
+            compiler.StartInfo.UseShellExecute = false;
+
+            compiler.Start();
+            compiler.StandardInput.WriteLine("\"" + compilerFolder + "vcvars32.bat" + "\"");
+            compiler.StandardInput.WriteLine("cl.exe /nologo /EHsc " + cppFileName);
+            compiler.StandardInput.WriteLine("exit");
+            string output = compiler.StandardOutput.ReadToEnd();
+            compiler.WaitForExit();
+            compiler.Close();
+
+            // Check if the compile succeeded, and if it did,
+            // we try to execute the code:
+            if (System.IO.File.Exists(exeFilePath))
+            {
+                var processInfoExe = new ProcessStartInfo(exeFilePath, "");
+                processInfoExe.UseShellExecute = false;
+                processInfoExe.RedirectStandardOutput = true;
+                processInfoExe.RedirectStandardError = true;
+                processInfoExe.CreateNoWindow = true;
+                using (var processExe = new Process())
+                {
+                    processExe.StartInfo = processInfoExe;
+                    processExe.Start();
+                    // In this example, we don't try to pass any input
+                    // to the program, but that is of course also
+                    // necessary. We would do that here, using
+                    // processExe.StandardInput.WriteLine(), similar
+                    // to above.
+
+                    // We then read the output of the program:
+                    var lines = new List<string>();
+                    while (!processExe.StandardOutput.EndOfStream)
+                    {
+                        lines.Add(processExe.StandardOutput.ReadLine());
+                    }
+
+                    Model.SubmissionOutput = string.Join(" ", lines.ToArray());
+                }
+            }
+
+            // TODO: We might want to clean up after the process, there
+            // may be files we should delete etc.
+            return Model;
+    }
+
+        internal List<SubmissionViewModel> GetAllSubmissions()
+        {
+            List<Submission> submissions = _db.Submissions.ToList();
+            List<SubmissionViewModel> viewModel = new List<SubmissionViewModel>();
+
+            foreach (var tmp in submissions)
+            {
+                viewModel.Add(new SubmissionViewModel()
+                {
+                    AssignmentID = tmp.AssignmentID,
+                    Date = DateTime.Now,
+                    ProjectID = tmp.ProjectID,
+                    StudentID = tmp.StudentID,
+                    Result = tmp.Result,
+                    SubmittedCode = tmp.SubmittedCode
+
+                });
+            }
+
+            return viewModel;
         }
 
         public List<AssignmentProjectViewModel> GetAllUnfinishedProjects()
@@ -164,17 +270,20 @@ namespace Mooshak2._0.Services
 
         public void SaveCodeToDb(SubmissionViewModel viewModel)
         {
-            if (viewModel != null)
+            SubmissionViewModel Model = CompileCode(viewModel);
+            if (Model != null)
             {
 
                 var model = new Submission
                 {
-                    AssignmentID = viewModel.AssignmentID,
+                    AssignmentID = Model.AssignmentID,
                     Date = DateTime.Now,
-                    ProjectID = viewModel.ProjectID,
-                    StudentID = viewModel.StudentID,
-                    Result = viewModel.Result,
-                    SubmittedCode = viewModel.SubmittedCode
+                    ProjectID = Model.ProjectID,
+                    StudentID = Model.StudentID,
+                    Result = Model.Result,
+                    SubmittedCode = Model.SubmittedCode,
+                    SubmissionOutput  = Model.SubmissionOutput
+
                 };
                 _db.Submissions.Add(model);
                 _db.SaveChanges();

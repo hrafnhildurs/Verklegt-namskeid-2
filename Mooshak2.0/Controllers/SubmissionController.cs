@@ -36,8 +36,10 @@ namespace Mooshak2._0.Controllers
             if (ModelState.IsValid)
             {
                 viewModel.StudentID = User.Identity.GetUserId();
+                
                 _service.SaveCodeToDb(viewModel);
-                return RedirectToAction("UnfinishedProjects", "AssignmentProject");
+
+                return RedirectToAction("ViewSubmissions", "Submission");
             }
 
             return View(viewModel);
@@ -48,6 +50,18 @@ namespace Mooshak2._0.Controllers
         public ActionResult Export(int StudentID, int ProjectID)
         {
             return View();
+        }
+        public ActionResult ViewSubmissions()
+        {
+            List<SubmissionViewModel> allSubmissions = _service.GetAllSubmissions();
+            return View(allSubmissions);
+        }
+
+
+        public ActionResult ViewSubmissionOutput(SubmissionViewModel viewModel)
+        {
+            SubmissionViewModel submissionOutput = _service.CompileCode(viewModel);
+            return View(submissionOutput);
         }
     }
 }

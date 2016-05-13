@@ -13,23 +13,25 @@ namespace Mooshak2._0.Controllers
     [Authorize(Roles = "Administrator")]
     public class CourseController : Controller
     {
+        // instance of the userService and courseService
         private CourseService _service = new CourseService();
         private UserService _userService = new UserService();
-
-        // creates a list of viewmodels (all courses)
+       
+        // gets a list of viewmodels (all courses) and gives the option of creating a new course
         public ActionResult Index()
         {
             List<CourseViewModel> allCourses = _service.GetAllCourses();
             return View(allCourses);
         }
 
-
-        // Create a new course in Mooshak
+        // opens the Course/Create page
         public ActionResult Create()
         {
+            ViewBag.Teachers = GetTeachers();
             return View();
         }
 
+        // receives information from Create() and saves the new course to the database
         [HttpPost]
         public ActionResult Create(CourseViewModel viewModel)
         {
@@ -39,15 +41,24 @@ namespace Mooshak2._0.Controllers
 
         }
 
-        // Edit a course that already exists in Mooshak
+        // opens the Course/Edit page for the chosen course
         public ActionResult Edit(int id)
         {
             var course = _service.GetCourseByID(id);
+            ViewBag.Teachers = GetTeachers();
 
             return View(course);
         }
 
-        // 
+        private List<SelectListItem> GetTeachers()
+        {
+            List<SelectListItem> result = new List<SelectListItem>();
+            result.AddRange(_userService.GetSortedUsers("Teacher").Select(x => new SelectListItem() { Value = x.Id, Text = x.FullName }));
+
+            return result;
+        }
+
+        // receives information from Edit() and saves the changes to the database
         [HttpPost]
         public ActionResult Edit(CourseViewModel course)
         {
@@ -56,7 +67,7 @@ namespace Mooshak2._0.Controllers
             return RedirectToAction("Index");
         }
 
-        // Delete a course that already exists in Mooshak
+        // deletes a course that already exists in Mooshak
         public ActionResult Delete(int id)
         {
             _service.DeleteCourseByID(id);
@@ -65,7 +76,7 @@ namespace Mooshak2._0.Controllers
             
         }
 
-        // Show information about a course that already exists in Mooshak
+        // shows information about a course and registered students
         [HttpGet]
         public ActionResult Details(int id)
         {
@@ -74,6 +85,7 @@ namespace Mooshak2._0.Controllers
             return View(course);
         }
 
+        // opens the Course/AddStudentToCourse page
         [HttpGet]
         public ActionResult AddStudentToCourse(int id)
         {
@@ -84,6 +96,7 @@ namespace Mooshak2._0.Controllers
             return View(model);
         }
 
+        // receives information from AddStudentToCourse(id) and saves the changes to the database
         [HttpPost]
         public ActionResult SaveStudentToCourse(int courseId, string studentId)
         {
@@ -92,6 +105,7 @@ namespace Mooshak2._0.Controllers
             return RedirectToAction("Details", new {id = courseId});
         }
 
+        // removes student from course
         public ActionResult RemoveStudentFromCourse(int courseId, string studentId)
         {
             _userService.RemoveStudentFromCourse(courseId, studentId);
@@ -99,11 +113,5 @@ namespace Mooshak2._0.Controllers
             return RedirectToAction("Details", new { id = courseId });
         }
 
-        [HttpPost]
-        public ActionResult AddStudentToCourse(AddStudentToCourseViewModel model)
-        {
-            
-            return View();
-        }
     }
 }

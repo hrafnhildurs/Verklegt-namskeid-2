@@ -64,6 +64,7 @@ namespace Mooshak2._0.Services
                 {
                     viewModel.Add(new UserViewModel()
                     {
+                        Id = tmp.Id,
                         FullName = tmp.FullName,
                         SSN = tmp.SSN,
                         Email = tmp.Email,

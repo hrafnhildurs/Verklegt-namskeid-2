@@ -14,6 +14,7 @@ namespace Mooshak2._0.Services
 {
     public class CourseService
     {
+        // creates a connection to the database
         private ApplicationDbContext _db;
 
         public CourseService()
@@ -29,18 +30,27 @@ namespace Mooshak2._0.Services
                 CourseName = viewModel.CourseName,
                 CourseNumber = viewModel.CourseNumber,
                 Semester = viewModel.Semester,
+                TeacherId = viewModel.TeacherID
             };
             _db.Courses.Add(model);
             _db.SaveChanges();
         }
 
-        // gets a course from the database by ID
+        // gets a course from the database by ID and returns a courseViewModel
         public CourseViewModel GetCourseByID(int courseId)
         {
             var course = _db.Courses.SingleOrDefault(x => x.ID == courseId);
             if (course == null)
             {
                 throw new ArgumentNullException();
+            }
+
+            var teacherName = "Not assigned";
+            if (course.TeacherId != null)
+            {
+                var user = _db.Users.FirstOrDefault(x => x.Id == course.TeacherId);
+                if (user != null)
+                    teacherName = user.FullName;
             }
 
             var viewModel = new CourseViewModel
@@ -50,6 +60,7 @@ namespace Mooshak2._0.Services
                 CourseName = course.CourseName,
                 Semester = course.Semester,
                 TeacherID = course.TeacherId,
+                TeacherName = teacherName,
                 Students = course.Students.ToList()
             };
 
@@ -68,7 +79,7 @@ namespace Mooshak2._0.Services
             _db.SaveChanges();
         }
 
-        // returns a list of all courses registered in the database
+        // gets all courses registered in the database and returns a list of courseViewModels
         public List<CourseViewModel> GetAllCourses()
         {
             List<Course> courses = _db.Courses.ToList();
@@ -89,6 +100,7 @@ namespace Mooshak2._0.Services
             return viewModel;
         }
 
+        // edits a course by ID and updates the database
         public void EditCourseById(CourseViewModel viewModel)
         {
             var model = _db.Courses.Where(x => x.ID == viewModel.CourseID).SingleOrDefault();
@@ -101,7 +113,6 @@ namespace Mooshak2._0.Services
             model.CourseNumber = viewModel.CourseNumber;
             model.Semester = viewModel.Semester;
             model.TeacherId = viewModel.TeacherID;
-
 
            _db.SaveChanges();
         }

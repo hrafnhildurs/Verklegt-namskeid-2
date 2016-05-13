@@ -13,10 +13,11 @@ namespace Mooshak2._0.Models.ViewModels
         public int ProjectID { get; set; }
         public DateTime Date { get; set; }
         public string SubmissionOutput { get; set; }
+        public string ExpectedSubmissionOutput { get; set; }
         public bool Result { get; set; }
        /// public List<UserViewModel> StudentList { get; set; }
 
-        public List<SubmissionViewModel> Submissions { get; set; }
+       // public List<SubmissionViewModel> Submissions { get; set; }
 
     }
 }

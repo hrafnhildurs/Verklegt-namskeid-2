@@ -195,11 +195,10 @@ namespace Mooshak2._0.Controllers
                             {
                                 CourseService courseService = new CourseService();
                                 var course = courseService.GetCourseByID(model.CourseID.Value);
-                                if (course != null)
-                                {
-                                    course.TeacherID = model.FullName;
-                                }
+                                course.TeacherID = user.Id;
+                                courseService.EditCourseById(course);
                             }
+                        }
                         }
 
                         // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -397,6 +396,7 @@ namespace Mooshak2._0.Controllers
 
             return result;
         }
+
         private List<SelectListItem> GetCourses()
         {
             List<SelectListItem> result = new List<SelectListItem>();
