@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Mooshak2._0.Models.ViewModels.SubmissionViewModel>
+
+@{
+    ViewBag.Title = "ViewSubmissions";
+}
+
+<h2>Submissions</h2>
+
+<nav class="LeftNav">
+    <button id="userBtn" class="btn btn-default" onclick="location.href = '@Url.Action("UnfinishedProjects", "AssignmentProject")'">Unfinished Assignments</button>
+    <button id="userBtn" class="btn btn-default" onclick="location.href = '@Url.Action("ViewSubmissions", "Submission")'">View Submissions</button>
+</nav>
+<br/>
+<div style="overflow-y: scroll; height: 300px;">
+    <table class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th>Assignment name</th>
+                <th>Project name</th>
+                <th>Submitted Code</th>
+                <th>Output</th>
+                <th>Result</th>
+                <th> </th>
+            </tr>
+        </thead>
+        @foreach (var submission in Model)
+        {
+            <tr>
+                <td>@submission.AssignmentID</td>
+                <td>@submission.ProjectID</td>
+                <td>@submission.SubmittedCode</td>
+                <td>@submission.SubmissionOutput</td>
+                <td>Accepted</td>
+                <td>
+                    @Html.ActionLink("Export", "Export", new { id = submission.SubmittedCode }) 
+                </td>
+            </tr>
+
+        }
+
+    </table>
+</div>
+
+
+
